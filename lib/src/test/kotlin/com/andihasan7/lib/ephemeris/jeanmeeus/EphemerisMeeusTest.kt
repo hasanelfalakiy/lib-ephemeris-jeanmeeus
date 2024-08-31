@@ -20,9 +20,13 @@ class EphemerisMeeusTest {
         )
     
         val jd = jm.jd
+        val deltaT = jm.deltaT
+        val jde = jm.jde
     
         println("")
         println("")
         println("JD = $jd")
+        println("DeltaT = $deltaT")
+        println("JDE = $jde")
     }
 }

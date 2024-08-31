@@ -1,0 +1,50 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/DeltaT.kt",
+      "selection": {
+        "end": {
+          "column": 20,
+          "index": 171,
+          "line": 8
+        },
+        "start": {
+          "column": 20,
+          "index": 171,
+          "line": 8
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeus.kt",
+      "selection": {
+        "end": {
+          "column": 34,
+          "index": 1297,
+          "line": 56
+        },
+        "start": {
+          "column": 34,
+          "index": 1297,
+          "line": 56
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/test/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeusTest.kt",
+      "selection": {
+        "end": {
+          "column": 27,
+          "index": 631,
+          "line": 29
+        },
+        "start": {
+          "column": 27,
+          "index": 631,
+          "line": 29
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/test/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeusTest.kt"
+}

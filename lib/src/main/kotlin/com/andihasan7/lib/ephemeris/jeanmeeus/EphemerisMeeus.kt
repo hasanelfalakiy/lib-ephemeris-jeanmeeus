@@ -1,4 +1,11 @@
+
+
+package com.andihasan7.lib.ephemeris.jeanmeeus
+
+import com.andihasan7.lib.ephemeris.jeanmeeus.util.masehiToJD
+
 /**
+* 
 * 
 * ```
 *    class EphemerisMeeus(
@@ -13,11 +20,6 @@
 *    )
 * ```
 */
-
-package com.andihasan7.lib.ephemeris.jeanmeeus
-
-import com.andihasan7.lib.ephemeris.jeanmeeus.util.masehiToJD
-
 class EphemerisMeeus(
 	date: Int, // tanggal masehi
     month: Int, // bulan masehi
@@ -28,10 +30,10 @@ class EphemerisMeeus(
     hourDouble: Double = 0.0, // jam double
     checkDeltaT: Boolean = true // pilihan pakai deltaT atau tidak
 ) {
-	
-    // val jamDes = (hour + minute / 60 + second / 3600)
     
-    // JD
+    /**
+    * julian day (JD)
+    */
     val jd = masehiToJD(
         date,
         month,
@@ -39,4 +41,18 @@ class EphemerisMeeus(
         hourDouble,
         timeZone
     )
+    
+    /**
+    * deltaT
+    */
+    val deltaT = if (checkDeltaT == true) {
+        deltaT(date, month, year)
+    } else {
+        0.0
+    }
+    
+    /**
+    * julian day ephemeris (JDE)
+    */
+    val jde = jd + (deltaT / 86400)
 }
