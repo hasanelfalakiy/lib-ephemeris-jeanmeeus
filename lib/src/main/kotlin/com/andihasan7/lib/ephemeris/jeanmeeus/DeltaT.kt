@@ -3,6 +3,9 @@ package com.andihasan7.lib.ephemeris.jeanmeeus
 
 import kotlin.math.pow
 
+/**
+* deltaT dari tabel buku ilmu falak rumusan syar'i dan astronomi seri 3
+*/
 fun deltaT(date: Int, month: Int, year: Int): Double {
     
     var u: Double
@@ -99,3 +102,21 @@ fun deltaT(date: Int, month: Int, year: Int): Double {
     
     return deltaT
 }
+
+/*
+dr astronomical algorithm jean meeus
+fun deltaT(date: Int, month: Int, year: Int): Double {
+    
+    var t = (year - 2000).toDouble() / 100
+    var deltaT: Double
+    
+    deltaT = when {
+        year < 948 -> (2715.6 + 573.36 * t + 46.5 * t.pow(2))
+        year <= 948 && year <= 1600 -> (50.6 + 67.5 * t + 22.5 * t.pow(2))
+        year > 1600 -> (102.3 + 123.5 * t + 32.5 * t.pow(2))
+        else -> 0.0
+    }
+    
+    return deltaT
+}
+*/ 

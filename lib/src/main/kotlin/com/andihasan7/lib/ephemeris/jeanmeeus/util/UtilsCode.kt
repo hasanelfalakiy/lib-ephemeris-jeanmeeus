@@ -55,5 +55,7 @@ fun masehiToJD(
         b = 0.0
     }
     
-    return floor(365.25 * (y + 4716)) + floor(30.6001 * (m + 1)) + d + b - 1524.5
+    val jd = floor(365.25 * (y + 4716)) + floor(30.6001 * (m + 1)) + d + b - 1524.5
+    
+    return jd
 }

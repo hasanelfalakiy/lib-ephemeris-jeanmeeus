@@ -1,14 +1,18 @@
 package com.andihasan7.lib.ephemeris.jeanmeeus
 
+import kotlin.math.cos
+import kotlin.math.sin
+import kotlin.math.pow
+import kotlin.mod
+
 object Nutasi {
     fun deltaPsiDanEpsilon(t: Double): DoubleArray {
-        val d = Math.toRadians((297.85036 + 445267.11148 * t - 0.0019142 * t * t + t * t * t / 189474) % 360)
-        val m = Math.toRadians((357.52772 + 35999.05034 * t - 0.0001603 * t * t - t * t * t / 300000) % 360)
-        val m1 = Math.toRadians((134.96298 + 477198.867398 * t + 0.0086972 * t * t + t * t * t / 56250) % 360)
-        val f = Math.toRadians((93.27191 + 483202.017538 * t - 0.0036825 * t * t + t * t * t / 327270) % 360)
-        var omega1 = (125.04452 - 1934.136261 * t + 0.0020708 * t * t + t * t * t / 450000) % 360
-        if (omega1 < 0) omega1 += 360.0
-        val omega = Math.toRadians(omega1)
+        val d = Math.toRadians((297.85036 + 445267.111480 * t - 0.0019142 * t.pow(2) + t.pow(3) / 189474).mod(360.0))
+        val m = Math.toRadians((357.52772 + 35999.05034 * t - 0.0001603 * t.pow(2) - t.pow(3) / 300000).mod(360.0))
+        val m1 = Math.toRadians((134.96298 + 477198.867398 * t + 0.0086972 * t.pow(2) + t.pow(3) / 56250).mod(360.0))
+        val f = Math.toRadians((93.27191 + 483202.017538 * t - 0.0036825 * t.pow(2) + t.pow(3) / 327270).mod(360.0))
+        val omega = Math.toRadians(125.04452 - 1934.136261 * t + 0.0020708 * t.pow(2) + t.pow(3) / 450000).mod(360.0)
+        
         var deltaPsi = 0.0
         //(koefisien1+koefisien2*t)*Math.sin(D*d+M*m+M'*m1+F*f+OMEGA*omega)
         deltaPsi += (-171996 + -174.2 * t) * Math.sin(0 * d + 0 * m + 0 * m1 + 0 * f + 1 * omega)
@@ -78,7 +82,7 @@ object Nutasi {
         val deltaPsi_d = deltaPsi / 3600
         val u = t / 100
         val epsilonZero =
-            23 + 26.0 / 60 + 21.448 / 3600 + (-4680.93 * u - 1.55 * u * u + 1999.25 * u * u * u - 51.38 * u * u * u * u - 249.67 * u * u * u * u * u - 39.05 * u * u * u * u * u * u + 7.12 * u * u * u * u * u * u * u + 27.87 * u * u * u * u * u * u * u * u + 5.79 * u * u * u * u * u * u * u * u * u + 2.45 * u * u * u * u * u * u * u * u * u * u) / 3600
+            23 + 26.0 / 60 + 21.448 / 3600 + (-4680.93 * u - 1.55 * u.pow(2) + 1999.25 * u.pow(3) - 51.38 * u.pow(4) - 249.67 * u.pow(5) - 39.05 * u.pow(6) + 7.12 * u.pow(7) + 27.87 * u.pow(8) + 5.79 * u.pow(9) + 2.45 * u.pow(10)) / 3600
         var deltaEpsilon = 0.0
         deltaEpsilon += (92025 + 8.9 * t) * Math.cos(0 * d + 0 * m + 0 * m1 + 0 * f + 1 * omega)
         deltaEpsilon += (5736 + -3.1 * t) * Math.cos(-2 * d + 0 * m + 0 * m1 + 2 * f + 2 * omega)
