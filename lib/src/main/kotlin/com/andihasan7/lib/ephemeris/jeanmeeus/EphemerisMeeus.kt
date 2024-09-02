@@ -170,9 +170,19 @@ class EphemerisMeeus(
 	val b_detikBusur = TabelMatahari.lintangEkliptikB(tau, sunGeometricLonLamdaMRadians)[3]
     
     /**
-    * vector radius jarak bumi matahari
+    * true geocentric distance AU, vector radius jarak bumi matahari
     */
-    val r = TabelMatahari.jarakBumiMat(tau)
+    val trueGeocentricDistanceAU = TabelMatahari.jarakBumiMat(tau)
+	
+	/**
+	 * true geocentric distance KM
+	 */
+	val trueGeocentricDistanceKM = trueGeocentricDistanceAU * 149597870.7
+	
+	/**
+	 * true geocentric distance ER
+	 */
+	val trueGeocentricDistanceER = trueGeocentricDistanceAU * 149597870.7 / 6371
     
     val test = Nutasi.deltaPsiDanEpsilon(nilaiT)[1]
 }
