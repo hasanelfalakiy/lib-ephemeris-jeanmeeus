@@ -158,16 +158,16 @@ object TabelMatahari {
         var l5 = 0.0
         l5 += 1 * cos(3.14 + 0 * tau)
         l5 *= tau.pow(5)
-        val earthHeliocentricLongitudeRadians = ((l0 + l1 + l2 + l3 + l4 + l5) / 100000000L).mod(360.0)
+        val earthHeliocentricLongitudeRadians = ((l0 + l1 + l2 + l3 + l4 + l5) / 100000000L)
         val earthHeliocentricLongitudeDegrees = Math.toDegrees(earthHeliocentricLongitudeRadians).mod(360.0)
         val sunGeometricLongitudeDegrees = (earthHeliocentricLongitudeDegrees + 180).mod(360.0)
         val sunGeometricLonLamdaM = sunGeometricLongitudeDegrees - 1.397 * nilaiT - 0.00031 * nilaiT.pow(2)
-		val sunGeometricLonLamdaMRadians = (earthHeliocentricLongitudeRadians + 180).mod(360.0) - 1.397 * nilaiT - 0.00031 * nilaiT.pow(2)
+		val sunGeometricLonLamdaMRadians = ((earthHeliocentricLongitudeRadians + 180).mod(360.0)) - 1.397 * nilaiT - 0.00031 * nilaiT.pow(2)
         val deltaThetaJ2000 = -0.09033 / 3600
 		
-        val sunTrueGeocentricJ2000Degrees = (sunGeometricLongitudeDegrees + deltaThetaJ2000).mod(360.0)
+        val sunTrueGeocentricLonJ2000Degrees = (sunGeometricLongitudeDegrees + deltaThetaJ2000).mod(360.0)
 		
-        return doubleArrayOf(earthHeliocentricLongitudeRadians, earthHeliocentricLongitudeDegrees, sunGeometricLongitudeDegrees, sunGeometricLonLamdaM, deltaThetaJ2000, sunTrueGeocentricJ2000Degrees, sunGeometricLonLamdaMRadians)
+        return doubleArrayOf(earthHeliocentricLongitudeRadians, earthHeliocentricLongitudeDegrees, sunGeometricLongitudeDegrees, sunGeometricLonLamdaM, deltaThetaJ2000, sunTrueGeocentricLonJ2000Degrees, sunGeometricLonLamdaMRadians)
     }
     
 	/**
@@ -255,7 +255,7 @@ object TabelMatahari {
 	 * @return doubleArrayOf(0.0, earthHeliocentricLatitudeRadians, b_detikBusur, deltaBeta, betaTerkoreksi)
 	 * 
 	 */
-    fun lintangEkliptikB(tau: Double, lambdaM_r: Double): DoubleArray {
+    fun lintangEkliptikB(tau: Double, lambdaM: Double): DoubleArray {
         var b0 = 0.0
         b0 += 280 * cos(3.199 + 84334.662 * tau)
         b0 += 102 * cos(5.422 + 5507.553 * tau)
@@ -266,12 +266,11 @@ object TabelMatahari {
         b1 += 9 * cos(3.9 + 5507.55 * tau)
         b1 += 6 * cos(1.73 + 5223.69 * tau)
         b1 *= tau
-        val earthHeliocentricLatitudeRadians = (b0 + b1) / 100000000L
-        val b_detikBusur = -(Math.toDegrees(earthHeliocentricLatitudeRadians).mod(360.0))
-        val beta = b_detikBusur
-        val deltaBeta = (0.03916 * (cos(Math.toRadians(lambdaM_r)) - sin(Math.toRadians(lambdaM_r)))) / 3600
-        val sunTrueGeocentricLatitudeDegrees = beta + deltaBeta
-        return doubleArrayOf(earthHeliocentricLatitudeRadians, deltaBeta, sunTrueGeocentricLatitudeDegrees, b_detikBusur)
+        val earthHeliocentricLatitudeRadians = ((b0 + b1) / 100000000L)
+        val betaZero = -(Math.toDegrees(earthHeliocentricLatitudeRadians) * 3600) // masih satuan arcsecond bagi dengan 3600 untuk ke satuan derajat 
+        val deltaBeta = (0.03916 * (cos(Math.toRadians(lambdaM)) - sin(Math.toRadians(lambdaM)))) // masih satuan arcsecond bagi dengan 3600 untuk ke satuan derajat 
+        val sunTrueGeocentricLatitudeDegrees = betaZero + deltaBeta // masih satuan arcsecond bagi dengan 3600 untuk ke satuan derajat 
+        return doubleArrayOf(earthHeliocentricLatitudeRadians, deltaBeta, sunTrueGeocentricLatitudeDegrees, betaZero)
     } 
 	// l4+=*cos(+*tau);
     // r0+=*cos(+*tau);

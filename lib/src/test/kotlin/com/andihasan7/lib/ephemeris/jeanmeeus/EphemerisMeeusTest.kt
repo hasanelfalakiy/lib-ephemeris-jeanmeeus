@@ -36,13 +36,16 @@ class EphemerisMeeusTest {
 		val earthHeliocentricLongitudeDegrees = jm.earthHeliocentricLongitudeDegrees
 		val sunGeometricLongitudeDegrees = jm.sunGeometricLongitudeDegrees
 		val sunGeometricLonLamdaMRadians = jm.sunGeometricLonLamdaMRadians
+        val sunTrueGeocentricLonJ2000Degrees = jm.sunTrueGeocentricLonJ2000Degrees
 		val sunTrueGeocentricLonFK5Degrees = jm.sunTrueGeocentricLonFK5Degrees
 		val deltaBeta = jm.deltaBeta
         val earthHeliocentricLatitudeRadians = jm.earthHeliocentricLatitudeRadians
 		val sunTrueGeocentricLatitudeRadians = jm.sunTrueGeocentricLatitudeRadians
 		val sunTrueGeocentricLatitudeDegrees = jm.sunTrueGeocentricLatitudeDegrees
-		val b_detikBusur = jm.b_detikBusur
-        val r = jm.sunTrueGeocentricDistanceAU
+		val betaZero = jm.betaZero
+        val sunTrueGeocentricDistanceAU = jm.sunTrueGeocentricDistanceAU
+        val sunTrueGeocentricDistanceKM = jm.sunTrueGeocentricDistanceKM
+        val sunTrueGeocentricDistanceER = jm.sunTrueGeocentricDistanceER
         
         val test = jm.test
     
@@ -63,15 +66,20 @@ class EphemerisMeeusTest {
         println("true obliquity        = $trueObliquityOfEcliptic, ${jm.trueObliquityOfEclipticDMS}")
 		println("")
 		println("earthHelioLonDeg      = $earthHeliocentricLongitudeDegrees, ${jm.earthHeliocentricLongitudeDegreesDMS}")
-        println("earthHelioLatRad      = $earthHeliocentricLatitudeRadians, ${jm.earthHeliocentricLatitudeRadiansDMS}")
         println("sunGeoLonDeg          = $sunGeometricLongitudeDegrees, ${jm.sunGeometricLongitudeDegreesDMS}")
         println("sunGeoLonLamdaNR      = $sunGeometricLonLamdaMRadians, ${jm.sunGeometricLonLamdaMRadiansDMS}")
-		println("sunTrueGeoFK5Deg      = $sunTrueGeocentricLonFK5Degrees, ${jm.sunTrueGeocentricLonFK5DegreesDMS}")
+        println("sunTrueGeoLonJ2000    = $sunTrueGeocentricLonJ2000Degrees, ${jm.sunTrueGeocentricLonJ2000DegreesDMS}")
+		println("sunTrueGeoLonFK5Deg   = $sunTrueGeocentricLonFK5Degrees, ${jm.sunTrueGeocentricLonFK5DegreesDMS}")
+        println("")
+        println("earthHelioLatRad      = $earthHeliocentricLatitudeRadians, ${jm.earthHeliocentricLatitudeRadiansDMS}")
+        println("betaZero              = $betaZero, ${jm.betaZero}")
         println("deltaBeta             = $deltaBeta, ${jm.deltaBeta}")
         println("sunTrueGeoLatRad      = $sunTrueGeocentricLatitudeRadians, ${jm.sunTrueGeocentricLatitudeRadiansDMS}")
 		println("sunTrueGeoLatDeg      = $sunTrueGeocentricLatitudeDegrees, ${jm.sunTrueGeocentricLatitudeDegreesDMS}")
-        println("b_detikBusur          = $b_detikBusur, ${jm.b_detikBusur}")
-        println("true geo distance AU  = $r, ${jm.sunTrueGeocentricDistanceAU}")
+        println("")
+        println("sun true geo dist AU  = $sunTrueGeocentricDistanceAU")
+        println("sun true geo dist KM  = $sunTrueGeocentricDistanceKM")
+        println("sun true geo dist ER  = $sunTrueGeocentricDistanceER")
 		
     }
 }

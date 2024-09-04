@@ -174,20 +174,31 @@ class EphemerisMeeus(
 	 */
 	val sunGeometricLonLamdaMRadiansDMS = toDegreeFullRound2(sunGeometricLonLamdaMRadians)
     
+    /**
+	 * sun geometric longitude lamdaM ` radians
+	 */
+	val sunGeometricLonLamdaMDegrees = TabelMatahari.bujurEkliptik(tau, nilaiT)[3]
+    
+    /**
+	 * sun geometric longitude lamdaM ` radians DMS
+	 */
+	val sunGeometricLonLamdaMDegreesDMS = toDegreeFullRound2(sunGeometricLonLamdaMDegrees)
+    
+    
 	/**
 	 * sun true geocentric equinox J2000 Degrees
 	 */
-	val sunTrueGeocentricJ2000Degrees = TabelMatahari.bujurEkliptik(tau, nilaiT)[5]
+	val sunTrueGeocentricLonJ2000Degrees = TabelMatahari.bujurEkliptik(tau, nilaiT)[5]
     
     /**
 	 * sun true geocentric equinox J2000 Degrees DMS
 	 */
-    val sunTrueGeocentricJ2000DegreesDMS = toDegreeFullRound2(sunTrueGeocentricJ2000Degrees)
+    val sunTrueGeocentricLonJ2000DegreesDMS = toDegreeFullRound2(sunTrueGeocentricLonJ2000Degrees)
     
     /**
 	 * earth heliocentric latitude radians
 	 */
-	val earthHeliocentricLatitudeRadians = TabelMatahari.lintangEkliptikB(tau, sunGeometricLonLamdaMRadians)[0]
+	val earthHeliocentricLatitudeRadians = TabelMatahari.lintangEkliptikB(tau, sunGeometricLonLamdaMDegrees)[0]
     
     /**
 	 * earth heliocentric latitude radians DMS
@@ -202,7 +213,7 @@ class EphemerisMeeus(
 	/**
 	 * sun true geocentric FK5 Degrees
 	 */
-	val sunTrueGeocentricLonFK5Degrees = sunGeometricLongitudeDegrees + deltaThetaDynamicFK5
+	val sunTrueGeocentricLonFK5Degrees = (sunGeometricLongitudeDegrees + deltaThetaDynamicFK5).mod(360.0)
     
     /**
 	 * sun true geocentric FK5 Degrees DMS
@@ -210,34 +221,34 @@ class EphemerisMeeus(
     val sunTrueGeocentricLonFK5DegreesDMS = toDegreeFullRound2(sunTrueGeocentricLonFK5Degrees)
 	
 	/**
-	 * delta beta
+	 * delta beta, masih satuan arcsecond bagi dengan 3600 untuk ke satuan derajat 
 	 */
-	val deltaBeta = TabelMatahari.lintangEkliptikB(tau, sunGeometricLonLamdaMRadians)[1]
+	val deltaBeta = TabelMatahari.lintangEkliptikB(tau, sunGeometricLonLamdaMDegrees)[1]
 	
-	/**
-	 * sun true geocentric latitude radians
-	 */
-	val sunTrueGeocentricLatitudeDegrees = TabelMatahari.lintangEkliptikB(tau, sunGeometricLonLamdaMRadians)[2]
-    
-    /**
-	 * sun true geocentric latitude radians DMS
-	 */
-	val sunTrueGeocentricLatitudeDegreesDMS = toDegreeFullRound2(sunTrueGeocentricLatitudeDegrees)
-    
 	/**
 	 * sun true geocentric latitude degrees
 	 */
-	val sunTrueGeocentricLatitudeRadians = (sunTrueGeocentricLatitudeDegrees * 180) / PI
+	val sunTrueGeocentricLatitudeDegrees = TabelMatahari.lintangEkliptikB(tau, sunGeometricLonLamdaMDegrees)[2] / 3600
     
     /**
 	 * sun true geocentric latitude degrees DMS
 	 */
+	val sunTrueGeocentricLatitudeDegreesDMS = toDegreeFullRound2(sunTrueGeocentricLatitudeDegrees)
+    
+	/**
+	 * sun true geocentric latitude radians
+	 */
+	val sunTrueGeocentricLatitudeRadians = (sunTrueGeocentricLatitudeDegrees * 180) / PI
+    
+    /**
+	 * sun true geocentric latitude radians DMS
+	 */
 	val sunTrueGeocentricLatitudeRadiansDMS = toDegreeFullRound2(sunTrueGeocentricLatitudeRadians)
 	
 	/**
-	 * b_detikBusur
+	 * beta zero, masih satuan arcsecond bagi dengan 3600 untuk ke satuan derajat 
 	 */
-	val b_detikBusur = TabelMatahari.lintangEkliptikB(tau, sunGeometricLonLamdaMRadians)[3]
+	val betaZero = TabelMatahari.lintangEkliptikB(tau, sunGeometricLonLamdaMDegrees)[3]
     
     /**
     * sun true geocentric distance AU, vector radius jarak bumi matahari
