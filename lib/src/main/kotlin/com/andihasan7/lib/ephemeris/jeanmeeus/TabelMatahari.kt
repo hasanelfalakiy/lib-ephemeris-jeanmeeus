@@ -11,7 +11,7 @@ import kotlin.mod
 object TabelMatahari {
 	
 	/**
-	 * bujur ekliptik
+	 * bujur ekliptik, total koreksi 129
 	 * 
 	 * @param {tau: Double, nilaiT: Double}
 	 * @return doubleArrayOf(earthHeliocentricLongitudeRadians, earthHeliocentricLongitudeDegrees, sunGeometricLongitudeDegrees, sunGeometricLonLamdaM, deltaThetaJ2000, sunTrueGeocentricJ2000Degrees, sunGeometricLonLamdaMRadians)
@@ -171,7 +171,7 @@ object TabelMatahari {
     }
     
 	/**
-	 * jarak bumi matahari
+	 * jarak bumi matahari, total koreksi 59
 	 * 
 	 * @param tau: Double
 	 * @return r: Double
@@ -249,7 +249,7 @@ object TabelMatahari {
     }
     
 	/**
-	 * lintang ekliptik
+	 * lintang ekliptik, total koreksi 7
 	 * 
 	 * @param {tau: Double, lambdaM_r: Double} lambadaM radians
 	 * @return doubleArrayOf(0.0, earthHeliocentricLatitudeRadians, b_detikBusur, deltaBeta, betaTerkoreksi)

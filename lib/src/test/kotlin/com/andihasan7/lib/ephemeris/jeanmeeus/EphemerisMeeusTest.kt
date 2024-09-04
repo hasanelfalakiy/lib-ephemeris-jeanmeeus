@@ -29,6 +29,7 @@ class EphemerisMeeusTest {
         val deltaPsi_d = jm.deltaPsi_d
         val u = jm.u
         val meanObliquityOfEcliptic = jm.meanObliquityOfEcliptic
+        val deltaEpsArcsec = jm.deltaEpsArcsec
         val deltaEps = jm.deltaEps
         val trueObliquityOfEcliptic = jm.trueObliquityOfEcliptic
 		
@@ -41,7 +42,7 @@ class EphemerisMeeusTest {
 		val sunTrueGeocentricLatitudeRadians = jm.sunTrueGeocentricLatitudeRadians
 		val sunTrueGeocentricLatitudeDegrees = jm.sunTrueGeocentricLatitudeDegrees
 		val b_detikBusur = jm.b_detikBusur
-        val r = jm.r
+        val r = jm.sunTrueGeocentricDistanceAU
         
         val test = jm.test
     
@@ -53,10 +54,11 @@ class EphemerisMeeusTest {
         println("JDE                   = $jde")
         println("T                     = $nilaiT")
         println("tau                   = $tau")
-        println("deltaPsi              = $deltaPsi, ${jm.deltaPsiDMS}")
-        println("deltaPsi_d            = $deltaPsi_d")
+        println("deltaPsi arcseconds   = $deltaPsi, ${jm.deltaPsiDMS}")
+        println("deltaPsi_d            = $deltaPsi_d, ${jm.deltaPsi_dDMS}")
         println("u                     = $u")
         println("mean obliquity        = $meanObliquityOfEcliptic, ${jm.meanObliquityOfEclipticDMS}")
+        println("deltaEpsArcsec        = $deltaEpsArcsec, ${jm.deltaEpsArcsecDMS}")
         println("deltaEps              = $deltaEps, ${jm.deltaEpsDMS}")
         println("true obliquity        = $trueObliquityOfEcliptic, ${jm.trueObliquityOfEclipticDMS}")
 		println("")
@@ -69,7 +71,7 @@ class EphemerisMeeusTest {
         println("sunTrueGeoLatRad      = $sunTrueGeocentricLatitudeRadians, ${jm.sunTrueGeocentricLatitudeRadiansDMS}")
 		println("sunTrueGeoLatDeg      = $sunTrueGeocentricLatitudeDegrees, ${jm.sunTrueGeocentricLatitudeDegreesDMS}")
         println("b_detikBusur          = $b_detikBusur, ${jm.b_detikBusur}")
-        println("vector radius         = $r, ${jm.r}")
+        println("true geo distance AU  = $r, ${jm.sunTrueGeocentricDistanceAU}")
 		
     }
 }
