@@ -300,6 +300,16 @@ class EphemerisMeeus(
     */
     val sunApparentGeoLatitudeDMS = toDegreeFullRound2(sunApparentGeoLatitude)
     
+    /**
+    * sun apparent geocentric semidiameter 
+    */
+    val sunApparentGeocentricSemidiameter = 0.266563888889 / sunTrueGeocentricDistanceAU
+    
+    /**
+    * sun apparent geocentric semidiameter 
+    */
+    val sunApparentGeocentricSemidiameterDMS = toDegreeFullRound2(sunApparentGeocentricSemidiameter)
+    
     
     
     

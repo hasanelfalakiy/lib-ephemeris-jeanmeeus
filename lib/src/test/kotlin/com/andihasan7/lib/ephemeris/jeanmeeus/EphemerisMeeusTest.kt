@@ -49,6 +49,7 @@ class EphemerisMeeusTest {
         val abrasiDegrees = jm.abrasiDegrees
         val sunApparentGeoLongitude = jm.sunApparentGeoLongitude
         val sunApparentGeoLatitude = jm.sunApparentGeoLatitude
+        val sunApparentGeocentricSemidiameter = jm.sunApparentGeocentricSemidiameter
         
         val test = jm.test
     
@@ -87,6 +88,7 @@ class EphemerisMeeusTest {
         println("abrasi degrees        = $abrasiDegrees")
         println("sunAppaGeoLon         = $sunApparentGeoLongitude, ${jm.sunApparentGeoLongitudeDMS}")
         println("sunAppaGeoLat         = $sunApparentGeoLatitude, ${jm.sunApparentGeoLatitudeDMS}")
+        println("sunAppaGeoSemidia     = $sunApparentGeocentricSemidiameter, ${jm.sunApparentGeocentricSemidiameterDMS}")
 		
     }
 }
