@@ -25,8 +25,8 @@ class EphemerisMeeusTest {
         val nilaiT = jm.nilaiT
         val tau = jm.tau
         
-        val deltaPsi = jm.deltaPsi
-        val deltaPsi_d = jm.deltaPsi_d
+        val deltaPsiArcsec = jm.deltaPsiArcsec
+        val deltaPsiDegrees = jm.deltaPsiDegrees
         val u = jm.u
         val meanObliquityOfEcliptic = jm.meanObliquityOfEcliptic
         val deltaEpsArcsec = jm.deltaEpsArcsec
@@ -46,6 +46,9 @@ class EphemerisMeeusTest {
         val sunTrueGeocentricDistanceAU = jm.sunTrueGeocentricDistanceAU
         val sunTrueGeocentricDistanceKM = jm.sunTrueGeocentricDistanceKM
         val sunTrueGeocentricDistanceER = jm.sunTrueGeocentricDistanceER
+        val abrasiDegrees = jm.abrasiDegrees
+        val sunApparentGeoLongitude = jm.sunApparentGeoLongitude
+        val sunApparentGeoLatitude = jm.sunApparentGeoLatitude
         
         val test = jm.test
     
@@ -57,8 +60,8 @@ class EphemerisMeeusTest {
         println("JDE                   = $jde")
         println("T                     = $nilaiT")
         println("tau                   = $tau")
-        println("deltaPsi arcseconds   = $deltaPsi, ${jm.deltaPsiDMS}")
-        println("deltaPsi_d            = $deltaPsi_d, ${jm.deltaPsi_dDMS}")
+        println("deltaPsi arcseconds   = $deltaPsiArcsec, ${jm.deltaPsiArcsecDMS}")
+        println("deltaPsi_d            = $deltaPsiDegrees, ${jm.deltaPsiDegreesDMS}")
         println("u                     = $u")
         println("mean obliquity        = $meanObliquityOfEcliptic, ${jm.meanObliquityOfEclipticDMS}")
         println("deltaEpsArcsec        = $deltaEpsArcsec, ${jm.deltaEpsArcsecDMS}")
@@ -80,6 +83,10 @@ class EphemerisMeeusTest {
         println("sun true geo dist AU  = $sunTrueGeocentricDistanceAU")
         println("sun true geo dist KM  = $sunTrueGeocentricDistanceKM")
         println("sun true geo dist ER  = $sunTrueGeocentricDistanceER")
+        println("")
+        println("abrasi degrees        = $abrasiDegrees")
+        println("sunAppaGeoLon         = $sunApparentGeoLongitude, ${jm.sunApparentGeoLongitudeDMS}")
+        println("sunAppaGeoLat         = $sunApparentGeoLatitude, ${jm.sunApparentGeoLatitudeDMS}")
 		
     }
 }

@@ -73,18 +73,23 @@ class EphemerisMeeus(
     val tau = nilaiT / 10.0
     
     /**
-    * deltaPsi (nutation in longitude)
+    * deltaPsi arcsecond (nutation in longitude)
     */
-    val deltaPsi = Nutasi.deltaPsiDanEpsilon(nilaiT)[1]
+    val deltaPsiArcsec = Nutasi.deltaPsiDanEpsilon(nilaiT)[1]
     
     /**
-    * deltaPsi DMS (nutation in longitude)
+    * deltaPsi arcsecond DMS (nutation in longitude)
     */
-    val deltaPsiDMS = toDegreeFullRound2(deltaPsi)
+    val deltaPsiArcsecDMS = toDegreeFullRound2(deltaPsiArcsec)
     
-    // deltaPsi_d
-    val deltaPsi_d = Nutasi.deltaPsiDanEpsilon(nilaiT)[2]
-    val deltaPsi_dDMS = toDegreeFullRound2(deltaPsi_d)
+    /**
+    * deltaPsi degrees
+    */
+    val deltaPsiDegrees = Nutasi.deltaPsiDanEpsilon(nilaiT)[2]
+    /**
+    * deltaPsi degrees DMS
+    */
+    val deltaPsiDegreesDMS = toDegreeFullRound2(deltaPsiDegrees)
     
     // u
     val u = Nutasi.deltaPsiDanEpsilon(nilaiT)[3]
@@ -264,6 +269,36 @@ class EphemerisMeeus(
 	 * sun true geocentric distance ER
 	 */
 	val sunTrueGeocentricDistanceER = sunTrueGeocentricDistanceAU * 149597870.7 / 6371
+    
+    /**
+    * abrasi arcsecond
+    */
+    val abrasiArcsec = Abrasi.abrasi(tau, sunTrueGeocentricDistanceAU)
+    
+    /**
+    * abrasi degrees
+    */
+    val abrasiDegrees = abrasiArcsec / 3600
+    
+    /**
+    * sun apparent geocentric longitude deg
+    */
+    val sunApparentGeoLongitude = (sunTrueGeocentricLonJ2000Degrees + deltaPsiDegrees + abrasiDegrees).mod(360.0)
+    
+    /**
+    * sun apparent geocentric longitude deg DMS
+    */
+    val sunApparentGeoLongitudeDMS = toDegreeFullRound2(sunApparentGeoLongitude)
+    
+    /**
+    * sun apparent geocentric latitude deg
+    */
+    val sunApparentGeoLatitude = sunTrueGeocentricLatitudeDegrees
+    
+    /**
+    * sun apparent geocentric latitude deg DMS
+    */
+    val sunApparentGeoLatitudeDMS = toDegreeFullRound2(sunApparentGeoLatitude)
     
     
     
