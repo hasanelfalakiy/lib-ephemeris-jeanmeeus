@@ -9,13 +9,13 @@ class EphemerisMeeusTest {
     fun testEphemerisMeeus() {
         
         val jm = EphemerisMeeus(
-            20, // 20
-            4, 
-            2023, // 2023
+            13, // 20
+            10, 
+            1992, // 2023
             -6.166666666667, //-7.029055555556,
             106.85, //106.557722222222,
-            7.0,
-            17.8575,//17.828611111111, // 17.8575
+            0.0,
+            0.0, // 17.8575,//17.828611111111, // 17.8575
             true
         )
         
@@ -50,6 +50,8 @@ class EphemerisMeeusTest {
         val sunApparentGeoLongitude = jm.sunApparentGeoLongitude
         val sunApparentGeoLatitude = jm.sunApparentGeoLatitude
         val sunApparentGeocentricSemidiameter = jm.sunApparentGeocentricSemidiameter
+        val sunApparentGeoRightAscension = jm.sunApparentGeoRightAscension
+        val sunApparentGeoDeclination = jm.sunApparentGeoDeclination
         
         val test = jm.test
     
@@ -89,6 +91,8 @@ class EphemerisMeeusTest {
         println("sunAppaGeoLon         = $sunApparentGeoLongitude, ${jm.sunApparentGeoLongitudeDMS}")
         println("sunAppaGeoLat         = $sunApparentGeoLatitude, ${jm.sunApparentGeoLatitudeDMS}")
         println("sunAppaGeoSemidia     = $sunApparentGeocentricSemidiameter, ${jm.sunApparentGeocentricSemidiameterDMS}")
+        println("sunAppaGeoRightAsce   = $sunApparentGeoRightAscension, ${jm.sunApparentGeoRightAscensionDMS}")
+        println("sunApparentGeoDecli   = $sunApparentGeoDeclination, ${jm.sunApparentGeoDeclinationDMS}")
 		
     }
 }

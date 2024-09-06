@@ -11,7 +11,7 @@ object Abrasi {
     
     /**
     * abrasi 
-    * @param {tau: Double, radiusVectorDistanceAU: Double}
+    * @param {tau: Double, r: earth radius vector distance AU: Double}
     * @return abr // dalam satuan arcseconds (detik busur)
     *
     */

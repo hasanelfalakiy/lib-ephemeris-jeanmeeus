@@ -2,12 +2,16 @@
 
 package com.andihasan7.lib.ephemeris.jeanmeeus
 
+import kotlin.math.atan2
+import kotlin.math.atan
+import kotlin.math.asin
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.tan
 import kotlin.math.PI
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.masehiToJD
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toDegreeFullRound2
+import com.andihasan7.lib.ephemeris.jeanmeeus.util.toRange360
 
 /**
 * 
@@ -310,10 +314,25 @@ class EphemerisMeeus(
     */
     val sunApparentGeocentricSemidiameterDMS = toDegreeFullRound2(sunApparentGeocentricSemidiameter)
     
+    /**
+    * sun apparent geocentric right ascension
+    */
+    val sunApparentGeoRightAscension = (Math.toDegrees(atan2((sin(Math.toRadians(sunApparentGeoLongitude)) * cos(Math.toRadians(trueObliquityOfEcliptic)) - tan(Math.toRadians(sunApparentGeoLatitude)) * sin(Math.toRadians(trueObliquityOfEcliptic))), cos(Math.toRadians(sunApparentGeoLongitude))))).mod(360.0)
     
+    /**
+    * sun apparent geocentric right ascension DMS
+    */
+    val sunApparentGeoRightAscensionDMS = toDegreeFullRound2(sunApparentGeoRightAscension)
     
+    /**
+    * sun apparent geocentric declination
+    */
+    val sunApparentGeoDeclination = (Math.toDegrees(asin(sin(Math.toRadians(sunApparentGeoLatitude)) * cos(Math.toRadians(trueObliquityOfEcliptic)) + cos(Math.toRadians(sunApparentGeoLatitude)) * sin(Math.toRadians(trueObliquityOfEcliptic)) * sin(Math.toRadians(sunApparentGeoLongitude))))) //.mod(360.0)
     
-    
+    /**
+    * sun apparent geocentric declination DMS
+    */
+    val sunApparentGeoDeclinationDMS = toDegreeFullRound2(sunApparentGeoDeclination)
     
     
     val test = Nutasi.deltaPsiDanEpsilon(nilaiT)[1]

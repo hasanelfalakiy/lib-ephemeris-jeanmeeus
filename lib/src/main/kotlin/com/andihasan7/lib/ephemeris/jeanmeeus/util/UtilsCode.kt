@@ -25,6 +25,9 @@ package com.andihasan7.lib.ephemeris.jeanmeeus.util
 
 import kotlin.math.floor
 
+fun toRange360(data: Double) = data - 360 * floor(data / 360)
+
+
 fun masehiToJD(
     date: Int,
     month: Int,
