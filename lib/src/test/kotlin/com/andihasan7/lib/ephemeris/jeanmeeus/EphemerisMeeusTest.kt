@@ -2,6 +2,7 @@ package com.andihasan7.lib.ephemeris.jeanmeeus
 
 import kotlin.test.Test
 import com.andihasan7.lib.ephemeris.jeanmeeus.EphemerisMeeus
+import com.andihasan7.lib.ephemeris.jeanmeeus.util.toDegreeFullRound2
 
 class EphemerisMeeusTest {
     
@@ -9,13 +10,13 @@ class EphemerisMeeusTest {
     fun testEphemerisMeeus() {
         
         val jm = EphemerisMeeus(
-            13, // 20
-            10, 
-            1992, // 2023
-            -6.166666666667, //-7.029055555556,
-            106.85, //106.557722222222,
-            0.0,
-            0.0, // 17.8575,//17.828611111111, // 17.8575
+            20, // 20
+            4, 
+            2023, // 2023
+            -7.029055555556, // -6.166666666667, //-7.029055555556,
+            106.557722222222, // 106.85, //106.557722222222,
+            7.0,
+            17.8575,//17.828611111111, // 17.8575
             true
         )
         
@@ -52,6 +53,13 @@ class EphemerisMeeusTest {
         val sunApparentGeocentricSemidiameter = jm.sunApparentGeocentricSemidiameter
         val sunApparentGeoRightAscension = jm.sunApparentGeoRightAscension
         val sunApparentGeoDeclination = jm.sunApparentGeoDeclination
+        val greenwichMeanSideralTime = jm.greenwichMeanSideralTime
+        val greenwichApparentSideralTime = jm.greenwichApparentSideralTime
+        val localApparentSideralTime = jm.localApparentSideralTime
+        val sunGeocentricGreenwichHourAngle = jm.sunGeocentricGreenwichHourAngle
+        val sunGeocentricLocalHourAngle = jm.sunGeocentricLocalHourAngle
+        val sunGeocentricAzimuth = jm.sunGeocentricAzimuth
+        val sunGeocentricAltitude = jm.sunGeocentricAltitude
         
         val test = jm.test
     
@@ -93,6 +101,13 @@ class EphemerisMeeusTest {
         println("sunAppaGeoSemidia     = $sunApparentGeocentricSemidiameter, ${jm.sunApparentGeocentricSemidiameterDMS}")
         println("sunAppaGeoRightAsce   = $sunApparentGeoRightAscension, ${jm.sunApparentGeoRightAscensionDMS}")
         println("sunApparentGeoDecli   = $sunApparentGeoDeclination, ${jm.sunApparentGeoDeclinationDMS}")
-		
+        println("gmst                  = $greenwichMeanSideralTime, ${toDegreeFullRound2(jm.greenwichMeanSideralTime)}")
+        println("gast                  = $greenwichApparentSideralTime, ${toDegreeFullRound2(jm.greenwichApparentSideralTime)}")
+        println("last                  = $localApparentSideralTime, ${toDegreeFullRound2(jm.localApparentSideralTime)}")
+        println("sunGeoGreenwiHourAng  = $sunGeocentricGreenwichHourAngle, ${jm.sunGeocentricGreenwichHourAngleDMS}")
+        println("sunGeoLocalHourAng    = $sunGeocentricLocalHourAngle, ${jm.sunGeocentricLocalHourAngleDMS}")
+		println("sunGeoAzimuth         = $sunGeocentricAzimuth, ${jm.sunGeocentricAzimuthDMS}")
+        println("sunGeoAltitude        = $sunGeocentricAltitude, ${jm.sunGeocentricAltitudeDMS}")
+        
     }
 }

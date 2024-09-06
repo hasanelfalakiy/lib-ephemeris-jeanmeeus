@@ -8,6 +8,7 @@ import kotlin.math.asin
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.tan
+import kotlin.math.pow
 import kotlin.math.PI
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.masehiToJD
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toDegreeFullRound2
@@ -65,6 +66,11 @@ class EphemerisMeeus(
     * julian day ephemeris (JDE)
     */
     val jde = jd + deltaT / 86400.0
+    
+    /**
+    * JC
+    */
+    val jc = (jd - 2451545.0).toDouble() / 36525.0
     
     /**
     * nilai T / JCE julian ephemeris century
@@ -138,6 +144,8 @@ class EphemerisMeeus(
     */
     val trueObliquityOfEclipticDMS = toDegreeFullRound2(trueObliquityOfEcliptic)
     
+    
+    // sun ecliptical coordinate 
 	/**
 	 * earth heliocentric longitude radians
 	 */
@@ -205,12 +213,12 @@ class EphemerisMeeus(
     val sunTrueGeocentricLonJ2000DegreesDMS = toDegreeFullRound2(sunTrueGeocentricLonJ2000Degrees)
     
     /**
-	 * earth heliocentric latitude radians
+	 * earth heliocentric latitude radians, B
 	 */
 	val earthHeliocentricLatitudeRadians = TabelMatahari.lintangEkliptikB(tau, sunGeometricLonLamdaMDegrees)[0]
     
     /**
-	 * earth heliocentric latitude radians DMS
+	 * earth heliocentric latitude radians DMS, B
 	 */
     val earthHeliocentricLatitudeRadiansDMS = toDegreeFullRound2(earthHeliocentricLatitudeRadians)
 	
@@ -275,64 +283,128 @@ class EphemerisMeeus(
 	val sunTrueGeocentricDistanceER = sunTrueGeocentricDistanceAU * 149597870.7 / 6371
     
     /**
-    * abrasi arcsecond
+    * abrasi arcsecond, abr
     */
     val abrasiArcsec = Abrasi.abrasi(tau, sunTrueGeocentricDistanceAU)
     
     /**
-    * abrasi degrees
+    * abrasi degrees, abr deg
     */
     val abrasiDegrees = abrasiArcsec / 3600
     
     /**
-    * sun apparent geocentric longitude deg
+    * sun apparent geocentric longitude deg, lambda
     */
     val sunApparentGeoLongitude = (sunTrueGeocentricLonJ2000Degrees + deltaPsiDegrees + abrasiDegrees).mod(360.0)
     
     /**
-    * sun apparent geocentric longitude deg DMS
+    * sun apparent geocentric longitude deg DMS, lambda
     */
     val sunApparentGeoLongitudeDMS = toDegreeFullRound2(sunApparentGeoLongitude)
     
     /**
-    * sun apparent geocentric latitude deg
+    * sun apparent geocentric latitude deg, beta
     */
     val sunApparentGeoLatitude = sunTrueGeocentricLatitudeDegrees
     
     /**
-    * sun apparent geocentric latitude deg DMS
+    * sun apparent geocentric latitude deg DMS, beta
     */
     val sunApparentGeoLatitudeDMS = toDegreeFullRound2(sunApparentGeoLatitude)
     
     /**
-    * sun apparent geocentric semidiameter 
+    * sun apparent geocentric semidiameter, s
     */
     val sunApparentGeocentricSemidiameter = 0.266563888889 / sunTrueGeocentricDistanceAU
     
     /**
-    * sun apparent geocentric semidiameter 
+    * sun apparent geocentric semidiameter DMS, s
     */
     val sunApparentGeocentricSemidiameterDMS = toDegreeFullRound2(sunApparentGeocentricSemidiameter)
     
     /**
-    * sun apparent geocentric right ascension
+    * sun apparent geocentric right ascension, a
     */
     val sunApparentGeoRightAscension = (Math.toDegrees(atan2((sin(Math.toRadians(sunApparentGeoLongitude)) * cos(Math.toRadians(trueObliquityOfEcliptic)) - tan(Math.toRadians(sunApparentGeoLatitude)) * sin(Math.toRadians(trueObliquityOfEcliptic))), cos(Math.toRadians(sunApparentGeoLongitude))))).mod(360.0)
     
     /**
-    * sun apparent geocentric right ascension DMS
+    * sun apparent geocentric right ascension DMS, a
     */
     val sunApparentGeoRightAscensionDMS = toDegreeFullRound2(sunApparentGeoRightAscension)
     
+    
+    // sun equatorial coor
+    
     /**
-    * sun apparent geocentric declination
+    * sun apparent geocentric declination, d
     */
     val sunApparentGeoDeclination = (Math.toDegrees(asin(sin(Math.toRadians(sunApparentGeoLatitude)) * cos(Math.toRadians(trueObliquityOfEcliptic)) + cos(Math.toRadians(sunApparentGeoLatitude)) * sin(Math.toRadians(trueObliquityOfEcliptic)) * sin(Math.toRadians(sunApparentGeoLongitude))))) //.mod(360.0)
     
     /**
-    * sun apparent geocentric declination DMS
+    * sun apparent geocentric declination DMS, d
     */
     val sunApparentGeoDeclinationDMS = toDegreeFullRound2(sunApparentGeoDeclination)
+    
+    
+    // sun horizontal coor
+    
+    /**
+    * greenwich mean sideral time, vo, gmst
+    */
+    val greenwichMeanSideralTime = (280.46061837 + 360.98564736629 * (jd - 2451545) + 0.000387933 * jc.pow(2) - (jc.pow(3) / 38710000)).mod(360.0)
+    
+    /**
+    * greenwich apparent sideral time, v, gast
+    */
+    val greenwichApparentSideralTime = (greenwichMeanSideralTime + deltaPsiDegrees * cos(Math.toRadians(trueObliquityOfEcliptic))).mod(360.0)
+    
+    /**
+    * local apparent sideral time, theta
+    */
+    val localApparentSideralTime = (greenwichApparentSideralTime + longitude).mod(360.0)
+    
+    /**
+    * sun geocentric greenwich hour angle, Ho, GHA
+    */
+    val sunGeocentricGreenwichHourAngle = (greenwichApparentSideralTime - sunApparentGeoRightAscension).mod(360.0)
+    
+    /**
+    * sun geocentric greenwich hour angle DMS, Ho, GHA
+    */
+    val sunGeocentricGreenwichHourAngleDMS = toDegreeFullRound2(sunGeocentricGreenwichHourAngle)
+    
+    /**
+    * sun geocentric local hour angle, H, LHA
+    */
+    val sunGeocentricLocalHourAngle = (sunGeocentricGreenwichHourAngle + longitude).mod(360.0)
+    
+    /**
+    * sun geocentric local hour angle DMS, H, LHA
+    */
+    val sunGeocentricLocalHourAngleDMS = toDegreeFullRound2(sunGeocentricLocalHourAngle)
+    
+    /**
+    * sun geocentric azimuth, A
+    */
+    val sunGeocentricAzimuth = (Math.toDegrees(atan2(sin(Math.toRadians(sunGeocentricLocalHourAngle)), cos(Math.toRadians(sunGeocentricLocalHourAngle)) * sin(Math.toRadians(latitude)) - tan(Math.toRadians(sunApparentGeoDeclination)) * cos(Math.toRadians(latitude)))) + 180).mod(360.0)
+    
+    /**
+    * sun geocentric azimuth DMS, A
+    */
+    val sunGeocentricAzimuthDMS = toDegreeFullRound2(sunGeocentricAzimuth)
+    
+    /**
+    * sun geocentric altitude, h
+    */
+    val sunGeocentricAltitude = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(sunApparentGeoDeclination)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(sunApparentGeoDeclination)) * cos(Math.toRadians(sunGeocentricLocalHourAngle))))
+    
+    /**
+    * sun geocentric altitude DMS, h
+    */
+    val sunGeocentricAltitudeDMS = toDegreeFullRound2(sunGeocentricAltitude)
+    
+    
+    
     
     
     val test = Nutasi.deltaPsiDanEpsilon(nilaiT)[1]
