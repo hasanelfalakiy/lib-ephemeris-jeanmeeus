@@ -80,6 +80,8 @@ class EphemerisMeeusTest {
         val sunAirlessTopocentricAltitude = jm.sunAirlessTopocentricAltitude
         val sunApparentTopocentricAltitude = jm.sunApparentTopocentricAltitude
         val sunObservedAltitude = jm.sunObservedAltitude
+        val sunTopocentricSemidiameter = jm.sunTopocentricSemidiameter
+        val equationOfTimeHour = jm.equationOfTimeHour
         
         // val test = jm.test
     
@@ -145,6 +147,8 @@ class EphemerisMeeusTest {
         println("sunAirlessTopoAltitud = $sunAirlessTopocentricAltitude, ${jm.sunAirlessTopocentricAltitudeDMS}")
         println("sunAppaTopoAltitude   = $sunApparentTopocentricAltitude, ${jm.sunApparentTopocentricAltitudeDMS}")
         println("sunObservedAltitude   = $sunObservedAltitude, ${jm.sunObservedAltitudeDMS}")
+        println("sunTopocentricSemidi  = $sunTopocentricSemidiameter, ${jm.sunTopocentricSemidiameterDMS}")
+        println("equationOfTimeHour  = $equationOfTimeHour, ${jm.equationOfTimeHourHMS}")
         
     }
 }

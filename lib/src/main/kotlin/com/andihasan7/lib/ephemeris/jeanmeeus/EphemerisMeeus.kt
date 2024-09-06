@@ -2,6 +2,7 @@
 
 package com.andihasan7.lib.ephemeris.jeanmeeus
 
+import kotlin.math.abs
 import kotlin.math.atan2
 import kotlin.math.atan
 import kotlin.math.asin
@@ -13,6 +14,7 @@ import kotlin.math.pow
 import kotlin.math.PI
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.masehiToJD
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toDegreeFullRound2
+import com.andihasan7.lib.ephemeris.jeanmeeus.util.toTimeFullRound2
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toRange360
 
 /**
@@ -567,6 +569,53 @@ class EphemerisMeeus(
     * sun apparent topocentric altitude DMS, h`a
     */
     val sunObservedAltitudeDMS = toDegreeFullRound2(sunObservedAltitude)
+    
+    /**
+    * sun topocentric semidiameter, s`
+    */
+    val sunTopocentricSemidiameter = Math.toDegrees(asin(cos(Math.toRadians(sunTopocentricEclipLongitude)) * cos(Math.toRadians(sunTopocentricEclipLatitude)) * sin(Math.toRadians(sunApparentGeocentricSemidiameter)) / suku_n))
+    
+    /**
+    * sun topocentric semidiameter DMS, s`
+    */
+    val sunTopocentricSemidiameterDMS = toDegreeFullRound2(sunTopocentricSemidiameter)
+    
+    // equation of time
+    val _lo = (280.4664567 + 360007.6982779 * tau + 0.03032028 * tau.pow(2) + tau.pow(3) / 49931 - tau.pow(4) / 15300 - tau.pow(5) / 2000000).mod(360.0)
+    val _e = (_lo - 0.0057183 - sunApparentGeoRightAscension + deltaPsiDegrees * cos(Math.toRadians(trueObliquityOfEcliptic)))
+    
+    /**
+    * equation of time satuan menit, e
+    */
+    val equationOfTimeMinute = _e * 4
+    
+    /**
+    * equation of time satuan jam, e
+    */
+    val equationOfTimeHour = when {
+    
+        abs(equationOfTimeMinute) < 20.0 -> {
+            _e / 15
+        }
+        
+        abs(equationOfTimeMinute) >= 20.0 && _e > 0.0 -> {
+            _e / 15 - 24
+        }
+        
+        abs(equationOfTimeMinute) >= 20.0 && _e < 0.0 -> {
+            _e / 15 + 24
+        }
+        
+        else -> {
+            _e / 15
+        }
+    }
+    
+    /**
+    * equation of time satuan jam HMS, e
+    */
+    val equationOfTimeHourHMS = toTimeFullRound2(equationOfTimeHour)
+    
     
     
     
