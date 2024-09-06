@@ -7,6 +7,7 @@ import kotlin.math.atan
 import kotlin.math.asin
 import kotlin.math.cos
 import kotlin.math.sin
+import kotlin.math.sqrt
 import kotlin.math.tan
 import kotlin.math.pow
 import kotlin.math.PI
@@ -25,8 +26,11 @@ import com.andihasan7.lib.ephemeris.jeanmeeus.util.toRange360
 *        year: Int = 2000, // tahun masehi
 *        latitude: Double = 0.0, // lintang tempat
 *        longitude: Double = 0.0, // bujur tempat
+*        elevation: Double = 0.0, // tinggi tempat
 *        timeZone: Double = 0.0, // zona waktu
 *        hourDouble: Double = 0.0, // jam double/desimal
+*        temperature: Double = 10, // suhu lokal rata-rata tahunan (dalam °C)
+*        pressure: Double = 1010, // tekanan udara lokal rata-rata tahunan (dalam millibars)
 *        checkDeltaT: Boolean = true // pilihan pakai deltaT atau tidak, true = deltaT, false = abaikan deltaT
 *    )
 * ```
@@ -36,9 +40,12 @@ class EphemerisMeeus(
     month: Int = 1, // bulan masehi
     year: Int = 2000, // tahun masehi
     latitude: Double = 0.0, // lintang tempat 
-    longitude: Double = 0.0, // bujur tempat 
+    longitude: Double = 0.0, // bujur tempat
+    elevation: Double = 0.0, // tinggi tempat
     timeZone: Double = 0.0, // zona waktu
     hourDouble: Double = 0.0, // jam desimal
+    temperature: Double = 10.0, // suhu lokal rata-rata tahunan (dalam °C)
+    pressure: Double = 1010.0, // tekanan udara lokal rata-rata tahunan (dalam millibars)
     checkDeltaT: Boolean = true // pilihan pakai deltaT atau tidak
 ) {
     
@@ -81,6 +88,11 @@ class EphemerisMeeus(
     * nilai tau / JME julian ephemeris millenium
     */
     val tau = nilaiT / 10.0
+    
+    /**
+    * dip
+    */
+    val dip = 1.75 / 60 * sqrt(elevation)
     
     /**
     * deltaPsi arcsecond (nutation in longitude)
@@ -172,43 +184,43 @@ class EphemerisMeeus(
 	val sunGeometricLongitudeDegreesDMS = toDegreeFullRound2(sunGeometricLongitudeDegrees)
     
 	/**
-	 * sun geometric longitude lamdaM `
+	 * sun geometric longitude lamdaM`
 	 */
 	val sunGeometricLonLamdaM = TabelMatahari.bujurEkliptik(tau, nilaiT)[3]
     
     /**
-	 * sun geometric longitude lamdaM ` DMS
+	 * sun geometric longitude lamdaM` DMS
 	 */
 	val sunGeometricLonLamdaMDMS = toDegreeFullRound2(sunGeometricLonLamdaM)
     
 	/**
-	 * sun geometric longitude lamdaM ` radians
+	 * sun geometric longitude lamdaM` radians
 	 */
 	val sunGeometricLonLamdaMRadians = TabelMatahari.bujurEkliptik(tau, nilaiT)[6]
     
     /**
-	 * sun geometric longitude lamdaM ` radians DMS
+	 * sun geometric longitude lamdaM` radians DMS
 	 */
 	val sunGeometricLonLamdaMRadiansDMS = toDegreeFullRound2(sunGeometricLonLamdaMRadians)
     
     /**
-	 * sun geometric longitude lamdaM ` radians
+	 * sun geometric longitude lamdaM` radians
 	 */
 	val sunGeometricLonLamdaMDegrees = TabelMatahari.bujurEkliptik(tau, nilaiT)[3]
     
     /**
-	 * sun geometric longitude lamdaM ` radians DMS
+	 * sun geometric longitude lamdaM` radians DMS
 	 */
 	val sunGeometricLonLamdaMDegreesDMS = toDegreeFullRound2(sunGeometricLonLamdaMDegrees)
     
     
 	/**
-	 * sun true geocentric equinox J2000 Degrees
+	 * sun true geocentric equinox J2000 Degrees, tetha
 	 */
 	val sunTrueGeocentricLonJ2000Degrees = TabelMatahari.bujurEkliptik(tau, nilaiT)[5]
     
     /**
-	 * sun true geocentric equinox J2000 Degrees DMS
+	 * sun true geocentric equinox J2000 Degrees DMS, tetha
 	 */
     val sunTrueGeocentricLonJ2000DegreesDMS = toDegreeFullRound2(sunTrueGeocentricLonJ2000Degrees)
     
@@ -404,15 +416,161 @@ class EphemerisMeeus(
     val sunGeocentricAltitudeDMS = toDegreeFullRound2(sunGeocentricAltitude)
     
     
+    // sun topocentric ecliptic coor
+    
+    /**
+    * equator horizontal parallax of the sun, phi
+    */
+    val eqHorizontalParallaxSun = 8.794 / (3600 * sunTrueGeocentricDistanceAU)
+    
+    /**
+    * suku u dalam radian
+    */
+    val suku_u = atan(0.99664719 * tan(Math.toRadians(latitude)))
+    
+    /**
+    * suku x dalam radian
+    */
+    val suku_x = cos(suku_u) + ((elevation).toDouble() / 6378140) * cos(Math.toRadians(latitude))
+    
+    /**
+    * suku y dalam radian
+    */
+    val suku_y = 0.99664719 * sin(suku_u) + ((elevation).toDouble() / 6378140) * sin(Math.toRadians(latitude))
+    
+    /**
+    * suku n dalam radian
+    */
+    val suku_n = cos(Math.toRadians(sunApparentGeoLongitude)) * cos(Math.toRadians(sunApparentGeoLatitude)) - suku_x * sin(Math.toRadians(eqHorizontalParallaxSun)) * cos(Math.toRadians(localApparentSideralTime))
+    
+    /**
+    * parallax in the sun right ascension, delta a
+    */
+    val parallaxSunRightAscension = Math.toDegrees(atan2((-suku_x * sin(Math.toRadians(eqHorizontalParallaxSun)) * sin(Math.toRadians(sunGeocentricLocalHourAngle))), (cos(Math.toRadians(sunApparentGeoDeclination)) - suku_x * sin(Math.toRadians(eqHorizontalParallaxSun)) * cos(Math.toRadians(sunGeocentricLocalHourAngle)))))
+    
+    /**
+    * sun atmospheric refraction, R
+    */
+    val sunAtmosphericRefraction = (1.02 / tan(Math.toRadians(sunGeocentricAltitude + 10.3 / (sunGeocentricAltitude + 5.11))) * pressure / 1010 * 283.0 / (273.0 + temperature) + 0.0019279204034639303) / 60
+    
+    /**
+    * sun atmospheric refraction DMS, R
+    */
+    val sunAtmosphericRefractionDMS = toDegreeFullRound2(sunAtmosphericRefraction)
+    
+    /**
+    * parallax in the sun altitude, P
+    */
+    val parallaxSunAltitude = Math.toDegrees(asin(sqrt(suku_y.pow(2) + suku_x.pow(2)) * sin(Math.toRadians(eqHorizontalParallaxSun)) * cos(Math.toRadians(sunGeocentricAltitude))))
+    
+    /**
+    * parallax in the sun altitude DMS, P
+    */
+    val parallaxSunAltitudeDMS = toDegreeFullRound2(parallaxSunAltitude)
+    
+    /**
+    * sun topocentric ecliptic longitude, lambda`
+    */
+    val sunTopocentricEclipLongitude = (Math.toDegrees(atan2(sin(Math.toRadians(sunApparentGeoLongitude)) * cos(Math.toRadians(sunApparentGeoLatitude)) - sin(Math.toRadians(eqHorizontalParallaxSun)) * (suku_y * sin(Math.toRadians(trueObliquityOfEcliptic)) + suku_x * cos(Math.toRadians(trueObliquityOfEcliptic)) * sin(Math.toRadians(sunTrueGeocentricLonJ2000Degrees))), suku_n))).mod(360.0)
+    
+    /**
+    * sun topocentric ecliptic longitude DMS, lambda`
+    */
+    val sunTopocentricEclipLongitudeDMS = toDegreeFullRound2(sunTopocentricEclipLongitude)
+    
+    /**
+    * sun topocentric ecliptic latitude, beta`
+    */
+    val sunTopocentricEclipLatitude = Math.toDegrees(atan2(cos(Math.toRadians(sunTopocentricEclipLongitude)) * (sin(Math.toRadians(sunApparentGeoLatitude)) - sin(Math.toRadians(eqHorizontalParallaxSun)) * (suku_y * cos(Math.toRadians(trueObliquityOfEcliptic)) - suku_x * sin(Math.toRadians(trueObliquityOfEcliptic)) * sin(Math.toRadians(sunTrueGeocentricLonJ2000Degrees)))), suku_n))
+    
+    /**
+    * sun topocentric ecliptic latitude DMS, beta`
+    */
+    val sunTopocentricEclipLatitudeDMS = toDegreeFullRound2(sunTopocentricEclipLatitude)
+    
+    
+    // sun topocentric equatorial coor
+    
+    /**
+    * sun topocentric right ascension, a`
+    */
+    val sunTopocentricRightAscension = sunApparentGeoRightAscension + parallaxSunRightAscension
+    
+    /**
+    * sun topocentric right ascension DMS, a`
+    */
+    val sunTopocentricRightAscensionDMS = toDegreeFullRound2(sunTopocentricRightAscension)
+    
+    /**
+    * sun topocentric declination, d`
+    */
+    val sunTopocentricDeclination = Math.toDegrees(atan2((sin(Math.toRadians(sunApparentGeoDeclination)) - suku_y * sin(Math.toRadians(eqHorizontalParallaxSun))) * cos(Math.toRadians(parallaxSunRightAscension)), cos(Math.toRadians(sunApparentGeoDeclination)) - suku_x * sin(Math.toRadians(eqHorizontalParallaxSun)) * cos(Math.toRadians(sunGeocentricLocalHourAngle))))
+    
+    /**
+    * sun topocentric declination DMS, d`
+    */
+    val sunTopocentricDeclinationDMS = toDegreeFullRound2(sunTopocentricDeclination)
+    
+    
+    // sun topocentric horizontal coor
+    /**
+    * sun topocentric local hour angle, H`
+    */
+    val sunTopocentricLocalHourAngle = sunGeocentricLocalHourAngle - parallaxSunRightAscension
+    
+    /**
+    * sun topocentric local hour angle DMS, H`
+    */
+    val sunTopocentricLocalHourAngleDMS = toDegreeFullRound2(sunTopocentricLocalHourAngle)
+    
+    /**
+    * sun topocentric azimuth, A`
+    */
+    val sunTopocentricAzimuth = (Math.toDegrees(atan2(sin(Math.toRadians(sunTopocentricLocalHourAngle)), cos(Math.toRadians(sunTopocentricLocalHourAngle)) * sin(Math.toRadians(latitude)) - tan(Math.toRadians(sunTopocentricDeclination)) * cos(Math.toRadians(latitude)))) + 180).mod(360.0)
+    
+    /**
+    * sun topocentric azimuth DMS, A`
+    */
+    val sunTopocentricAzimuthDMS = toDegreeFullRound2(sunTopocentricAzimuth)
+    
+    /**
+    * sun airless topocentric altitude, h`
+    */
+    val sunAirlessTopocentricAltitude = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(sunTopocentricDeclination)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(sunTopocentricDeclination)) * cos(Math.toRadians(sunTopocentricLocalHourAngle))))
+    
+    /**
+    * sun airless topocentric altitude DMS, h`
+    */
+    val sunAirlessTopocentricAltitudeDMS = toDegreeFullRound2(sunAirlessTopocentricAltitude)
+    
+    /**
+    * sun atmospheric refraction, R
+    */
+    val sunAtmosphericRefractionForSunApparent = (1.02 / tan(Math.toRadians(sunAirlessTopocentricAltitude + 10.3 / (sunAirlessTopocentricAltitude + 5.11))) * pressure / 1010 * 283.0 / (273.0 + temperature) + 0.0019279204034639303) / 60
+    
+    /**
+    * sun apparent topocentric altitude, h`a
+    */
+    val sunApparentTopocentricAltitude = sunAirlessTopocentricAltitude + sunAtmosphericRefractionForSunApparent
+    
+    /**
+    * sun apparent topocentric altitude DMS, h`a
+    */
+    val sunApparentTopocentricAltitudeDMS = toDegreeFullRound2(sunApparentTopocentricAltitude)
+    
+    /**
+    * sun observed topocentric altitude, h`o
+    */
+    val sunObservedAltitude = sunApparentTopocentricAltitude + dip
+    
+    /**
+    * sun apparent topocentric altitude DMS, h`a
+    */
+    val sunObservedAltitudeDMS = toDegreeFullRound2(sunObservedAltitude)
     
     
     
-    val test = Nutasi.deltaPsiDanEpsilon(nilaiT)[1]
-    
-    
-    
-    
-    
+    // val test = Nutasi.deltaPsiDanEpsilon(nilaiT)[1]
     
     
 }

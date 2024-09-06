@@ -15,8 +15,11 @@ class EphemerisMeeusTest {
             2023, // 2023
             -7.029055555556, // -6.166666666667, //-7.029055555556,
             106.557722222222, // 106.85, //106.557722222222,
+            52.685,
             7.0,
             17.8575,//17.828611111111, // 17.8575
+            10.0, // suhu lokal rata-rata tahunan
+            1010.0, // tekanan udara lokal rata-rata tahunan
             true
         )
         
@@ -60,11 +63,28 @@ class EphemerisMeeusTest {
         val sunGeocentricLocalHourAngle = jm.sunGeocentricLocalHourAngle
         val sunGeocentricAzimuth = jm.sunGeocentricAzimuth
         val sunGeocentricAltitude = jm.sunGeocentricAltitude
+        val eqHorizontalParallaxSun = jm.eqHorizontalParallaxSun
+        val suku_u = jm.suku_u
+        val suku_x = jm.suku_x
+        val suku_y = jm.suku_y
+        val suku_n = jm.suku_n
+        val parallaxSunRightAscension = jm.parallaxSunRightAscension
+        val sunAtmosphericRefraction = jm.sunAtmosphericRefraction
+        val parallaxSunAltitude = jm.parallaxSunAltitude
+        val sunTopocentricEclipLongitude = jm.sunTopocentricEclipLongitude
+        val sunTopocentricEclipLatitude = jm.sunTopocentricEclipLatitude
+        val sunTopocentricRightAscension = jm.sunTopocentricRightAscension
+        val sunTopocentricDeclination = jm.sunTopocentricDeclination
+        val sunTopocentricLocalHourAngle = jm.sunTopocentricLocalHourAngle
+        val sunTopocentricAzimuth = jm.sunTopocentricAzimuth
+        val sunAirlessTopocentricAltitude = jm.sunAirlessTopocentricAltitude
+        val sunApparentTopocentricAltitude = jm.sunApparentTopocentricAltitude
+        val sunObservedAltitude = jm.sunObservedAltitude
         
-        val test = jm.test
+        // val test = jm.test
     
         println("")
-        println("test : $test")
+        // println("test : $test")
         println("")
         println("JD                    = $jd")
         println("DeltaT                = $deltaT")
@@ -108,6 +128,23 @@ class EphemerisMeeusTest {
         println("sunGeoLocalHourAng    = $sunGeocentricLocalHourAngle, ${jm.sunGeocentricLocalHourAngleDMS}")
 		println("sunGeoAzimuth         = $sunGeocentricAzimuth, ${jm.sunGeocentricAzimuthDMS}")
         println("sunGeoAltitude        = $sunGeocentricAltitude, ${jm.sunGeocentricAltitudeDMS}")
+        println("eqHorizontalPrlxSun   = $eqHorizontalParallaxSun")
+        println("suku u                = $suku_u")
+        println("suku x                = $suku_x")
+        println("suku y                = $suku_y")
+        println("suku n                = $suku_n")
+        println("parallaxSunRightAsce  = $parallaxSunRightAscension")
+        println("sunAtmosphericRefrac  = $sunAtmosphericRefraction, ${jm.sunAtmosphericRefractionDMS}")
+        println("parallaxSunAltitude   = $parallaxSunAltitude, ${jm.parallaxSunAltitudeDMS}")
+        println("sunTopoEclipLong      = $sunTopocentricEclipLongitude, ${jm.sunTopocentricEclipLongitudeDMS}")
+        println("sunTopoEclipLat       = $sunTopocentricEclipLatitude, ${jm.sunTopocentricEclipLatitudeDMS}")
+        println("sunTopoRightAsce      = $sunTopocentricRightAscension, ${jm.sunTopocentricRightAscensionDMS}")
+        println("sunTopoDeclination    = $sunTopocentricDeclination, ${jm.sunTopocentricDeclinationDMS}")
+        println("sunTopoLocalHourAngle = $sunTopocentricLocalHourAngle, ${jm.sunTopocentricLocalHourAngleDMS}")
+        println("sunTopocentricAzimuth = $sunTopocentricAzimuth, ${jm.sunTopocentricAzimuthDMS}")
+        println("sunAirlessTopoAltitud = $sunAirlessTopocentricAltitude, ${jm.sunAirlessTopocentricAltitudeDMS}")
+        println("sunAppaTopoAltitude   = $sunApparentTopocentricAltitude, ${jm.sunApparentTopocentricAltitudeDMS}")
+        println("sunObservedAltitude   = $sunObservedAltitude, ${jm.sunObservedAltitudeDMS}")
         
     }
 }
