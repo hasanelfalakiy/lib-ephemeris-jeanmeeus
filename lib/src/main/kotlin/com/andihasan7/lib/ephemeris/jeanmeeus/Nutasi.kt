@@ -14,7 +14,7 @@ object Nutasi {
         val m = Math.toRadians((357.52772 + 35999.05034 * t - 0.0001603 * t.pow(2) - t.pow(3) / 300000).mod(360.0))
         val m1 = Math.toRadians((134.96298 + 477198.867398 * t + 0.0086972 * t.pow(2) + t.pow(3) / 56250).mod(360.0))
         val f = Math.toRadians((93.27191 + 483202.017538 * t - 0.0036825 * t.pow(2) + t.pow(3) / 327270).mod(360.0))
-        val omega = Math.toRadians(125.04452 - 1934.136261 * t + 0.0020708 * t.pow(2) + t.pow(3) / 450000).mod(360.0)
+        val omega = Math.toRadians((125.04452 - 1934.136261 * t + 0.0020708 * t.pow(2) + t.pow(3) / 450000).mod(360.0))
         
         var deltaPsi = 0.0
         //(koefisien1+koefisien2*t)*sin(D*d+M*m+M'*m1+F*f+OMEGA*omega)
@@ -43,7 +43,7 @@ object Nutasi {
         deltaPsi += (-38 + 0 * t) * sin(2 * d + 0 * m + 0 * m1 + 2 * f + 2 * omega)
         deltaPsi += (-31 + 0 * t) * sin(0 * d + 0 * m + 2 * m1 + 2 * f + 2 * omega)
         deltaPsi += (29 + 0 * t) * sin(0 * d + 0 * m + 2 * m1 + 0 * f + 0 * omega)
-        deltaPsi += (29 + 0 * t) * sin(-2 * d + 0 * m + 2 * m1 + 2 * f + 2 * omega)
+        deltaPsi += (29 + 0 * t) * sin(-2 * d + 0 * m + 1 * m1 + 2 * f + 2 * omega)
         deltaPsi += (26 + 0 * t) * sin(0 * d + 0 * m + 0 * m1 + 2 * f + 0 * omega)
         deltaPsi += (-22 + 0 * t) * sin(-2 * d + 0 * m + 0 * m1 + 2 * f + 0 * omega)
         deltaPsi += (21 + 0 * t) * sin(0 * d + 0 * m + -1 * m1 + 2 * f + 1 * omega)
@@ -109,7 +109,7 @@ object Nutasi {
         deltaEpsilon += (-12 + 0 * t) * cos(-2 * d + 0 * m + 1 * m1 + 2 * f + 2 * omega)
         deltaEpsilon += (-10 + 0 * t) * cos(0 * d + 0 * m + -1 * m1 + 2 * f + 1 * omega)
         deltaEpsilon += (-8 + 0 * t) * cos(2 * d + 0 * m + -1 * m1 + 0 * f + 1 * omega)
-        deltaEpsilon += (7 + 0 * t) * cos(-2 * d + -2 * m + 0 * m1 + 2 * f + 2 * omega)
+        deltaEpsilon += (7 + 0 * t) * cos(-2 * d + 2 * m + 0 * m1 + 2 * f + 2 * omega)
         deltaEpsilon += (9 + 0 * t) * cos(0 * d + 1 * m + 0 * m1 + 0 * f + 1 * omega)
         deltaEpsilon += (7 + 0 * t) * cos(-2 * d + 0 * m + 1 * m1 + 0 * f + 1 * omega)
         deltaEpsilon += (6 + 0 * t) * cos(0 * d + -1 * m + 0 * m1 + 0 * f + 1 * omega)
@@ -128,6 +128,6 @@ object Nutasi {
         deltaEpsilon /= 10000.0
         val deltaEpsilon_d = deltaEpsilon / 3600
         val epsilon = epsilonZero + deltaEpsilon_d
-        return doubleArrayOf(0.0, deltaPsi, deltaPsi_d, u, epsilonZero, deltaEpsilon, deltaEpsilon_d, epsilon)
+        return doubleArrayOf(0.0, deltaPsi, deltaPsi_d, u, epsilonZero, deltaEpsilon, deltaEpsilon_d, epsilon, d, m, m1, f, omega)
     }
 }

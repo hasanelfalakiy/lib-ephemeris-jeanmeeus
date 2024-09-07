@@ -1,32 +1,36 @@
 package com.andihasan7.lib.ephemeris.jeanmeeus
 
+import kotlin.math.pow
+
+
 object TabelBulan {
-    fun sukuPeriodik(t: Double, l1: Double): DoubleArray {
+    fun periodikBujur(t: Double): DoubleArray {
+        
+        //l1= bujur rata-rata bulan
+        val l1 =
+            (218.3164591 + 481267.88134236 * t - 0.0013268 * t.pow(2) + t.pow(3) / 538841 - t.pow(4) / 65194000).mod(360.0)
         val l1_r = Math.toRadians(l1)
         // elongsi rata2 bulan
         val d =
-            (297.8502042 + 445267.1115168 * t - 0.00163 * t * t + t * t * t / 545868 -
-                t * t * t * t / 113065000) % 360
+            (297.8502042 + 445267.1115168 * t - 0.00163 * t.pow(2) + t.pow(3) / 545868 - t.pow(4) / 113065000).mod(360.0)
         val d_r = Math.toRadians(d)
 
         // anomali rata2 matahari
-        val m = (357.5291092 + 35999.0502909 * t - 0.0001536 * t * t + t * t * t / 24490000) % 360
+        val m = (357.5291092 + 35999.0502909 * t - 0.0001536 * t.pow(2) + t.pow(3) / 24490000).mod(360.0)
         val m_r = Math.toRadians(m)
 
         // anomali rata2 bulan
         val ma =
-            (134.9634114 + 477198.8676313 * t + 0.008997 * t * t + t * t * t / 69699 -
-                t * t * t * t / 14712000) % 360
+            (134.9634114 + 477198.8676313 * t + 0.008997 * t.pow(2) + t.pow(3) / 69699 - t.pow(4) / 14712000).mod(360.0)
         val ma_r = Math.toRadians(ma)
 
         // Argumen bujur bulan
         val f =
-            (93.2720993 + 483202.0175273 * t - 0.0034029 * t * t - t * t * t / 3526000 +
-                t * t * t * t / 863310000) % 360
+            (93.2720993 + 483202.0175273 * t - 0.0034029 * t.pow(2) - t.pow(3) / 3526000 + t.pow(4) / 863310000).mod(360.0)
         val f_r = Math.toRadians(f)
 
         // eksentrisitas orbit
-        val e = 1 - 0.002516 * t - 0.0000074 * t * t
+        val e = 1 - 0.002516 * t - 0.0000074 * t.pow(2)
 
         // koreksi suku periodik bujur ekliptika bulan (sinus)
         var bujur_bulan = 0.0
@@ -325,242 +329,66 @@ object TabelBulan {
         val MA59 = 3.0
         val F59 = 0.0
         val koefisien59 = 294.0
-        bujur_bulan +=
-            koefisien1 *
-                Math.pow(e, Math.abs(M1)) *
-                Math.sin(D1 * d_r + M1 * m_r + MA1 * ma_r + F1 * f_r)
-        bujur_bulan +=
-            koefisien2 *
-                Math.pow(e, Math.abs(M2)) *
-                Math.sin(D2 * d_r + M2 * m_r + MA2 * ma_r + F2 * f_r)
-        bujur_bulan +=
-            koefisien3 *
-                Math.pow(e, Math.abs(M3)) *
-                Math.sin(D3 * d_r + M3 * m_r + MA3 * ma_r + F3 * f_r)
-        bujur_bulan +=
-            koefisien4 *
-                Math.pow(e, Math.abs(M4)) *
-                Math.sin(D4 * d_r + M4 * m_r + MA4 * ma_r + F4 * f_r)
-        bujur_bulan +=
-            koefisien5 *
-                Math.pow(e, Math.abs(M5)) *
-                Math.sin(D5 * d_r + M5 * m_r + MA5 * ma_r + F5 * f_r)
-        bujur_bulan +=
-            koefisien6 *
-                Math.pow(e, Math.abs(M6)) *
-                Math.sin(D6 * d_r + M6 * m_r + MA6 * ma_r + F6 * f_r)
-        bujur_bulan +=
-            koefisien7 *
-                Math.pow(e, Math.abs(M7)) *
-                Math.sin(D7 * d_r + M7 * m_r + MA7 * ma_r + F7 * f_r)
-        bujur_bulan +=
-            koefisien8 *
-                Math.pow(e, Math.abs(M8)) *
-                Math.sin(D8 * d_r + M8 * m_r + MA8 * ma_r + F8 * f_r)
-        bujur_bulan +=
-            koefisien9 *
-                Math.pow(e, Math.abs(M9)) *
-                Math.sin(D9 * d_r + M9 * m_r + MA9 * ma_r + F9 * f_r)
-        bujur_bulan +=
-            koefisien10 *
-                Math.pow(e, Math.abs(M10)) *
-                Math.sin(D10 * d_r + M10 * m_r + MA10 * ma_r + F10 * f_r)
-        bujur_bulan +=
-            koefisien11 *
-                Math.pow(e, Math.abs(M11)) *
-                Math.sin(D11 * d_r + M11 * m_r + MA11 * ma_r + F11 * f_r)
-        bujur_bulan +=
-            koefisien12 *
-                Math.pow(e, Math.abs(M12)) *
-                Math.sin(D12 * d_r + M12 * m_r + MA12 * ma_r + F12 * f_r)
-        bujur_bulan +=
-            koefisien13 *
-                Math.pow(e, Math.abs(M13)) *
-                Math.sin(D13 * d_r + M13 * m_r + MA13 * ma_r + F13 * f_r)
-        bujur_bulan +=
-            koefisien14 *
-                Math.pow(e, Math.abs(M14)) *
-                Math.sin(D14 * d_r + M14 * m_r + MA14 * ma_r + F14 * f_r)
-        bujur_bulan +=
-            koefisien15 *
-                Math.pow(e, Math.abs(M15)) *
-                Math.sin(D15 * d_r + M15 * m_r + MA15 * ma_r + F15 * f_r)
-        bujur_bulan +=
-            koefisien16 *
-                Math.pow(e, Math.abs(M16)) *
-                Math.sin(D16 * d_r + M16 * m_r + MA16 * ma_r + F16 * f_r)
-        bujur_bulan +=
-            koefisien17 *
-                Math.pow(e, Math.abs(M17)) *
-                Math.sin(D17 * d_r + M17 * m_r + MA17 * ma_r + F17 * f_r)
-        bujur_bulan +=
-            koefisien18 *
-                Math.pow(e, Math.abs(M18)) *
-                Math.sin(D18 * d_r + M18 * m_r + MA18 * ma_r + F18 * f_r)
-        bujur_bulan +=
-            koefisien19 *
-                Math.pow(e, Math.abs(M19)) *
-                Math.sin(D19 * d_r + M19 * m_r + MA19 * ma_r + F19 * f_r)
-        bujur_bulan +=
-            koefisien20 *
-                Math.pow(e, Math.abs(M20)) *
-                Math.sin(D20 * d_r + M20 * m_r + MA20 * ma_r + F20 * f_r)
-        bujur_bulan +=
-            koefisien21 *
-                Math.pow(e, Math.abs(M21)) *
-                Math.sin(D21 * d_r + M21 * m_r + MA21 * ma_r + F21 * f_r)
-        bujur_bulan +=
-            koefisien22 *
-                Math.pow(e, Math.abs(M22)) *
-                Math.sin(D22 * d_r + M22 * m_r + MA22 * ma_r + F22 * f_r)
-        bujur_bulan +=
-            koefisien23 *
-                Math.pow(e, Math.abs(M23)) *
-                Math.sin(D23 * d_r + M23 * m_r + MA23 * ma_r + F23 * f_r)
-        bujur_bulan +=
-            koefisien24 *
-                Math.pow(e, Math.abs(M24)) *
-                Math.sin(D24 * d_r + M24 * m_r + MA24 * ma_r + F24 * f_r)
-        bujur_bulan +=
-            koefisien25 *
-                Math.pow(e, Math.abs(M25)) *
-                Math.sin(D25 * d_r + M25 * m_r + MA25 * ma_r + F25 * f_r)
-        bujur_bulan +=
-            koefisien26 *
-                Math.pow(e, Math.abs(M26)) *
-                Math.sin(D26 * d_r + M26 * m_r + MA26 * ma_r + F26 * f_r)
-        bujur_bulan +=
-            koefisien27 *
-                Math.pow(e, Math.abs(M27)) *
-                Math.sin(D27 * d_r + M27 * m_r + MA27 * ma_r + F27 * f_r)
-        bujur_bulan +=
-            koefisien28 *
-                Math.pow(e, Math.abs(M28)) *
-                Math.sin(D28 * d_r + M28 * m_r + MA28 * ma_r + F28 * f_r)
-        bujur_bulan +=
-            koefisien29 *
-                Math.pow(e, Math.abs(M29)) *
-                Math.sin(D29 * d_r + M29 * m_r + MA29 * ma_r + F29 * f_r)
-        bujur_bulan +=
-            koefisien30 *
-                Math.pow(e, Math.abs(M30)) *
-                Math.sin(D30 * d_r + M30 * m_r + MA30 * ma_r + F30 * f_r)
-        bujur_bulan +=
-            koefisien31 *
-                Math.pow(e, Math.abs(M31)) *
-                Math.sin(D31 * d_r + M31 * m_r + MA31 * ma_r + F31 * f_r)
-        bujur_bulan +=
-            koefisien32 *
-                Math.pow(e, Math.abs(M32)) *
-                Math.sin(D32 * d_r + M32 * m_r + MA32 * ma_r + F32 * f_r)
-        bujur_bulan +=
-            koefisien33 *
-                Math.pow(e, Math.abs(M33)) *
-                Math.sin(D33 * d_r + M33 * m_r + MA33 * ma_r + F33 * f_r)
-        bujur_bulan +=
-            koefisien34 *
-                Math.pow(e, Math.abs(M34)) *
-                Math.sin(D34 * d_r + M34 * m_r + MA34 * ma_r + F34 * f_r)
-        bujur_bulan +=
-            koefisien35 *
-                Math.pow(e, Math.abs(M35)) *
-                Math.sin(D35 * d_r + M35 * m_r + MA35 * ma_r + F35 * f_r)
-        bujur_bulan +=
-            koefisien36 *
-                Math.pow(e, Math.abs(M36)) *
-                Math.sin(D36 * d_r + M36 * m_r + MA36 * ma_r + F36 * f_r)
-        bujur_bulan +=
-            koefisien37 *
-                Math.pow(e, Math.abs(M37)) *
-                Math.sin(D37 * d_r + M37 * m_r + MA37 * ma_r + F37 * f_r)
-        bujur_bulan +=
-            koefisien38 *
-                Math.pow(e, Math.abs(M38)) *
-                Math.sin(D38 * d_r + M38 * m_r + MA38 * ma_r + F38 * f_r)
-        bujur_bulan +=
-            koefisien39 *
-                Math.pow(e, Math.abs(M39)) *
-                Math.sin(D39 * d_r + M39 * m_r + MA39 * ma_r + F39 * f_r)
-        bujur_bulan +=
-            koefisien40 *
-                Math.pow(e, Math.abs(M40)) *
-                Math.sin(D40 * d_r + M40 * m_r + MA40 * ma_r + F40 * f_r)
-        bujur_bulan +=
-            koefisien41 *
-                Math.pow(e, Math.abs(M41)) *
-                Math.sin(D41 * d_r + M41 * m_r + MA41 * ma_r + F41 * f_r)
-        bujur_bulan +=
-            koefisien42 *
-                Math.pow(e, Math.abs(M42)) *
-                Math.sin(D42 * d_r + M42 * m_r + MA42 * ma_r + F42 * f_r)
-        bujur_bulan +=
-            koefisien43 *
-                Math.pow(e, Math.abs(M43)) *
-                Math.sin(D43 * d_r + M43 * m_r + MA43 * ma_r + F43 * f_r)
-        bujur_bulan +=
-            koefisien44 *
-                Math.pow(e, Math.abs(M44)) *
-                Math.sin(D44 * d_r + M44 * m_r + MA44 * ma_r + F44 * f_r)
-        bujur_bulan +=
-            koefisien45 *
-                Math.pow(e, Math.abs(M45)) *
-                Math.sin(D45 * d_r + M45 * m_r + MA45 * ma_r + F45 * f_r)
-        bujur_bulan +=
-            koefisien46 *
-                Math.pow(e, Math.abs(M46)) *
-                Math.sin(D46 * d_r + M46 * m_r + MA46 * ma_r + F46 * f_r)
-        bujur_bulan +=
-            koefisien47 *
-                Math.pow(e, Math.abs(M47)) *
-                Math.sin(D47 * d_r + M47 * m_r + MA47 * ma_r + F47 * f_r)
-        bujur_bulan +=
-            koefisien48 *
-                Math.pow(e, Math.abs(M48)) *
-                Math.sin(D48 * d_r + M48 * m_r + MA48 * ma_r + F48 * f_r)
-        bujur_bulan +=
-            koefisien49 *
-                Math.pow(e, Math.abs(M49)) *
-                Math.sin(D49 * d_r + M49 * m_r + MA49 * ma_r + F49 * f_r)
-        bujur_bulan +=
-            koefisien50 *
-                Math.pow(e, Math.abs(M50)) *
-                Math.sin(D50 * d_r + M50 * m_r + MA50 * ma_r + F50 * f_r)
-        bujur_bulan +=
-            koefisien51 *
-                Math.pow(e, Math.abs(M51)) *
-                Math.sin(D51 * d_r + M51 * m_r + MA51 * ma_r + F51 * f_r)
-        bujur_bulan +=
-            koefisien52 *
-                Math.pow(e, Math.abs(M52)) *
-                Math.sin(D52 * d_r + M52 * m_r + MA52 * ma_r + F52 * f_r)
-        bujur_bulan +=
-            koefisien53 *
-                Math.pow(e, Math.abs(M53)) *
-                Math.sin(D53 * d_r + M53 * m_r + MA53 * ma_r + F53 * f_r)
-        bujur_bulan +=
-            koefisien54 *
-                Math.pow(e, Math.abs(M54)) *
-                Math.sin(D54 * d_r + M54 * m_r + MA54 * ma_r + F54 * f_r)
-        bujur_bulan +=
-            koefisien55 *
-                Math.pow(e, Math.abs(M55)) *
-                Math.sin(D55 * d_r + M55 * m_r + MA55 * ma_r + F55 * f_r)
-        bujur_bulan +=
-            koefisien56 *
-                Math.pow(e, Math.abs(M56)) *
-                Math.sin(D56 * d_r + M56 * m_r + MA56 * ma_r + F56 * f_r)
-        bujur_bulan +=
-            koefisien57 *
-                Math.pow(e, Math.abs(M57)) *
-                Math.sin(D57 * d_r + M57 * m_r + MA57 * ma_r + F57 * f_r)
-        bujur_bulan +=
-            koefisien58 *
-                Math.pow(e, Math.abs(M58)) *
-                Math.sin(D58 * d_r + M58 * m_r + MA58 * ma_r + F58 * f_r)
-        bujur_bulan +=
-            koefisien59 *
-                Math.pow(e, Math.abs(M59)) *
-                Math.sin(D59 * d_r + M59 * m_r + MA59 * ma_r + F59 * f_r)
+        bujur_bulan += koefisien1 * Math.pow(e, Math.abs(M1)) * Math.sin(D1 * d_r + M1 * m_r + MA1 * ma_r + F1 * f_r)
+        bujur_bulan += koefisien2 * Math.pow(e, Math.abs(M2)) * Math.sin(D2 * d_r + M2 * m_r + MA2 * ma_r + F2 * f_r)
+        bujur_bulan += koefisien3 * Math.pow(e, Math.abs(M3)) * Math.sin(D3 * d_r + M3 * m_r + MA3 * ma_r + F3 * f_r)
+        bujur_bulan += koefisien4 * Math.pow(e, Math.abs(M4)) * Math.sin(D4 * d_r + M4 * m_r + MA4 * ma_r + F4 * f_r)
+        bujur_bulan += koefisien5 * Math.pow(e, Math.abs(M5)) * Math.sin(D5 * d_r + M5 * m_r + MA5 * ma_r + F5 * f_r)
+        bujur_bulan += koefisien6 * Math.pow(e, Math.abs(M6)) * Math.sin(D6 * d_r + M6 * m_r + MA6 * ma_r + F6 * f_r)
+        bujur_bulan += koefisien7 * Math.pow(e, Math.abs(M7)) * Math.sin(D7 * d_r + M7 * m_r + MA7 * ma_r + F7 * f_r)
+        bujur_bulan += koefisien8 * Math.pow(e, Math.abs(M8)) * Math.sin(D8 * d_r + M8 * m_r + MA8 * ma_r + F8 * f_r)
+        bujur_bulan += koefisien9 * Math.pow(e, Math.abs(M9)) * Math.sin(D9 * d_r + M9 * m_r + MA9 * ma_r + F9 * f_r)
+        bujur_bulan += koefisien10 * Math.pow(e, Math.abs(M10)) * Math.sin(D10 * d_r + M10 * m_r + MA10 * ma_r + F10 * f_r)
+        bujur_bulan += koefisien11 * Math.pow(e, Math.abs(M11)) * Math.sin(D11 * d_r + M11 * m_r + MA11 * ma_r + F11 * f_r)
+        bujur_bulan += koefisien12 * Math.pow(e, Math.abs(M12)) * Math.sin(D12 * d_r + M12 * m_r + MA12 * ma_r + F12 * f_r)
+        bujur_bulan += koefisien13 * Math.pow(e, Math.abs(M13)) * Math.sin(D13 * d_r + M13 * m_r + MA13 * ma_r + F13 * f_r)
+        bujur_bulan += koefisien14 * Math.pow(e, Math.abs(M14)) * Math.sin(D14 * d_r + M14 * m_r + MA14 * ma_r + F14 * f_r)
+        bujur_bulan += koefisien15 * Math.pow(e, Math.abs(M15)) * Math.sin(D15 * d_r + M15 * m_r + MA15 * ma_r + F15 * f_r)
+        bujur_bulan += koefisien16 * Math.pow(e, Math.abs(M16)) * Math.sin(D16 * d_r + M16 * m_r + MA16 * ma_r + F16 * f_r)
+        bujur_bulan += koefisien17 * Math.pow(e, Math.abs(M17)) * Math.sin(D17 * d_r + M17 * m_r + MA17 * ma_r + F17 * f_r)
+        bujur_bulan += koefisien18 * Math.pow(e, Math.abs(M18)) * Math.sin(D18 * d_r + M18 * m_r + MA18 * ma_r + F18 * f_r)
+        bujur_bulan += koefisien19 * Math.pow(e, Math.abs(M19)) * Math.sin(D19 * d_r + M19 * m_r + MA19 * ma_r + F19 * f_r)
+        bujur_bulan += koefisien20 * Math.pow(e, Math.abs(M20)) * Math.sin(D20 * d_r + M20 * m_r + MA20 * ma_r + F20 * f_r)
+        bujur_bulan += koefisien21 * Math.pow(e, Math.abs(M21)) * Math.sin(D21 * d_r + M21 * m_r + MA21 * ma_r + F21 * f_r)
+        bujur_bulan += koefisien22 * Math.pow(e, Math.abs(M22)) * Math.sin(D22 * d_r + M22 * m_r + MA22 * ma_r + F22 * f_r)
+        bujur_bulan += koefisien23 * Math.pow(e, Math.abs(M23)) * Math.sin(D23 * d_r + M23 * m_r + MA23 * ma_r + F23 * f_r)
+        bujur_bulan += koefisien24 * Math.pow(e, Math.abs(M24)) * Math.sin(D24 * d_r + M24 * m_r + MA24 * ma_r + F24 * f_r)
+        bujur_bulan += koefisien25 * Math.pow(e, Math.abs(M25)) * Math.sin(D25 * d_r + M25 * m_r + MA25 * ma_r + F25 * f_r)
+        bujur_bulan += koefisien26 * Math.pow(e, Math.abs(M26)) * Math.sin(D26 * d_r + M26 * m_r + MA26 * ma_r + F26 * f_r)
+        bujur_bulan += koefisien27 * Math.pow(e, Math.abs(M27)) * Math.sin(D27 * d_r + M27 * m_r + MA27 * ma_r + F27 * f_r)
+        bujur_bulan += koefisien28 * Math.pow(e, Math.abs(M28)) * Math.sin(D28 * d_r + M28 * m_r + MA28 * ma_r + F28 * f_r)
+        bujur_bulan += koefisien29 * Math.pow(e, Math.abs(M29)) * Math.sin(D29 * d_r + M29 * m_r + MA29 * ma_r + F29 * f_r)
+        bujur_bulan += koefisien30 * Math.pow(e, Math.abs(M30)) * Math.sin(D30 * d_r + M30 * m_r + MA30 * ma_r + F30 * f_r)
+        bujur_bulan += koefisien31 * Math.pow(e, Math.abs(M31)) * Math.sin(D31 * d_r + M31 * m_r + MA31 * ma_r + F31 * f_r)
+        bujur_bulan += koefisien32 * Math.pow(e, Math.abs(M32)) * Math.sin(D32 * d_r + M32 * m_r + MA32 * ma_r + F32 * f_r)
+        bujur_bulan += koefisien33 * Math.pow(e, Math.abs(M33)) * Math.sin(D33 * d_r + M33 * m_r + MA33 * ma_r + F33 * f_r)
+        bujur_bulan += koefisien34 * Math.pow(e, Math.abs(M34)) * Math.sin(D34 * d_r + M34 * m_r + MA34 * ma_r + F34 * f_r)
+        bujur_bulan += koefisien35 * Math.pow(e, Math.abs(M35)) * Math.sin(D35 * d_r + M35 * m_r + MA35 * ma_r + F35 * f_r)
+        bujur_bulan += koefisien36 * Math.pow(e, Math.abs(M36)) * Math.sin(D36 * d_r + M36 * m_r + MA36 * ma_r + F36 * f_r)
+        bujur_bulan += koefisien37 * Math.pow(e, Math.abs(M37)) * Math.sin(D37 * d_r + M37 * m_r + MA37 * ma_r + F37 * f_r)
+        bujur_bulan += koefisien38 * Math.pow(e, Math.abs(M38)) * Math.sin(D38 * d_r + M38 * m_r + MA38 * ma_r + F38 * f_r)
+        bujur_bulan += koefisien39 * Math.pow(e, Math.abs(M39)) * Math.sin(D39 * d_r + M39 * m_r + MA39 * ma_r + F39 * f_r)
+        bujur_bulan += koefisien40 * Math.pow(e, Math.abs(M40)) * Math.sin(D40 * d_r + M40 * m_r + MA40 * ma_r + F40 * f_r)
+        bujur_bulan += koefisien41 * Math.pow(e, Math.abs(M41)) * Math.sin(D41 * d_r + M41 * m_r + MA41 * ma_r + F41 * f_r)
+        bujur_bulan += koefisien42 * Math.pow(e, Math.abs(M42)) * Math.sin(D42 * d_r + M42 * m_r + MA42 * ma_r + F42 * f_r)
+        bujur_bulan += koefisien43 * Math.pow(e, Math.abs(M43)) * Math.sin(D43 * d_r + M43 * m_r + MA43 * ma_r + F43 * f_r)
+        bujur_bulan += koefisien44 * Math.pow(e, Math.abs(M44)) * Math.sin(D44 * d_r + M44 * m_r + MA44 * ma_r + F44 * f_r)
+        bujur_bulan += koefisien45 * Math.pow(e, Math.abs(M45)) * Math.sin(D45 * d_r + M45 * m_r + MA45 * ma_r + F45 * f_r)
+        bujur_bulan += koefisien46 * Math.pow(e, Math.abs(M46)) * Math.sin(D46 * d_r + M46 * m_r + MA46 * ma_r + F46 * f_r)
+        bujur_bulan += koefisien47 * Math.pow(e, Math.abs(M47)) * Math.sin(D47 * d_r + M47 * m_r + MA47 * ma_r + F47 * f_r)
+        bujur_bulan += koefisien48 * Math.pow(e, Math.abs(M48)) * Math.sin(D48 * d_r + M48 * m_r + MA48 * ma_r + F48 * f_r)
+        bujur_bulan += koefisien49 * Math.pow(e, Math.abs(M49)) * Math.sin(D49 * d_r + M49 * m_r + MA49 * ma_r + F49 * f_r)
+        bujur_bulan += koefisien50 * Math.pow(e, Math.abs(M50)) * Math.sin(D50 * d_r + M50 * m_r + MA50 * ma_r + F50 * f_r)
+        bujur_bulan += koefisien51 * Math.pow(e, Math.abs(M51)) * Math.sin(D51 * d_r + M51 * m_r + MA51 * ma_r + F51 * f_r)
+        bujur_bulan += koefisien52 * Math.pow(e, Math.abs(M52)) * Math.sin(D52 * d_r + M52 * m_r + MA52 * ma_r + F52 * f_r)
+        bujur_bulan += koefisien53 * Math.pow(e, Math.abs(M53)) * Math.sin(D53 * d_r + M53 * m_r + MA53 * ma_r + F53 * f_r)
+        bujur_bulan += koefisien54 * Math.pow(e, Math.abs(M54)) * Math.sin(D54 * d_r + M54 * m_r + MA54 * ma_r + F54 * f_r)
+        bujur_bulan += koefisien55 * Math.pow(e, Math.abs(M55)) * Math.sin(D55 * d_r + M55 * m_r + MA55 * ma_r + F55 * f_r)
+        bujur_bulan += koefisien56 * Math.pow(e, Math.abs(M56)) * Math.sin(D56 * d_r + M56 * m_r + MA56 * ma_r + F56 * f_r)
+        bujur_bulan += koefisien57 * Math.pow(e, Math.abs(M57)) * Math.sin(D57 * d_r + M57 * m_r + MA57 * ma_r + F57 * f_r)
+        bujur_bulan += koefisien58 * Math.pow(e, Math.abs(M58)) * Math.sin(D58 * d_r + M58 * m_r + MA58 * ma_r + F58 * f_r)
+        bujur_bulan += koefisien59 * Math.pow(e, Math.abs(M59)) * Math.sin(D59 * d_r + M59 * m_r + MA59 * ma_r + F59 * f_r)
+        
         val argumenA1 = (119.75 + 131.849 * t) % 360
         val argumenA2 = (53.09 + 479264.29 * t) % 360
         val argumenA3 = (313.45 + 481266.484 * t) % 360
@@ -580,6 +408,16 @@ object TabelBulan {
         val jarakBulan = jarakBumiBulan(e, d_r, m_r, ma_r, f_r)[1]
 
         // mengembalikan nilai dalam bentuk variable array
+        /*
+        1 = d = elongasi rata2 bulan
+        2 = m = anomali rata2 Matahari
+        3 = ma = anomali rata2 bulan
+        4 = f = argumen bujur bulan
+        5 = e = eksentrisitas orbit
+        6 = bujur_bulan = koreksi bujur bulan
+        7 = lintang_bulan = koreksi lintang bulan
+        8 = jarakBulan = koreksi jarak bumi-bulan
+         */
         return doubleArrayOf(0.0, d, m, ma, f, e, bujur_bulan, lintang_bulan, jarakBulan)
     }
 
@@ -893,247 +731,68 @@ object TabelBulan {
         val MA60 = 0.0
         val F60 = 1.0
         val koefisien60 = 107.0
+        
         var lintang_bulan = 0.0
-        lintang_bulan +=
-            koefisien1 *
-                Math.pow(e, Math.abs(M1)) *
-                Math.sin(D1 * d_r + M1 * m_r + MA1 * ma_r + F1 * f_r)
-        lintang_bulan +=
-            koefisien2 *
-                Math.pow(e, Math.abs(M2)) *
-                Math.sin(D2 * d_r + M2 * m_r + MA2 * ma_r + F2 * f_r)
-        lintang_bulan +=
-            koefisien3 *
-                Math.pow(e, Math.abs(M3)) *
-                Math.sin(D3 * d_r + M3 * m_r + MA3 * ma_r + F3 * f_r)
-        lintang_bulan +=
-            koefisien4 *
-                Math.pow(e, Math.abs(M4)) *
-                Math.sin(D4 * d_r + M4 * m_r + MA4 * ma_r + F4 * f_r)
-        lintang_bulan +=
-            koefisien5 *
-                Math.pow(e, Math.abs(M5)) *
-                Math.sin(D5 * d_r + M5 * m_r + MA5 * ma_r + F5 * f_r)
-        lintang_bulan +=
-            koefisien6 *
-                Math.pow(e, Math.abs(M6)) *
-                Math.sin(D6 * d_r + M6 * m_r + MA6 * ma_r + F6 * f_r)
-        lintang_bulan +=
-            koefisien7 *
-                Math.pow(e, Math.abs(M7)) *
-                Math.sin(D7 * d_r + M7 * m_r + MA7 * ma_r + F7 * f_r)
-        lintang_bulan +=
-            koefisien8 *
-                Math.pow(e, Math.abs(M8)) *
-                Math.sin(D8 * d_r + M8 * m_r + MA8 * ma_r + F8 * f_r)
-        lintang_bulan +=
-            koefisien9 *
-                Math.pow(e, Math.abs(M9)) *
-                Math.sin(D9 * d_r + M9 * m_r + MA9 * ma_r + F9 * f_r)
-        lintang_bulan +=
-            koefisien10 *
-                Math.pow(e, Math.abs(M10)) *
-                Math.sin(D10 * d_r + M10 * m_r + MA10 * ma_r + F10 * f_r)
-        lintang_bulan +=
-            koefisien11 *
-                Math.pow(e, Math.abs(M11)) *
-                Math.sin(D11 * d_r + M11 * m_r + MA11 * ma_r + F11 * f_r)
-        lintang_bulan +=
-            koefisien12 *
-                Math.pow(e, Math.abs(M12)) *
-                Math.sin(D12 * d_r + M12 * m_r + MA12 * ma_r + F12 * f_r)
-        lintang_bulan +=
-            koefisien13 *
-                Math.pow(e, Math.abs(M13)) *
-                Math.sin(D13 * d_r + M13 * m_r + MA13 * ma_r + F13 * f_r)
-        lintang_bulan +=
-            koefisien14 *
-                Math.pow(e, Math.abs(M14)) *
-                Math.sin(D14 * d_r + M14 * m_r + MA14 * ma_r + F14 * f_r)
-        lintang_bulan +=
-            koefisien15 *
-                Math.pow(e, Math.abs(M15)) *
-                Math.sin(D15 * d_r + M15 * m_r + MA15 * ma_r + F15 * f_r)
-        lintang_bulan +=
-            koefisien16 *
-                Math.pow(e, Math.abs(M16)) *
-                Math.sin(D16 * d_r + M16 * m_r + MA16 * ma_r + F16 * f_r)
-        lintang_bulan +=
-            koefisien17 *
-                Math.pow(e, Math.abs(M17)) *
-                Math.sin(D17 * d_r + M17 * m_r + MA17 * ma_r + F17 * f_r)
-        lintang_bulan +=
-            koefisien18 *
-                Math.pow(e, Math.abs(M18)) *
-                Math.sin(D18 * d_r + M18 * m_r + MA18 * ma_r + F18 * f_r)
-        lintang_bulan +=
-            koefisien19 *
-                Math.pow(e, Math.abs(M19)) *
-                Math.sin(D19 * d_r + M19 * m_r + MA19 * ma_r + F19 * f_r)
-        lintang_bulan +=
-            koefisien20 *
-                Math.pow(e, Math.abs(M20)) *
-                Math.sin(D20 * d_r + M20 * m_r + MA20 * ma_r + F20 * f_r)
-        lintang_bulan +=
-            koefisien21 *
-                Math.pow(e, Math.abs(M21)) *
-                Math.sin(D21 * d_r + M21 * m_r + MA21 * ma_r + F21 * f_r)
-        lintang_bulan +=
-            koefisien22 *
-                Math.pow(e, Math.abs(M22)) *
-                Math.sin(D22 * d_r + M22 * m_r + MA22 * ma_r + F22 * f_r)
-        lintang_bulan +=
-            koefisien23 *
-                Math.pow(e, Math.abs(M23)) *
-                Math.sin(D23 * d_r + M23 * m_r + MA23 * ma_r + F23 * f_r)
-        lintang_bulan +=
-            koefisien24 *
-                Math.pow(e, Math.abs(M24)) *
-                Math.sin(D24 * d_r + M24 * m_r + MA24 * ma_r + F24 * f_r)
-        lintang_bulan +=
-            koefisien25 *
-                Math.pow(e, Math.abs(M25)) *
-                Math.sin(D25 * d_r + M25 * m_r + MA25 * ma_r + F25 * f_r)
-        lintang_bulan +=
-            koefisien26 *
-                Math.pow(e, Math.abs(M26)) *
-                Math.sin(D26 * d_r + M26 * m_r + MA26 * ma_r + F26 * f_r)
-        lintang_bulan +=
-            koefisien27 *
-                Math.pow(e, Math.abs(M27)) *
-                Math.sin(D27 * d_r + M27 * m_r + MA27 * ma_r + F27 * f_r)
-        lintang_bulan +=
-            koefisien28 *
-                Math.pow(e, Math.abs(M28)) *
-                Math.sin(D28 * d_r + M28 * m_r + MA28 * ma_r + F28 * f_r)
-        lintang_bulan +=
-            koefisien29 *
-                Math.pow(e, Math.abs(M29)) *
-                Math.sin(D29 * d_r + M29 * m_r + MA29 * ma_r + F29 * f_r)
-        lintang_bulan +=
-            koefisien30 *
-                Math.pow(e, Math.abs(M30)) *
-                Math.sin(D30 * d_r + M30 * m_r + MA30 * ma_r + F30 * f_r)
-        lintang_bulan +=
-            koefisien31 *
-                Math.pow(e, Math.abs(M31)) *
-                Math.sin(D31 * d_r + M31 * m_r + MA31 * ma_r + F31 * f_r)
-        lintang_bulan +=
-            koefisien32 *
-                Math.pow(e, Math.abs(M32)) *
-                Math.sin(D32 * d_r + M32 * m_r + MA32 * ma_r + F32 * f_r)
-        lintang_bulan +=
-            koefisien33 *
-                Math.pow(e, Math.abs(M33)) *
-                Math.sin(D33 * d_r + M33 * m_r + MA33 * ma_r + F33 * f_r)
-        lintang_bulan +=
-            koefisien34 *
-                Math.pow(e, Math.abs(M34)) *
-                Math.sin(D34 * d_r + M34 * m_r + MA34 * ma_r + F34 * f_r)
-        lintang_bulan +=
-            koefisien35 *
-                Math.pow(e, Math.abs(M35)) *
-                Math.sin(D35 * d_r + M35 * m_r + MA35 * ma_r + F35 * f_r)
-        lintang_bulan +=
-            koefisien36 *
-                Math.pow(e, Math.abs(M36)) *
-                Math.sin(D36 * d_r + M36 * m_r + MA36 * ma_r + F36 * f_r)
-        lintang_bulan +=
-            koefisien37 *
-                Math.pow(e, Math.abs(M37)) *
-                Math.sin(D37 * d_r + M37 * m_r + MA37 * ma_r + F37 * f_r)
-        lintang_bulan +=
-            koefisien38 *
-                Math.pow(e, Math.abs(M38)) *
-                Math.sin(D38 * d_r + M38 * m_r + MA38 * ma_r + F38 * f_r)
-        lintang_bulan +=
-            koefisien39 *
-                Math.pow(e, Math.abs(M39)) *
-                Math.sin(D39 * d_r + M39 * m_r + MA39 * ma_r + F39 * f_r)
-        lintang_bulan +=
-            koefisien40 *
-                Math.pow(e, Math.abs(M40)) *
-                Math.sin(D40 * d_r + M40 * m_r + MA40 * ma_r + F40 * f_r)
-        lintang_bulan +=
-            koefisien41 *
-                Math.pow(e, Math.abs(M41)) *
-                Math.sin(D41 * d_r + M41 * m_r + MA41 * ma_r + F41 * f_r)
-        lintang_bulan +=
-            koefisien42 *
-                Math.pow(e, Math.abs(M42)) *
-                Math.sin(D42 * d_r + M42 * m_r + MA42 * ma_r + F42 * f_r)
-        lintang_bulan +=
-            koefisien43 *
-                Math.pow(e, Math.abs(M43)) *
-                Math.sin(D43 * d_r + M43 * m_r + MA43 * ma_r + F43 * f_r)
-        lintang_bulan +=
-            koefisien44 *
-                Math.pow(e, Math.abs(M44)) *
-                Math.sin(D44 * d_r + M44 * m_r + MA44 * ma_r + F44 * f_r)
-        lintang_bulan +=
-            koefisien45 *
-                Math.pow(e, Math.abs(M45)) *
-                Math.sin(D45 * d_r + M45 * m_r + MA45 * ma_r + F45 * f_r)
-        lintang_bulan +=
-            koefisien46 *
-                Math.pow(e, Math.abs(M46)) *
-                Math.sin(D46 * d_r + M46 * m_r + MA46 * ma_r + F46 * f_r)
-        lintang_bulan +=
-            koefisien47 *
-                Math.pow(e, Math.abs(M47)) *
-                Math.sin(D47 * d_r + M47 * m_r + MA47 * ma_r + F47 * f_r)
-        lintang_bulan +=
-            koefisien48 *
-                Math.pow(e, Math.abs(M48)) *
-                Math.sin(D48 * d_r + M48 * m_r + MA48 * ma_r + F48 * f_r)
-        lintang_bulan +=
-            koefisien49 *
-                Math.pow(e, Math.abs(M49)) *
-                Math.sin(D49 * d_r + M49 * m_r + MA49 * ma_r + F49 * f_r)
-        lintang_bulan +=
-            koefisien50 *
-                Math.pow(e, Math.abs(M50)) *
-                Math.sin(D50 * d_r + M50 * m_r + MA50 * ma_r + F50 * f_r)
-        lintang_bulan +=
-            koefisien51 *
-                Math.pow(e, Math.abs(M51)) *
-                Math.sin(D51 * d_r + M51 * m_r + MA51 * ma_r + F51 * f_r)
-        lintang_bulan +=
-            koefisien52 *
-                Math.pow(e, Math.abs(M52)) *
-                Math.sin(D52 * d_r + M52 * m_r + MA52 * ma_r + F52 * f_r)
-        lintang_bulan +=
-            koefisien53 *
-                Math.pow(e, Math.abs(M53)) *
-                Math.sin(D53 * d_r + M53 * m_r + MA53 * ma_r + F53 * f_r)
-        lintang_bulan +=
-            koefisien54 *
-                Math.pow(e, Math.abs(M54)) *
-                Math.sin(D54 * d_r + M54 * m_r + MA54 * ma_r + F54 * f_r)
-        lintang_bulan +=
-            koefisien55 *
-                Math.pow(e, Math.abs(M55)) *
-                Math.sin(D55 * d_r + M55 * m_r + MA55 * ma_r + F55 * f_r)
-        lintang_bulan +=
-            koefisien56 *
-                Math.pow(e, Math.abs(M56)) *
-                Math.sin(D56 * d_r + M56 * m_r + MA56 * ma_r + F56 * f_r)
-        lintang_bulan +=
-            koefisien57 *
-                Math.pow(e, Math.abs(M57)) *
-                Math.sin(D57 * d_r + M57 * m_r + MA57 * ma_r + F57 * f_r)
-        lintang_bulan +=
-            koefisien58 *
-                Math.pow(e, Math.abs(M58)) *
-                Math.sin(D58 * d_r + M58 * m_r + MA58 * ma_r + F58 * f_r)
-        lintang_bulan +=
-            koefisien59 *
-                Math.pow(e, Math.abs(M59)) *
-                Math.sin(D59 * d_r + M59 * m_r + MA59 * ma_r + F59 * f_r)
-        lintang_bulan +=
-            koefisien60 *
-                Math.pow(e, Math.abs(M60)) *
-                Math.sin(D60 * d_r + M60 * m_r + MA60 * ma_r + F60 * f_r)
+        lintang_bulan += koefisien1 * Math.pow(e, Math.abs(M1)) * Math.sin(D1 * d_r + M1 * m_r + MA1 * ma_r + F1 * f_r)
+        lintang_bulan += koefisien2 * Math.pow(e, Math.abs(M2)) * Math.sin(D2 * d_r + M2 * m_r + MA2 * ma_r + F2 * f_r)
+        lintang_bulan += koefisien3 * Math.pow(e, Math.abs(M3)) * Math.sin(D3 * d_r + M3 * m_r + MA3 * ma_r + F3 * f_r)
+        lintang_bulan += koefisien4 * Math.pow(e, Math.abs(M4)) * Math.sin(D4 * d_r + M4 * m_r + MA4 * ma_r + F4 * f_r)
+        lintang_bulan += koefisien5 * Math.pow(e, Math.abs(M5)) * Math.sin(D5 * d_r + M5 * m_r + MA5 * ma_r + F5 * f_r)
+        lintang_bulan += koefisien6 * Math.pow(e, Math.abs(M6)) * Math.sin(D6 * d_r + M6 * m_r + MA6 * ma_r + F6 * f_r)
+        lintang_bulan += koefisien7 * Math.pow(e, Math.abs(M7)) * Math.sin(D7 * d_r + M7 * m_r + MA7 * ma_r + F7 * f_r)
+        lintang_bulan += koefisien8 * Math.pow(e, Math.abs(M8)) * Math.sin(D8 * d_r + M8 * m_r + MA8 * ma_r + F8 * f_r)
+        lintang_bulan += koefisien9 * Math.pow(e, Math.abs(M9)) * Math.sin(D9 * d_r + M9 * m_r + MA9 * ma_r + F9 * f_r)
+        lintang_bulan += koefisien10 * Math.pow(e, Math.abs(M10)) * Math.sin(D10 * d_r + M10 * m_r + MA10 * ma_r + F10 * f_r)
+        lintang_bulan += koefisien11 * Math.pow(e, Math.abs(M11)) * Math.sin(D11 * d_r + M11 * m_r + MA11 * ma_r + F11 * f_r)
+        lintang_bulan += koefisien12 * Math.pow(e, Math.abs(M12)) * Math.sin(D12 * d_r + M12 * m_r + MA12 * ma_r + F12 * f_r)
+        lintang_bulan += koefisien13 * Math.pow(e, Math.abs(M13)) * Math.sin(D13 * d_r + M13 * m_r + MA13 * ma_r + F13 * f_r)
+        lintang_bulan += koefisien14 * Math.pow(e, Math.abs(M14)) * Math.sin(D14 * d_r + M14 * m_r + MA14 * ma_r + F14 * f_r)
+        lintang_bulan += koefisien15 * Math.pow(e, Math.abs(M15)) * Math.sin(D15 * d_r + M15 * m_r + MA15 * ma_r + F15 * f_r)
+        lintang_bulan += koefisien16 * Math.pow(e, Math.abs(M16)) * Math.sin(D16 * d_r + M16 * m_r + MA16 * ma_r + F16 * f_r)
+        lintang_bulan += koefisien17 * Math.pow(e, Math.abs(M17)) * Math.sin(D17 * d_r + M17 * m_r + MA17 * ma_r + F17 * f_r)
+        lintang_bulan += koefisien18 * Math.pow(e, Math.abs(M18)) * Math.sin(D18 * d_r + M18 * m_r + MA18 * ma_r + F18 * f_r)
+        lintang_bulan += koefisien19 * Math.pow(e, Math.abs(M19)) * Math.sin(D19 * d_r + M19 * m_r + MA19 * ma_r + F19 * f_r)
+        lintang_bulan += koefisien20 * Math.pow(e, Math.abs(M20)) * Math.sin(D20 * d_r + M20 * m_r + MA20 * ma_r + F20 * f_r)
+        lintang_bulan += koefisien21 * Math.pow(e, Math.abs(M21)) * Math.sin(D21 * d_r + M21 * m_r + MA21 * ma_r + F21 * f_r)
+        lintang_bulan += koefisien22 * Math.pow(e, Math.abs(M22)) * Math.sin(D22 * d_r + M22 * m_r + MA22 * ma_r + F22 * f_r)
+        lintang_bulan += koefisien23 * Math.pow(e, Math.abs(M23)) * Math.sin(D23 * d_r + M23 * m_r + MA23 * ma_r + F23 * f_r)
+        lintang_bulan += koefisien24 * Math.pow(e, Math.abs(M24)) * Math.sin(D24 * d_r + M24 * m_r + MA24 * ma_r + F24 * f_r)
+        lintang_bulan += koefisien25 * Math.pow(e, Math.abs(M25)) * Math.sin(D25 * d_r + M25 * m_r + MA25 * ma_r + F25 * f_r)
+        lintang_bulan += koefisien26 * Math.pow(e, Math.abs(M26)) * Math.sin(D26 * d_r + M26 * m_r + MA26 * ma_r + F26 * f_r)
+        lintang_bulan += koefisien27 * Math.pow(e, Math.abs(M27)) * Math.sin(D27 * d_r + M27 * m_r + MA27 * ma_r + F27 * f_r)
+        lintang_bulan += koefisien28 * Math.pow(e, Math.abs(M28)) * Math.sin(D28 * d_r + M28 * m_r + MA28 * ma_r + F28 * f_r)
+        lintang_bulan += koefisien29 * Math.pow(e, Math.abs(M29)) * Math.sin(D29 * d_r + M29 * m_r + MA29 * ma_r + F29 * f_r)
+        lintang_bulan += koefisien30 * Math.pow(e, Math.abs(M30)) * Math.sin(D30 * d_r + M30 * m_r + MA30 * ma_r + F30 * f_r)
+        lintang_bulan += koefisien31 * Math.pow(e, Math.abs(M31)) * Math.sin(D31 * d_r + M31 * m_r + MA31 * ma_r + F31 * f_r)
+        lintang_bulan += koefisien32 * Math.pow(e, Math.abs(M32)) * Math.sin(D32 * d_r + M32 * m_r + MA32 * ma_r + F32 * f_r)
+        lintang_bulan += koefisien33 * Math.pow(e, Math.abs(M33)) * Math.sin(D33 * d_r + M33 * m_r + MA33 * ma_r + F33 * f_r)
+        lintang_bulan += koefisien34 * Math.pow(e, Math.abs(M34)) * Math.sin(D34 * d_r + M34 * m_r + MA34 * ma_r + F34 * f_r)
+        lintang_bulan += koefisien35 * Math.pow(e, Math.abs(M35)) * Math.sin(D35 * d_r + M35 * m_r + MA35 * ma_r + F35 * f_r)
+        lintang_bulan += koefisien36 * Math.pow(e, Math.abs(M36)) * Math.sin(D36 * d_r + M36 * m_r + MA36 * ma_r + F36 * f_r)
+        lintang_bulan += koefisien37 * Math.pow(e, Math.abs(M37)) * Math.sin(D37 * d_r + M37 * m_r + MA37 * ma_r + F37 * f_r)
+        lintang_bulan += koefisien38 * Math.pow(e, Math.abs(M38)) * Math.sin(D38 * d_r + M38 * m_r + MA38 * ma_r + F38 * f_r)
+        lintang_bulan += koefisien39 * Math.pow(e, Math.abs(M39)) * Math.sin(D39 * d_r + M39 * m_r + MA39 * ma_r + F39 * f_r)
+        lintang_bulan += koefisien40 * Math.pow(e, Math.abs(M40)) * Math.sin(D40 * d_r + M40 * m_r + MA40 * ma_r + F40 * f_r)
+        lintang_bulan += koefisien41 * Math.pow(e, Math.abs(M41)) * Math.sin(D41 * d_r + M41 * m_r + MA41 * ma_r + F41 * f_r)
+        lintang_bulan += koefisien42 * Math.pow(e, Math.abs(M42)) * Math.sin(D42 * d_r + M42 * m_r + MA42 * ma_r + F42 * f_r)
+        lintang_bulan += koefisien43 * Math.pow(e, Math.abs(M43)) * Math.sin(D43 * d_r + M43 * m_r + MA43 * ma_r + F43 * f_r)
+        lintang_bulan += koefisien44 * Math.pow(e, Math.abs(M44)) * Math.sin(D44 * d_r + M44 * m_r + MA44 * ma_r + F44 * f_r)
+        lintang_bulan += koefisien45 * Math.pow(e, Math.abs(M45)) * Math.sin(D45 * d_r + M45 * m_r + MA45 * ma_r + F45 * f_r)
+        lintang_bulan += koefisien46 * Math.pow(e, Math.abs(M46)) * Math.sin(D46 * d_r + M46 * m_r + MA46 * ma_r + F46 * f_r)
+        lintang_bulan += koefisien47 * Math.pow(e, Math.abs(M47)) * Math.sin(D47 * d_r + M47 * m_r + MA47 * ma_r + F47 * f_r)
+        lintang_bulan += koefisien48 * Math.pow(e, Math.abs(M48)) * Math.sin(D48 * d_r + M48 * m_r + MA48 * ma_r + F48 * f_r)
+        lintang_bulan += koefisien49 * Math.pow(e, Math.abs(M49)) * Math.sin(D49 * d_r + M49 * m_r + MA49 * ma_r + F49 * f_r)
+        lintang_bulan += koefisien50 * Math.pow(e, Math.abs(M50)) * Math.sin(D50 * d_r + M50 * m_r + MA50 * ma_r + F50 * f_r)
+        lintang_bulan += koefisien51 * Math.pow(e, Math.abs(M51)) * Math.sin(D51 * d_r + M51 * m_r + MA51 * ma_r + F51 * f_r)
+        lintang_bulan += koefisien52 * Math.pow(e, Math.abs(M52)) * Math.sin(D52 * d_r + M52 * m_r + MA52 * ma_r + F52 * f_r)
+        lintang_bulan += koefisien53 * Math.pow(e, Math.abs(M53)) * Math.sin(D53 * d_r + M53 * m_r + MA53 * ma_r + F53 * f_r)
+        lintang_bulan += koefisien54 * Math.pow(e, Math.abs(M54)) * Math.sin(D54 * d_r + M54 * m_r + MA54 * ma_r + F54 * f_r)
+        lintang_bulan += koefisien55 * Math.pow(e, Math.abs(M55)) * Math.sin(D55 * d_r + M55 * m_r + MA55 * ma_r + F55 * f_r)
+        lintang_bulan += koefisien56 * Math.pow(e, Math.abs(M56)) * Math.sin(D56 * d_r + M56 * m_r + MA56 * ma_r + F56 * f_r)
+        lintang_bulan += koefisien57 * Math.pow(e, Math.abs(M57)) * Math.sin(D57 * d_r + M57 * m_r + MA57 * ma_r + F57 * f_r)
+        lintang_bulan += koefisien58 * Math.pow(e, Math.abs(M58)) * Math.sin(D58 * d_r + M58 * m_r + MA58 * ma_r + F58 * f_r)
+        lintang_bulan += koefisien59 * Math.pow(e, Math.abs(M59)) * Math.sin(D59 * d_r + M59 * m_r + MA59 * ma_r + F59 * f_r)
+        lintang_bulan += koefisien60 * Math.pow(e, Math.abs(M60)) * Math.sin(D60 * d_r + M60 * m_r + MA60 * ma_r + F60 * f_r)
         lintang_bulan =
             (lintang_bulan - 2235 * Math.sin(l1_r) +
                 382 * Math.sin(aA3_r) +
@@ -1380,192 +1039,56 @@ object TabelBulan {
         val MA46 = 4.0
         val F46 = 0.0
         val koefisien46 = -1117.0
+        
         var jarakBulan = 0.0
-        jarakBulan +=
-            koefisien1 *
-                Math.pow(e, Math.abs(M1)) *
-                Math.cos(D1 * d_r + M1 * m_r + MA1 * ma_r + F1 * f_r)
-        jarakBulan +=
-            koefisien2 *
-                Math.pow(e, Math.abs(M2)) *
-                Math.cos(D2 * d_r + M2 * m_r + MA2 * ma_r + F2 * f_r)
-        jarakBulan +=
-            koefisien3 *
-                Math.pow(e, Math.abs(M3)) *
-                Math.cos(D3 * d_r + M3 * m_r + MA3 * ma_r + F3 * f_r)
-        jarakBulan +=
-            koefisien4 *
-                Math.pow(e, Math.abs(M4)) *
-                Math.cos(D4 * d_r + M4 * m_r + MA4 * ma_r + F4 * f_r)
-        jarakBulan +=
-            koefisien5 *
-                Math.pow(e, Math.abs(M5)) *
-                Math.cos(D5 * d_r + M5 * m_r + MA5 * ma_r + F5 * f_r)
-        jarakBulan +=
-            koefisien6 *
-                Math.pow(e, Math.abs(M6)) *
-                Math.cos(D6 * d_r + M6 * m_r + MA6 * ma_r + F6 * f_r)
-        jarakBulan +=
-            koefisien7 *
-                Math.pow(e, Math.abs(M7)) *
-                Math.cos(D7 * d_r + M7 * m_r + MA7 * ma_r + F7 * f_r)
-        jarakBulan +=
-            koefisien8 *
-                Math.pow(e, Math.abs(M8)) *
-                Math.cos(D8 * d_r + M8 * m_r + MA8 * ma_r + F8 * f_r)
-        jarakBulan +=
-            koefisien9 *
-                Math.pow(e, Math.abs(M9)) *
-                Math.cos(D9 * d_r + M9 * m_r + MA9 * ma_r + F9 * f_r)
-        jarakBulan +=
-            koefisien10 *
-                Math.pow(e, Math.abs(M10)) *
-                Math.cos(D10 * d_r + M10 * m_r + MA10 * ma_r + F10 * f_r)
-        jarakBulan +=
-            koefisien11 *
-                Math.pow(e, Math.abs(M11)) *
-                Math.cos(D11 * d_r + M11 * m_r + MA11 * ma_r + F11 * f_r)
-        jarakBulan +=
-            koefisien12 *
-                Math.pow(e, Math.abs(M12)) *
-                Math.cos(D12 * d_r + M12 * m_r + MA12 * ma_r + F12 * f_r)
-        jarakBulan +=
-            koefisien13 *
-                Math.pow(e, Math.abs(M13)) *
-                Math.cos(D13 * d_r + M13 * m_r + MA13 * ma_r + F13 * f_r)
-        jarakBulan +=
-            koefisien14 *
-                Math.pow(e, Math.abs(M14)) *
-                Math.cos(D14 * d_r + M14 * m_r + MA14 * ma_r + F14 * f_r)
-        jarakBulan +=
-            koefisien15 *
-                Math.pow(e, Math.abs(M15)) *
-                Math.cos(D15 * d_r + M15 * m_r + MA15 * ma_r + F15 * f_r)
-        jarakBulan +=
-            koefisien16 *
-                Math.pow(e, Math.abs(M16)) *
-                Math.cos(D16 * d_r + M16 * m_r + MA16 * ma_r + F16 * f_r)
-        jarakBulan +=
-            koefisien17 *
-                Math.pow(e, Math.abs(M17)) *
-                Math.cos(D17 * d_r + M17 * m_r + MA17 * ma_r + F17 * f_r)
-        jarakBulan +=
-            koefisien18 *
-                Math.pow(e, Math.abs(M18)) *
-                Math.cos(D18 * d_r + M18 * m_r + MA18 * ma_r + F18 * f_r)
-        jarakBulan +=
-            koefisien19 *
-                Math.pow(e, Math.abs(M19)) *
-                Math.cos(D19 * d_r + M19 * m_r + MA19 * ma_r + F19 * f_r)
-        jarakBulan +=
-            koefisien20 *
-                Math.pow(e, Math.abs(M20)) *
-                Math.cos(D20 * d_r + M20 * m_r + MA20 * ma_r + F20 * f_r)
-        jarakBulan +=
-            koefisien21 *
-                Math.pow(e, Math.abs(M21)) *
-                Math.cos(D21 * d_r + M21 * m_r + MA21 * ma_r + F21 * f_r)
-        jarakBulan +=
-            koefisien22 *
-                Math.pow(e, Math.abs(M22)) *
-                Math.cos(D22 * d_r + M22 * m_r + MA22 * ma_r + F22 * f_r)
-        jarakBulan +=
-            koefisien23 *
-                Math.pow(e, Math.abs(M23)) *
-                Math.cos(D23 * d_r + M23 * m_r + MA23 * ma_r + F23 * f_r)
-        jarakBulan +=
-            koefisien24 *
-                Math.pow(e, Math.abs(M24)) *
-                Math.cos(D24 * d_r + M24 * m_r + MA24 * ma_r + F24 * f_r)
-        jarakBulan +=
-            koefisien25 *
-                Math.pow(e, Math.abs(M25)) *
-                Math.cos(D25 * d_r + M25 * m_r + MA25 * ma_r + F25 * f_r)
-        jarakBulan +=
-            koefisien26 *
-                Math.pow(e, Math.abs(M26)) *
-                Math.cos(D26 * d_r + M26 * m_r + MA26 * ma_r + F26 * f_r)
-        jarakBulan +=
-            koefisien27 *
-                Math.pow(e, Math.abs(M27)) *
-                Math.cos(D27 * d_r + M27 * m_r + MA27 * ma_r + F27 * f_r)
-        jarakBulan +=
-            koefisien28 *
-                Math.pow(e, Math.abs(M28)) *
-                Math.cos(D28 * d_r + M28 * m_r + MA28 * ma_r + F28 * f_r)
-        jarakBulan +=
-            koefisien29 *
-                Math.pow(e, Math.abs(M29)) *
-                Math.cos(D29 * d_r + M29 * m_r + MA29 * ma_r + F29 * f_r)
-        jarakBulan +=
-            koefisien30 *
-                Math.pow(e, Math.abs(M30)) *
-                Math.cos(D30 * d_r + M30 * m_r + MA30 * ma_r + F30 * f_r)
-        jarakBulan +=
-            koefisien31 *
-                Math.pow(e, Math.abs(M31)) *
-                Math.cos(D31 * d_r + M31 * m_r + MA31 * ma_r + F31 * f_r)
-        jarakBulan +=
-            koefisien32 *
-                Math.pow(e, Math.abs(M32)) *
-                Math.cos(D32 * d_r + M32 * m_r + MA32 * ma_r + F32 * f_r)
-        jarakBulan +=
-            koefisien33 *
-                Math.pow(e, Math.abs(M33)) *
-                Math.cos(D33 * d_r + M33 * m_r + MA33 * ma_r + F33 * f_r)
-        jarakBulan +=
-            koefisien34 *
-                Math.pow(e, Math.abs(M34)) *
-                Math.cos(D34 * d_r + M34 * m_r + MA34 * ma_r + F34 * f_r)
-        jarakBulan +=
-            koefisien35 *
-                Math.pow(e, Math.abs(M35)) *
-                Math.cos(D35 * d_r + M35 * m_r + MA35 * ma_r + F35 * f_r)
-        jarakBulan +=
-            koefisien36 *
-                Math.pow(e, Math.abs(M36)) *
-                Math.cos(D36 * d_r + M36 * m_r + MA36 * ma_r + F36 * f_r)
-        jarakBulan +=
-            koefisien37 *
-                Math.pow(e, Math.abs(M37)) *
-                Math.cos(D37 * d_r + M37 * m_r + MA37 * ma_r + F37 * f_r)
-        jarakBulan +=
-            koefisien38 *
-                Math.pow(e, Math.abs(M38)) *
-                Math.cos(D38 * d_r + M38 * m_r + MA38 * ma_r + F38 * f_r)
-        jarakBulan +=
-            koefisien39 *
-                Math.pow(e, Math.abs(M39)) *
-                Math.cos(D39 * d_r + M39 * m_r + MA39 * ma_r + F39 * f_r)
-        jarakBulan +=
-            koefisien40 *
-                Math.pow(e, Math.abs(M40)) *
-                Math.cos(D40 * d_r + M40 * m_r + MA40 * ma_r + F40 * f_r)
-        jarakBulan +=
-            koefisien41 *
-                Math.pow(e, Math.abs(M41)) *
-                Math.cos(D41 * d_r + M41 * m_r + MA41 * ma_r + F41 * f_r)
-        jarakBulan +=
-            koefisien42 *
-                Math.pow(e, Math.abs(M42)) *
-                Math.cos(D42 * d_r + M42 * m_r + MA42 * ma_r + F42 * f_r)
-        jarakBulan +=
-            koefisien43 *
-                Math.pow(e, Math.abs(M43)) *
-                Math.cos(D43 * d_r + M43 * m_r + MA43 * ma_r + F43 * f_r)
-        jarakBulan +=
-            koefisien44 *
-                Math.pow(e, Math.abs(M44)) *
-                Math.cos(D44 * d_r + M44 * m_r + MA44 * ma_r + F44 * f_r)
-        jarakBulan +=
-            koefisien45 *
-                Math.pow(e, Math.abs(M45)) *
-                Math.cos(D45 * d_r + M45 * m_r + MA45 * ma_r + F45 * f_r)
-        jarakBulan +=
-            koefisien46 *
-                Math.pow(e, Math.abs(M46)) *
-                Math.cos(D46 * d_r + M46 * m_r + MA46 * ma_r + F46 * f_r)
+        jarakBulan += koefisien1 * Math.pow(e, Math.abs(M1)) * Math.cos(D1 * d_r + M1 * m_r + MA1 * ma_r + F1 * f_r)
+        jarakBulan += koefisien2 * Math.pow(e, Math.abs(M2)) * Math.cos(D2 * d_r + M2 * m_r + MA2 * ma_r + F2 * f_r)
+        jarakBulan += koefisien3 * Math.pow(e, Math.abs(M3)) * Math.cos(D3 * d_r + M3 * m_r + MA3 * ma_r + F3 * f_r)
+        jarakBulan += koefisien4 * Math.pow(e, Math.abs(M4)) * Math.cos(D4 * d_r + M4 * m_r + MA4 * ma_r + F4 * f_r)
+        jarakBulan += koefisien5 * Math.pow(e, Math.abs(M5)) * Math.cos(D5 * d_r + M5 * m_r + MA5 * ma_r + F5 * f_r)
+        jarakBulan += koefisien6 * Math.pow(e, Math.abs(M6)) * Math.cos(D6 * d_r + M6 * m_r + MA6 * ma_r + F6 * f_r)
+        jarakBulan += koefisien7 * Math.pow(e, Math.abs(M7)) * Math.cos(D7 * d_r + M7 * m_r + MA7 * ma_r + F7 * f_r)
+        jarakBulan += koefisien8 * Math.pow(e, Math.abs(M8)) * Math.cos(D8 * d_r + M8 * m_r + MA8 * ma_r + F8 * f_r)
+        jarakBulan += koefisien9 * Math.pow(e, Math.abs(M9)) * Math.cos(D9 * d_r + M9 * m_r + MA9 * ma_r + F9 * f_r)
+        jarakBulan += koefisien10 * Math.pow(e, Math.abs(M10)) * Math.cos(D10 * d_r + M10 * m_r + MA10 * ma_r + F10 * f_r)
+        jarakBulan += koefisien11 * Math.pow(e, Math.abs(M11)) * Math.cos(D11 * d_r + M11 * m_r + MA11 * ma_r + F11 * f_r)
+        jarakBulan += koefisien12 * Math.pow(e, Math.abs(M12)) * Math.cos(D12 * d_r + M12 * m_r + MA12 * ma_r + F12 * f_r)
+        jarakBulan += koefisien13 * Math.pow(e, Math.abs(M13)) * Math.cos(D13 * d_r + M13 * m_r + MA13 * ma_r + F13 * f_r)
+        jarakBulan += koefisien14 * Math.pow(e, Math.abs(M14)) * Math.cos(D14 * d_r + M14 * m_r + MA14 * ma_r + F14 * f_r)
+        jarakBulan += koefisien15 * Math.pow(e, Math.abs(M15)) * Math.cos(D15 * d_r + M15 * m_r + MA15 * ma_r + F15 * f_r)
+        jarakBulan += koefisien16 * Math.pow(e, Math.abs(M16)) * Math.cos(D16 * d_r + M16 * m_r + MA16 * ma_r + F16 * f_r)
+        jarakBulan += koefisien17 * Math.pow(e, Math.abs(M17)) * Math.cos(D17 * d_r + M17 * m_r + MA17 * ma_r + F17 * f_r)
+        jarakBulan += koefisien18 * Math.pow(e, Math.abs(M18)) * Math.cos(D18 * d_r + M18 * m_r + MA18 * ma_r + F18 * f_r)
+        jarakBulan += koefisien19 * Math.pow(e, Math.abs(M19)) * Math.cos(D19 * d_r + M19 * m_r + MA19 * ma_r + F19 * f_r)
+        jarakBulan += koefisien20 * Math.pow(e, Math.abs(M20)) * Math.cos(D20 * d_r + M20 * m_r + MA20 * ma_r + F20 * f_r)
+        jarakBulan += koefisien21 * Math.pow(e, Math.abs(M21)) * Math.cos(D21 * d_r + M21 * m_r + MA21 * ma_r + F21 * f_r)
+        jarakBulan += koefisien22 * Math.pow(e, Math.abs(M22)) * Math.cos(D22 * d_r + M22 * m_r + MA22 * ma_r + F22 * f_r)
+        jarakBulan += koefisien23 * Math.pow(e, Math.abs(M23)) * Math.cos(D23 * d_r + M23 * m_r + MA23 * ma_r + F23 * f_r)
+        jarakBulan += koefisien24 * Math.pow(e, Math.abs(M24)) * Math.cos(D24 * d_r + M24 * m_r + MA24 * ma_r + F24 * f_r)
+        jarakBulan += koefisien25 * Math.pow(e, Math.abs(M25)) * Math.cos(D25 * d_r + M25 * m_r + MA25 * ma_r + F25 * f_r)
+        jarakBulan += koefisien26 * Math.pow(e, Math.abs(M26)) * Math.cos(D26 * d_r + M26 * m_r + MA26 * ma_r + F26 * f_r)
+        jarakBulan += koefisien27 * Math.pow(e, Math.abs(M27)) * Math.cos(D27 * d_r + M27 * m_r + MA27 * ma_r + F27 * f_r)
+        jarakBulan += koefisien28 * Math.pow(e, Math.abs(M28)) * Math.cos(D28 * d_r + M28 * m_r + MA28 * ma_r + F28 * f_r)
+        jarakBulan += koefisien29 * Math.pow(e, Math.abs(M29)) * Math.cos(D29 * d_r + M29 * m_r + MA29 * ma_r + F29 * f_r)
+        jarakBulan += koefisien30 * Math.pow(e, Math.abs(M30)) * Math.cos(D30 * d_r + M30 * m_r + MA30 * ma_r + F30 * f_r)
+        jarakBulan += koefisien31 * Math.pow(e, Math.abs(M31)) * Math.cos(D31 * d_r + M31 * m_r + MA31 * ma_r + F31 * f_r)
+        jarakBulan += koefisien32 * Math.pow(e, Math.abs(M32)) * Math.cos(D32 * d_r + M32 * m_r + MA32 * ma_r + F32 * f_r)
+        jarakBulan += koefisien33 * Math.pow(e, Math.abs(M33)) * Math.cos(D33 * d_r + M33 * m_r + MA33 * ma_r + F33 * f_r)
+        jarakBulan += koefisien34 * Math.pow(e, Math.abs(M34)) * Math.cos(D34 * d_r + M34 * m_r + MA34 * ma_r + F34 * f_r)
+        jarakBulan += koefisien35 * Math.pow(e, Math.abs(M35)) * Math.cos(D35 * d_r + M35 * m_r + MA35 * ma_r + F35 * f_r)
+        jarakBulan += koefisien36 * Math.pow(e, Math.abs(M36)) * Math.cos(D36 * d_r + M36 * m_r + MA36 * ma_r + F36 * f_r)
+        jarakBulan += koefisien37 * Math.pow(e, Math.abs(M37)) * Math.cos(D37 * d_r + M37 * m_r + MA37 * ma_r + F37 * f_r)
+        jarakBulan += koefisien38 * Math.pow(e, Math.abs(M38)) * Math.cos(D38 * d_r + M38 * m_r + MA38 * ma_r + F38 * f_r)
+        jarakBulan += koefisien39 * Math.pow(e, Math.abs(M39)) * Math.cos(D39 * d_r + M39 * m_r + MA39 * ma_r + F39 * f_r)
+        jarakBulan += koefisien40 * Math.pow(e, Math.abs(M40)) * Math.cos(D40 * d_r + M40 * m_r + MA40 * ma_r + F40 * f_r)
+        jarakBulan += koefisien41 * Math.pow(e, Math.abs(M41)) * Math.cos(D41 * d_r + M41 * m_r + MA41 * ma_r + F41 * f_r)
+        jarakBulan += koefisien42 * Math.pow(e, Math.abs(M42)) * Math.cos(D42 * d_r + M42 * m_r + MA42 * ma_r + F42 * f_r)
+        jarakBulan += koefisien43 * Math.pow(e, Math.abs(M43)) * Math.cos(D43 * d_r + M43 * m_r + MA43 * ma_r + F43 * f_r)
+        jarakBulan += koefisien44 * Math.pow(e, Math.abs(M44)) * Math.cos(D44 * d_r + M44 * m_r + MA44 * ma_r + F44 * f_r)
+        jarakBulan += koefisien45 * Math.pow(e, Math.abs(M45)) * Math.cos(D45 * d_r + M45 * m_r + MA45 * ma_r + F45 * f_r)
+        jarakBulan += koefisien46 * Math.pow(e, Math.abs(M46)) * Math.cos(D46 * d_r + M46 * m_r + MA46 * ma_r + F46 * f_r)
         jarakBulan = jarakBulan / 1000
+        
         return doubleArrayOf(0.0, jarakBulan)
     }
 }

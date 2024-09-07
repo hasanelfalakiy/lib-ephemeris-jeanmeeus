@@ -26,9 +26,11 @@ class EphemerisMeeusTest {
         val jd = jm.jd
         val deltaT = jm.deltaT
         val jde = jm.jde
+        val jc = jm.jc
         val nilaiT = jm.nilaiT
         val tau = jm.tau
         
+        // data matahari
         val deltaPsiArcsec = jm.deltaPsiArcsec
         val deltaPsiDegrees = jm.deltaPsiDegrees
         val u = jm.u
@@ -67,6 +69,7 @@ class EphemerisMeeusTest {
         val suku_u = jm.suku_u
         val suku_x = jm.suku_x
         val suku_y = jm.suku_y
+        val suku_rho = jm.suku_rho
         val suku_n = jm.suku_n
         val parallaxSunRightAscension = jm.parallaxSunRightAscension
         val sunAtmosphericRefraction = jm.sunAtmosphericRefraction
@@ -83,14 +86,26 @@ class EphemerisMeeusTest {
         val sunTopocentricSemidiameter = jm.sunTopocentricSemidiameter
         val equationOfTimeHour = jm.equationOfTimeHour
         
+        // data bulan
+        
+        
+        
+        
+        
         // val test = jm.test
     
         println("")
         // println("test : $test")
+        println("d : ${jm.krd}")
+        println("m : ${jm.krm}")
+        println("m1 : ${jm.krm1}")
+        println("f : ${jm.krf}")
+        println("jar bm po: ${jm.jari2BumiPolar}")
         println("")
         println("JD                    = $jd")
         println("DeltaT                = $deltaT")
         println("JDE                   = $jde")
+        println("JC                    = $jc")
         println("T                     = $nilaiT")
         println("tau                   = $tau")
         println("deltaPsi arcseconds   = $deltaPsiArcsec, ${jm.deltaPsiArcsecDMS}")
@@ -134,6 +149,7 @@ class EphemerisMeeusTest {
         println("suku u                = $suku_u")
         println("suku x                = $suku_x")
         println("suku y                = $suku_y")
+        println("suku rho              = $suku_rho")
         println("suku n                = $suku_n")
         println("parallaxSunRightAsce  = $parallaxSunRightAscension")
         println("sunAtmosphericRefrac  = $sunAtmosphericRefraction, ${jm.sunAtmosphericRefractionDMS}")
@@ -148,7 +164,7 @@ class EphemerisMeeusTest {
         println("sunAppaTopoAltitude   = $sunApparentTopocentricAltitude, ${jm.sunApparentTopocentricAltitudeDMS}")
         println("sunObservedAltitude   = $sunObservedAltitude, ${jm.sunObservedAltitudeDMS}")
         println("sunTopocentricSemidi  = $sunTopocentricSemidiameter, ${jm.sunTopocentricSemidiameterDMS}")
-        println("equationOfTimeHour  = $equationOfTimeHour, ${jm.equationOfTimeHourHMS}")
+        println("equationOfTimeHour    = $equationOfTimeHour, ${jm.equationOfTimeHourHMS}")
         
     }
 }
