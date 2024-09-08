@@ -5,13 +5,13 @@
       "selection": {
         "end": {
           "column": 4,
-          "index": 4275,
-          "line": 159
+          "index": 31258,
+          "line": 893
         },
         "start": {
           "column": 4,
-          "index": 4275,
-          "line": 159
+          "index": 31258,
+          "line": 893
         }
       }
     },
@@ -19,47 +19,17 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/test/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeusTest.kt",
       "selection": {
         "end": {
-          "column": 34,
-          "index": 5231,
-          "line": 109
+          "column": 84,
+          "index": 14525,
+          "line": 215
         },
         "start": {
-          "column": 34,
-          "index": 5231,
-          "line": 109
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/TabelBulan.kt",
-      "selection": {
-        "end": {
-          "column": 33,
-          "index": 16857,
-          "line": 416
-        },
-        "start": {
-          "column": 33,
-          "index": 16857,
-          "line": 416
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/Nutasi.kt",
-      "selection": {
-        "end": {
-          "column": 109,
-          "index": 10258,
-          "line": 130
-        },
-        "start": {
-          "column": 109,
-          "index": 10258,
-          "line": 130
+          "column": 84,
+          "index": 14525,
+          "line": 215
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/Nutasi.kt"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeus.kt"
 }

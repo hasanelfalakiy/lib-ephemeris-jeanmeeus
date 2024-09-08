@@ -60,7 +60,12 @@ class EphemerisMeeusTest {
         val sunApparentGeoDeclination = jm.sunApparentGeoDeclination
         val greenwichMeanSideralTime = jm.greenwichMeanSideralTime
         val greenwichApparentSideralTime = jm.greenwichApparentSideralTime
-        val localApparentSideralTime = jm.localApparentSideralTime
+        val localApparentSideralTimeDegrees = jm.localApparentSideralTimeDegrees
+        
+        val greenwichSideralTimeHour = jm.greenwichSideralTimeHour
+        val greenwichApparentSideralTimeHour = jm.greenwichApparentSideralTimeHour
+        val localApparentSideralTimeHour = jm.localApparentSideralTimeHour
+        
         val sunGeocentricGreenwichHourAngle = jm.sunGeocentricGreenwichHourAngle
         val sunGeocentricLocalHourAngle = jm.sunGeocentricLocalHourAngle
         val sunGeocentricAzimuth = jm.sunGeocentricAzimuth
@@ -99,10 +104,18 @@ class EphemerisMeeusTest {
         val moonApparentGeocentricDistanceER = jm.moonApparentGeocentricDistanceER
         val moonEquatorialHorizontalParallax = jm.moonEquatorialHorizontalParallax
         val moonApparentGeocentricSemidiameter = jm.moonApparentGeocentricSemidiameter
-        
-        
-        
-        
+        val moonApparentGeocentricRightAscension = jm.moonApparentGeocentricRightAscension
+        val moonApparentGeoDeclination = jm.moonApparentGeoDeclination
+        val moonGeoGreenwichHourAngle = jm.moonGeoGreenwichHourAngle
+        val moonGeoLocalHourAngle = jm.moonGeoLocalHourAngle
+        val moonGeoAzimuthFromSelatan = jm.moonGeoAzimuthFromSelatan
+        val moonGeoAzimuthFromUtara = jm.moonGeoAzimuthFromUtara
+        val moonGeoAltitude = jm.moonGeoAltitude
+        val moonSunApparentGeoElongation = jm.moonSunApparentGeoElongation
+        val moonApparentGeoPhaseAngle = jm.moonApparentGeoPhaseAngle
+        val moonApparentGeoPhaseAngleDMS = jm.moonApparentGeoPhaseAngleDMS
+        val moonApparentGeoDiskIlluminatedFraction = jm.moonApparentGeoDiskIlluminatedFraction
+        val moonApparentGeoDiskIlluminatedFractionPercent = jm.moonApparentGeoDiskIlluminatedFractionPercent
         
         // val test = jm.test
     
@@ -144,11 +157,15 @@ class EphemerisMeeusTest {
         println("sunAppaGeoLon         = $sunApparentGeoLongitude, ${jm.sunApparentGeoLongitudeDMS}")
         println("sunAppaGeoLat         = $sunApparentGeoLatitude, ${jm.sunApparentGeoLatitudeDMS}")
         println("sunAppaGeoSemidia     = $sunApparentGeocentricSemidiameter, ${jm.sunApparentGeocentricSemidiameterDMS}")
-        println("sunAppaGeoRightAsce   = $sunApparentGeoRightAscension, ${jm.sunApparentGeoRightAscensionDMS}")
+        println("sunAppaGeoRightAsce   = $sunApparentGeoRightAscension | ${jm.sunApparentGeoRightAscensionDMS} | ${jm.sunApparentGeoRightAscensionHMS}")
         println("sunApparentGeoDecli   = $sunApparentGeoDeclination, ${jm.sunApparentGeoDeclinationDMS}")
         println("gmst                  = $greenwichMeanSideralTime, ${toDegreeFullRound2(jm.greenwichMeanSideralTime)}")
         println("gast                  = $greenwichApparentSideralTime, ${toDegreeFullRound2(jm.greenwichApparentSideralTime)}")
-        println("last                  = $localApparentSideralTime, ${toDegreeFullRound2(jm.localApparentSideralTime)}")
+        println("last                  = $localApparentSideralTimeDegrees, ${toDegreeFullRound2(jm.localApparentSideralTimeDegrees)}")
+        println("gst pukul             = $greenwichSideralTimeHour, ${toDegreeFullRound2(jm.greenwichSideralTimeHour)}")
+        println("apparent gst pukul    = $greenwichApparentSideralTimeHour, ${toDegreeFullRound2(jm.greenwichApparentSideralTimeHour)}")
+        println("apparent lst pukul    = $localApparentSideralTimeHour, ${toDegreeFullRound2(jm.localApparentSideralTimeHour)}")
+        println("")
         println("sunGeoGreenwiHourAng  = $sunGeocentricGreenwichHourAngle, ${jm.sunGeocentricGreenwichHourAngleDMS}")
         println("sunGeoLocalHourAng    = $sunGeocentricLocalHourAngle, ${jm.sunGeocentricLocalHourAngleDMS}")
 		println("sunGeoAzimuth         = $sunGeocentricAzimuth, ${jm.sunGeocentricAzimuthDMS}")
@@ -164,7 +181,7 @@ class EphemerisMeeusTest {
         println("parallaxSunAltitude   = $parallaxSunAltitude, ${jm.parallaxSunAltitudeDMS}")
         println("sunTopoEclipLong      = $sunTopocentricEclipLongitude, ${jm.sunTopocentricEclipLongitudeDMS}")
         println("sunTopoEclipLat       = $sunTopocentricEclipLatitude, ${jm.sunTopocentricEclipLatitudeDMS}")
-        println("sunTopoRightAsce      = $sunTopocentricRightAscension, ${jm.sunTopocentricRightAscensionDMS}")
+        println("sunTopoRightAsce      = $sunTopocentricRightAscension | ${jm.sunTopocentricRightAscensionDMS} | ${jm.sunTopocentricRightAscensionHMS}")
         println("sunTopoDeclination    = $sunTopocentricDeclination, ${jm.sunTopocentricDeclinationDMS}")
         println("sunTopoLocalHourAngle = $sunTopocentricLocalHourAngle, ${jm.sunTopocentricLocalHourAngleDMS}")
         println("sunTopocentricAzimuth = $sunTopocentricAzimuth, ${jm.sunTopocentricAzimuthDMS}")
@@ -187,6 +204,16 @@ class EphemerisMeeusTest {
         println("moonAppaGeoDistanceER = $moonApparentGeocentricDistanceER")
         println("moonEquHorizoParallax = $moonEquatorialHorizontalParallax, ${jm.moonEquatorialHorizontalParallaxDMS}")
         println("moonAppaGeoSemidiame  = $moonApparentGeocentricSemidiameter, ${jm.moonApparentGeocentricSemidiameterDMS}")
+        println("moonAppaGeoRightAscen = $moonApparentGeocentricRightAscension | ${jm.moonApparentGeocentricRightAscensionDMS} | ${jm.moonApparentGeocentricRightAscensionHMS}")
+        println("moonAppaGeoDeclinatio = $moonApparentGeoDeclination, ${jm.moonApparentGeoDeclinationDMS}")
+        println("moonGeoGreenwiHourAng = $moonGeoGreenwichHourAngle, ${jm.moonGeoGreenwichHourAngleDMS}")
+        println("moonGeoLocalHourAngle = $moonGeoLocalHourAngle, ${jm.moonGeoLocalHourAngleDMS}")
+        println("moonGeoAzimuthSelatan = $moonGeoAzimuthFromSelatan, ${jm.moonGeoAzimuthFromSelatanDMS}")
+        println("moonGeoAzimuthFrUtara = $moonGeoAzimuthFromUtara, ${jm.moonGeoAzimuthFromUtaraDMS}")
+        println("moonGeoAltitude       = $moonGeoAltitude, ${jm.moonGeoAltitudeDMS}")
+        println("moonSunAppaGeoElonga  = $moonSunApparentGeoElongation, ${jm.moonSunApparentGeoElongationDMS}")
+        println("moonAppaGeoPhaseAngle = $moonApparentGeoPhaseAngle | $moonApparentGeoPhaseAngleDMS")
+        println("moonAppaGeoIllumFrac  = $moonApparentGeoDiskIlluminatedFraction | $moonApparentGeoDiskIlluminatedFractionPercent")
         
         
         
