@@ -87,6 +87,10 @@ class EphemerisMeeusTest {
         val equationOfTimeHour = jm.equationOfTimeHour
         
         // data bulan
+        val bujurRata2Bulan = jm.bujurRata2Bulan
+        val koreksiBujurBulan = jm.koreksiBujurBulan
+        val moonTrueGeocentricLongitude = jm.moonTrueGeocentricLongitude
+        val moonApparentGeocentricLongitude = jm.moonApparentGeocentricLongitude
         
         
         
@@ -165,6 +169,12 @@ class EphemerisMeeusTest {
         println("sunObservedAltitude   = $sunObservedAltitude, ${jm.sunObservedAltitudeDMS}")
         println("sunTopocentricSemidi  = $sunTopocentricSemidiameter, ${jm.sunTopocentricSemidiameterDMS}")
         println("equationOfTimeHour    = $equationOfTimeHour, ${jm.equationOfTimeHourHMS}")
-        
+        println(" ")
+        println("data bulan : ")
+        println(" ")
+        println("bujurRata2Bulan       = $bujurRata2Bulan, ${jm.bujurRata2BulanDMS}")
+        println("koreksiBujurBulan     = $koreksiBujurBulan, ${jm.koreksiBujurBulanDMS}")
+        println("moonTrueGeoLongitide  = $moonTrueGeocentricLongitude, ${jm.moonTrueGeocentricLongitudeDMS}")
+        println("moonAppaGeoLongitude  = $moonApparentGeocentricLongitude, ${jm.moonApparentGeocentricLongitudeDMS}")
     }
 }

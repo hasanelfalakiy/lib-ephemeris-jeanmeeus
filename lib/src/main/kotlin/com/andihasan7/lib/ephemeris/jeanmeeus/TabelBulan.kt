@@ -4,11 +4,9 @@ import kotlin.math.pow
 
 
 object TabelBulan {
-    fun periodikBujur(t: Double): DoubleArray {
+    fun periodikBujur(t: Double, l1: Double): DoubleArray {
         
-        //l1= bujur rata-rata bulan
-        val l1 =
-            (218.3164591 + 481267.88134236 * t - 0.0013268 * t.pow(2) + t.pow(3) / 538841 - t.pow(4) / 65194000).mod(360.0)
+        
         val l1_r = Math.toRadians(l1)
         // elongsi rata2 bulan
         val d =
@@ -389,9 +387,9 @@ object TabelBulan {
         bujur_bulan += koefisien58 * Math.pow(e, Math.abs(M58)) * Math.sin(D58 * d_r + M58 * m_r + MA58 * ma_r + F58 * f_r)
         bujur_bulan += koefisien59 * Math.pow(e, Math.abs(M59)) * Math.sin(D59 * d_r + M59 * m_r + MA59 * ma_r + F59 * f_r)
         
-        val argumenA1 = (119.75 + 131.849 * t) % 360
-        val argumenA2 = (53.09 + 479264.29 * t) % 360
-        val argumenA3 = (313.45 + 481266.484 * t) % 360
+        val argumenA1 = (119.75 + 131.849 * t).mod(360.0)
+        val argumenA2 = (53.09 + 479264.29 * t).mod(360.0)
+        val argumenA3 = (313.45 + 481266.484 * t).mod(360.0)
         val aA1_r = Math.toRadians(argumenA1)
         val aA2_r = Math.toRadians(argumenA2)
         val aA3_r = Math.toRadians(argumenA3)

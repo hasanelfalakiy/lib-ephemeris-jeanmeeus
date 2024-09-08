@@ -663,6 +663,50 @@ class EphemerisMeeus(
     val equationOfTimeHourHMS = toTimeFullRound2(equationOfTimeHour)
     
     
+    // data bulan
+    
+    // moon ecliptic coordinate
+    
+    /**
+    * bujur rata-rata bulan, L`, l1
+    */
+    val bujurRata2Bulan = (218.3164591 + 481267.88134236 * nilaiT - 0.0013268 * nilaiT.pow(2) + nilaiT.pow(3) / 538841 - nilaiT.pow(4) / 65194000).mod(360.0)
+    
+    /**
+    * bujur rata-rata bulan DMS, L`, l1
+    */
+    val bujurRata2BulanDMS = toDegreeFullRound2(bujurRata2Bulan)
+    
+    /**
+    * koreksi bujur bulan
+    */
+    val koreksiBujurBulan = TabelBulan.periodikBujur(nilaiT, bujurRata2Bulan)[6]
+    
+    /**
+    * koreksi bujur bulan DMS
+    */
+    val koreksiBujurBulanDMS = toDegreeFullRound2(koreksiBujurBulan)
+    
+    /**
+    * moon true geocentric longitude
+    */
+    val moonTrueGeocentricLongitude = (bujurRata2Bulan + koreksiBujurBulan).mod(360.0)
+    
+    /**
+    * moon true geocentric longitude DMS
+    */
+    val moonTrueGeocentricLongitudeDMS = toDegreeFullRound2(moonTrueGeocentricLongitude)
+    
+    /**
+    * moon apparent geocentric longitude, lambda
+    */
+    val moonApparentGeocentricLongitude = (moonTrueGeocentricLongitude + deltaPsiDegrees).mod(360.0)
+    
+    /**
+    * moon apparent geocentric longitude DMS, beta
+    */
+    val moonApparentGeocentricLongitudeDMS = toDegreeFullRound2(moonApparentGeocentricLongitude)
+    
     
     
     // val test = Nutasi.deltaPsiDanEpsilon(nilaiT)[1]

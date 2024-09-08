@@ -4,14 +4,14 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeus.kt",
       "selection": {
         "end": {
-          "column": 60,
-          "index": 13496,
-          "line": 437
+          "column": 50,
+          "index": 24345,
+          "line": 705
         },
         "start": {
-          "column": 60,
-          "index": 13496,
-          "line": 437
+          "column": 50,
+          "index": 24345,
+          "line": 705
         }
       }
     },
@@ -19,14 +19,29 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/test/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeusTest.kt",
       "selection": {
         "end": {
-          "column": 50,
-          "index": 4578,
-          "line": 102
+          "column": 18,
+          "index": 10303,
+          "line": 173
         },
         "start": {
-          "column": 50,
-          "index": 4578,
-          "line": 102
+          "column": 18,
+          "index": 10303,
+          "line": 173
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/TabelBulan.kt",
+      "selection": {
+        "end": {
+          "column": 57,
+          "index": 15800,
+          "line": 390
+        },
+        "start": {
+          "column": 57,
+          "index": 15800,
+          "line": 390
         }
       }
     }
