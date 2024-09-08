@@ -92,6 +92,14 @@ class EphemerisMeeusTest {
         val moonTrueGeocentricLongitude = jm.moonTrueGeocentricLongitude
         val moonApparentGeocentricLongitude = jm.moonApparentGeocentricLongitude
         
+        val moonApparentGeocentricLatitude = jm.moonApparentGeocentricLatitude
+        val moonTrueGeocentricDistanceKM = jm.moonTrueGeocentricDistanceKM
+        val moonApparentGeocentricDistanceKM = jm.moonApparentGeocentricDistanceKM
+        val moonApparentGeocentricDistanceAU = jm.moonApparentGeocentricDistanceAU
+        val moonApparentGeocentricDistanceER = jm.moonApparentGeocentricDistanceER
+        val moonEquatorialHorizontalParallax = jm.moonEquatorialHorizontalParallax
+        val moonApparentGeocentricSemidiameter = jm.moonApparentGeocentricSemidiameter
+        
         
         
         
@@ -100,10 +108,6 @@ class EphemerisMeeusTest {
     
         println("")
         // println("test : $test")
-        println("d : ${jm.krd}")
-        println("m : ${jm.krm}")
-        println("m1 : ${jm.krm1}")
-        println("f : ${jm.krf}")
         println("jar bm po: ${jm.jari2BumiPolar}")
         println("")
         println("JD                    = $jd")
@@ -176,5 +180,15 @@ class EphemerisMeeusTest {
         println("koreksiBujurBulan     = $koreksiBujurBulan, ${jm.koreksiBujurBulanDMS}")
         println("moonTrueGeoLongitide  = $moonTrueGeocentricLongitude, ${jm.moonTrueGeocentricLongitudeDMS}")
         println("moonAppaGeoLongitude  = $moonApparentGeocentricLongitude, ${jm.moonApparentGeocentricLongitudeDMS}")
+        println("moonAppaGeoLatitude   = $moonApparentGeocentricLatitude, ${jm.moonApparentGeocentricLatitudeDMS}")
+        println("moonTrueGeoDistanceKM = $moonTrueGeocentricDistanceKM")
+        println("moonAppaGeoDistanceKM = $moonApparentGeocentricDistanceKM")
+        println("moonAppaGeoDistanceAU = $moonApparentGeocentricDistanceAU")
+        println("moonAppaGeoDistanceER = $moonApparentGeocentricDistanceER")
+        println("moonEquHorizoParallax = $moonEquatorialHorizontalParallax, ${jm.moonEquatorialHorizontalParallaxDMS}")
+        println("moonAppaGeoSemidiame  = $moonApparentGeocentricSemidiameter, ${jm.moonApparentGeocentricSemidiameterDMS}")
+        
+        
+        
     }
 }

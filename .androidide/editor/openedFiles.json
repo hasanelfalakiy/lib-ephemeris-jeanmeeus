@@ -4,14 +4,14 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeus.kt",
       "selection": {
         "end": {
-          "column": 50,
-          "index": 24345,
-          "line": 705
+          "column": 4,
+          "index": 4275,
+          "line": 159
         },
         "start": {
-          "column": 50,
-          "index": 24345,
-          "line": 705
+          "column": 4,
+          "index": 4275,
+          "line": 159
         }
       }
     },
@@ -19,14 +19,14 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/test/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeusTest.kt",
       "selection": {
         "end": {
-          "column": 18,
-          "index": 10303,
-          "line": 173
+          "column": 34,
+          "index": 5231,
+          "line": 109
         },
         "start": {
-          "column": 18,
-          "index": 10303,
-          "line": 173
+          "column": 34,
+          "index": 5231,
+          "line": 109
         }
       }
     },
@@ -34,17 +34,32 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/TabelBulan.kt",
       "selection": {
         "end": {
-          "column": 57,
-          "index": 15800,
-          "line": 390
+          "column": 33,
+          "index": 16857,
+          "line": 416
         },
         "start": {
-          "column": 57,
-          "index": 15800,
-          "line": 390
+          "column": 33,
+          "index": 16857,
+          "line": 416
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/Nutasi.kt",
+      "selection": {
+        "end": {
+          "column": 109,
+          "index": 10258,
+          "line": 130
+        },
+        "start": {
+          "column": 109,
+          "index": 10258,
+          "line": 130
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeus.kt"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/Nutasi.kt"
 }

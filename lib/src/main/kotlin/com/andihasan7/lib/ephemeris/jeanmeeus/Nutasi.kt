@@ -128,6 +128,6 @@ object Nutasi {
         deltaEpsilon /= 10000.0
         val deltaEpsilon_d = deltaEpsilon / 3600
         val epsilon = epsilonZero + deltaEpsilon_d
-        return doubleArrayOf(0.0, deltaPsi, deltaPsi_d, u, epsilonZero, deltaEpsilon, deltaEpsilon_d, epsilon, d, m, m1, f, omega)
+        return doubleArrayOf(0.0, deltaPsi, deltaPsi_d, u, epsilonZero, deltaEpsilon, deltaEpsilon_d, epsilon)
     }
 }

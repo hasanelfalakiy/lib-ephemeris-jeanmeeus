@@ -413,7 +413,7 @@ object TabelBulan {
         4 = f = argumen bujur bulan
         5 = e = eksentrisitas orbit
         6 = bujur_bulan = koreksi bujur bulan
-        7 = lintang_bulan = koreksi lintang bulan
+        7 = lintang_bulan = true/apparent lintang bulan
         8 = jarakBulan = koreksi jarak bumi-bulan
          */
         return doubleArrayOf(0.0, d, m, ma, f, e, bujur_bulan, lintang_bulan, jarakBulan)

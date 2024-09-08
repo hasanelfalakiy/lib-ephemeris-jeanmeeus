@@ -159,15 +159,8 @@ class EphemerisMeeus(
     val trueObliquityOfEclipticDMS = toDegreeFullRound2(trueObliquityOfEcliptic)
     
     
-    val krd = Nutasi.deltaPsiDanEpsilon(nilaiT)[8]
-    val krm = Nutasi.deltaPsiDanEpsilon(nilaiT)[9]
-    val krm1 = Nutasi.deltaPsiDanEpsilon(nilaiT)[10]
-    val krf = Nutasi.deltaPsiDanEpsilon(nilaiT)[11]
-    val kromega = Nutasi.deltaPsiDanEpsilon(nilaiT)[12]
+    // sun ecliptical coordinate
     
-    
-    
-    // sun ecliptical coordinate 
 	/**
 	 * earth heliocentric longitude radians
 	 */
@@ -453,9 +446,22 @@ class EphemerisMeeus(
     * suku u dalam radian
     */
     val suku_u = atan(tan(Math.toRadians(latitude)) * jari2BumiPolar / JARI2BUMIEQUATOR)
+    
+    /**
+    * suku y dalam radian
+    */
     val suku_y = (jari2BumiPolar / JARI2BUMIEQUATOR) * sin(suku_u) + (elevation / 6378140) * sin(Math.toRadians(latitude))
+    
+    /**
+    * suku x dalam radian
+    */
     val suku_x = cos(suku_u) + (elevation / 6378140) * cos(Math.toRadians(latitude))
+    
+    /**
+    * suku rho dalam radian
+    */
     val suku_rho = sqrt(suku_y.pow(2) + suku_x.pow(2))
+    
     /*
     /**
     * suku u dalam radian, buku seri 3
@@ -472,6 +478,7 @@ class EphemerisMeeus(
     */
     val suku_y = 0.99664719 * sin(suku_u) + ((elevation).toDouble() / 6378140) * sin(Math.toRadians(latitude))
     */
+    
     /**
     * suku n dalam radian, buku seri 3
     */
@@ -514,10 +521,8 @@ class EphemerisMeeus(
     /**
     * sun topocentric ecliptic longitude, lambda`
     */
-    // val sunTopocentricEclipLongitude = (Math.toDegrees(atan2(sin(Math.toRadians(sunApparentGeoLongitude)) * cos(Math.toRadians(sunApparentGeoLatitude)) - sin(Math.toRadians(eqHorizontalParallaxSun)) * (suku_y * sin(Math.toRadians(trueObliquityOfEcliptic)) + suku_x * cos(Math.toRadians(trueObliquityOfEcliptic)) * sin(Math.toRadians(sunTrueGeocentricLonJ2000Degrees))), suku_n))).mod(360.0) buku seri 3
-    
     val sunTopocentricEclipLongitude = (Math.toDegrees(atan2(sin(Math.toRadians(sunApparentGeoLongitude)) * cos(Math.toRadians(sunApparentGeoLatitude)) - sin(Math.toRadians(eqHorizontalParallaxSun)) * (suku_y * sin(Math.toRadians(trueObliquityOfEcliptic)) + suku_x * cos(Math.toRadians(trueObliquityOfEcliptic)) * sin(Math.toRadians(localApparentSideralTime))), suku_n))).mod(360.0)
-    
+    // val sunTopocentricEclipLongitude = (Math.toDegrees(atan2(sin(Math.toRadians(sunApparentGeoLongitude)) * cos(Math.toRadians(sunApparentGeoLatitude)) - sin(Math.toRadians(eqHorizontalParallaxSun)) * (suku_y * sin(Math.toRadians(trueObliquityOfEcliptic)) + suku_x * cos(Math.toRadians(trueObliquityOfEcliptic)) * sin(Math.toRadians(sunTrueGeocentricLonJ2000Degrees))), suku_n))).mod(360.0) buku seri 3
     
     /**
     * sun topocentric ecliptic longitude DMS, lambda`
@@ -527,9 +532,9 @@ class EphemerisMeeus(
     /**
     * sun topocentric ecliptic latitude, beta`
     */
+    val sunTopocentricEclipLatitude = Math.toDegrees(atan2(cos(Math.toRadians(sunTopocentricEclipLongitude)) * (sin(Math.toRadians(sunApparentGeoLatitude)) - sin(Math.toRadians(eqHorizontalParallaxSun)) * (suku_y * cos(Math.toRadians(trueObliquityOfEcliptic)) - suku_x * sin(Math.toRadians(trueObliquityOfEcliptic)) * sin(Math.toRadians(localApparentSideralTime)))), suku_n))
     // val sunTopocentricEclipLatitude = Math.toDegrees(atan2(cos(Math.toRadians(sunTopocentricEclipLongitude)) * (sin(Math.toRadians(sunApparentGeoLatitude)) - sin(Math.toRadians(eqHorizontalParallaxSun)) * (suku_y * cos(Math.toRadians(trueObliquityOfEcliptic)) - suku_x * sin(Math.toRadians(trueObliquityOfEcliptic)) * sin(Math.toRadians(sunTrueGeocentricLonJ2000Degrees)))), suku_n))
     
-    val sunTopocentricEclipLatitude = Math.toDegrees(atan2(cos(Math.toRadians(sunTopocentricEclipLongitude)) * (sin(Math.toRadians(sunApparentGeoLatitude)) - sin(Math.toRadians(eqHorizontalParallaxSun)) * (suku_y * cos(Math.toRadians(trueObliquityOfEcliptic)) - suku_x * sin(Math.toRadians(trueObliquityOfEcliptic)) * sin(Math.toRadians(localApparentSideralTime)))), suku_n))
     
     /**
     * sun topocentric ecliptic latitude DMS, beta`
@@ -561,6 +566,7 @@ class EphemerisMeeus(
     
     
     // sun topocentric horizontal coor
+    
     /**
     * sun topocentric local hour angle, H`
     */
@@ -703,9 +709,71 @@ class EphemerisMeeus(
     val moonApparentGeocentricLongitude = (moonTrueGeocentricLongitude + deltaPsiDegrees).mod(360.0)
     
     /**
-    * moon apparent geocentric longitude DMS, beta
+    * moon apparent geocentric longitude DMS, lambda
     */
     val moonApparentGeocentricLongitudeDMS = toDegreeFullRound2(moonApparentGeocentricLongitude)
+    
+    /**
+    * moon apparent geocentric latitude, beta
+    */
+    val moonApparentGeocentricLatitude = TabelBulan.periodikBujur(nilaiT, bujurRata2Bulan)[7]
+    
+    /**
+    * moon apparent geocentric latitude DMS, beta
+    */
+    val moonApparentGeocentricLatitudeDMS = toDegreeFullRound2(moonApparentGeocentricLatitude)
+    
+    /**
+    * koreksi jarak bumi bulan
+    */
+    val koreksiJarakBumiBulan = TabelBulan.periodikBujur(nilaiT, bujurRata2Bulan)[8]
+    
+    /**
+    * moon true geocentric distance KM
+    */
+    val moonTrueGeocentricDistanceKM = 385000.56 + koreksiJarakBumiBulan
+    
+    /**
+    * abrasi jarak bumi bulan
+    */
+    val moonAbr = 0.0708 * cos(Math.toRadians(225 + 477198.9 * nilaiT))
+    
+    /**
+    * moon apparent geocentric distance KM
+    */
+    val moonApparentGeocentricDistanceKM = moonTrueGeocentricDistanceKM + moonAbr
+    
+    /**
+    * moon apparent geocentric distance AU
+    */
+    val moonApparentGeocentricDistanceAU = moonApparentGeocentricDistanceKM / 149597870.7
+    
+    /**
+    * moon apparent geocentric distance ER
+    */
+    val moonApparentGeocentricDistanceER = moonApparentGeocentricDistanceKM / 6371.0
+    
+    /**
+    * moon equatorial horizontal parallax, phi
+    */
+    val moonEquatorialHorizontalParallax = Math.toDegrees(asin(6378.14 / moonTrueGeocentricDistanceKM))
+    
+    /**
+    * moon equatorial horizontal parallax DMS, phi
+    */
+    val moonEquatorialHorizontalParallaxDMS = toDegreeFullRound2(moonEquatorialHorizontalParallax)
+    
+    
+    /**
+    * moon apparent geocentric semidiameter, s
+    */
+    val moonApparentGeocentricSemidiameter = Math.toDegrees(asin(0.272481 * sin(Math.toRadians(moonEquatorialHorizontalParallax))))
+    //val moonApparentGeocentricSemidiameter = 358473400.0 / moonApparentGeocentricDistanceKM
+    
+    /**
+    * moon apparent geocentric semidiameter DMS, s
+    */
+    val moonApparentGeocentricSemidiameterDMS = toDegreeFullRound2(moonApparentGeocentricSemidiameter)
     
     
     
