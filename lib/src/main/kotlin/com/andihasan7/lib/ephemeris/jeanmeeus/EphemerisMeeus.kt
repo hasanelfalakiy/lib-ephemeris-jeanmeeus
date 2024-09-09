@@ -907,8 +907,103 @@ class EphemerisMeeus(
     */
     val moonApparentGeoDiskIlluminatedFractionPercent = 100 * moonApparentGeoDiskIlluminatedFraction
     
+    /**
+    * moon apparent geocentric bright limb angle, X
+    */
+    val moonApparentGeoBrightLimbAngle = (Math.toDegrees(atan2(cos(Math.toRadians(sunApparentGeoDeclination)) * sin(Math.toRadians(sunApparentGeoRightAscension - moonApparentGeocentricRightAscension)), sin(Math.toRadians(sunApparentGeoDeclination)) * cos(Math.toRadians(moonApparentGeoDeclination)) - cos(Math.toRadians(sunApparentGeoDeclination)) * sin(Math.toRadians(moonApparentGeoDeclination)) * cos(Math.toRadians(sunApparentGeoRightAscension - moonApparentGeocentricRightAscension))))).mod(360.0)
+    
+    /**
+    * moon apparent geocentric bright limb angle DMS, X
+    */
+    val moonApparentGeoBrightLimbAngleDMS = toDegreeFullRound2(moonApparentGeoBrightLimbAngle)
     
     
+    // moon topocentric ecliptic coor
+    
+    /**
+    * suku n bulan dalam radian
+    */
+    val suku_n_moon = cos(Math.toRadians(moonApparentGeocentricLongitude)) * cos(Math.toRadians(moonApparentGeocentricLatitude)) - suku_x * sin(Math.toRadians(moonEquatorialHorizontalParallax)) * cos(Math.toRadians(localApparentSideralTimeDegrees))
+    
+    /**
+    * moon apparent topocentric eclip longitude, lambda`
+    */
+    val moonApparentTopoLongitude = (Math.toDegrees(atan2(sin(Math.toRadians(moonApparentGeocentricLongitude)) * cos(Math.toRadians(moonApparentGeocentricLatitude)) - sin(Math.toRadians(moonEquatorialHorizontalParallax)) * (suku_y * sin(Math.toRadians(trueObliquityOfEcliptic)) + suku_x * cos(Math.toRadians(trueObliquityOfEcliptic)) * sin(Math.toRadians(localApparentSideralTimeDegrees))), suku_n_moon))).mod(360.0)
+    
+    /**
+    * moon apparent topocentric eclip longitude DMS, lambda`
+    */
+    val moonApparentTopoLongitudeDMS = toDegreeFullRound2(moonApparentTopoLongitude)
+    
+    /**
+    * moon apparent topocentric eclip latitude, beta`
+    */
+    val moonApparentTopoLatitude = Math.toDegrees(atan(cos(Math.toRadians(moonApparentTopoLongitude)) * (sin(Math.toRadians(moonApparentGeocentricLatitude)) - sin(Math.toRadians(moonEquatorialHorizontalParallax)) * (suku_y * cos(Math.toRadians(trueObliquityOfEcliptic)) - suku_x * sin(Math.toRadians(trueObliquityOfEcliptic)) * sin(Math.toRadians(localApparentSideralTimeDegrees)))) / suku_n_moon))
+    
+    /**
+    * moon apparent topocentric eclip latitude DMS, beta`
+    */
+    val moonApparentTopoLatitudeDMS = toDegreeFullRound2(moonApparentTopoLatitude)
+    
+    /**
+    * moon apparent topocentric semidiameter, s`
+    */
+    val moonApparentTopoSemidiameter = Math.toDegrees(asin(cos(Math.toRadians(moonApparentTopoLongitude)) * cos(Math.toRadians(moonApparentTopoLatitude)) * sin(Math.toRadians(moonApparentGeocentricSemidiameter)) / suku_n_moon))
+    
+    /**
+    * moon apparent topocentric semidiameter DMS, s`
+    */
+    val moonApparentTopoSemidiameterDMS = toDegreeFullRound2(moonApparentTopoSemidiameter)
+    
+    /**
+    * parallax in the moon right ascension, delta a
+    */
+    val parallaxMoonRightAscension = Math.toDegrees(atan2(-1 * suku_x * sin(Math.toRadians(moonEquatorialHorizontalParallax)) * sin(Math.toRadians(moonGeoLocalHourAngle)), cos(Math.toRadians(moonApparentGeoDeclination)) -  suku_x * sin(Math.toRadians(moonEquatorialHorizontalParallax)) * cos(Math.toRadians(moonGeoLocalHourAngle))))
+    
+    /**
+    * parallax in the moon right ascension DMS, delta a
+    */
+    val parallaxMoonRightAscensionDMS = toDegreeFullRound2(parallaxMoonRightAscension)
+    
+    /**
+    * moon apparent topocentric right ascension, a`
+    */
+    val moonApparentTopoRightAscension = (moonApparentGeocentricRightAscension + parallaxMoonRightAscension).mod(360.0)
+    
+    /**
+    * moon apparent topocentric right ascension DMS, a`
+    */
+    val moonApparentTopoRightAscensionDMS = toDegreeFullRound2(moonApparentTopoRightAscension)
+    
+    /**
+    * moon apparent topocentric declination, d`
+    */
+    val moonApparentTopoDeclination = Math.toDegrees(atan2(cos(Math.toRadians(parallaxMoonRightAscension)) * (sin(Math.toRadians(moonApparentGeoDeclination)) - suku_y * sin(Math.toRadians(moonEquatorialHorizontalParallax))), cos(Math.toRadians(moonApparentGeoDeclination)) - suku_x * sin(Math.toRadians(moonEquatorialHorizontalParallax)) * cos(Math.toRadians(moonGeoLocalHourAngle))))
+    
+    /**
+    * moon apparent topocentric declination DMS, d`
+    */
+    val moonApparentTopoDeclinationDMS = toDegreeFullRound2(moonApparentTopoDeclination)
+    
+    /**
+    * moon apparent topocentric local hour angle, H`
+    */
+    val moonApparentTopoLocalHourAngle = Math.toDegrees(atan2(cos(Math.toRadians(moonApparentGeoDeclination)) * sin(Math.toRadians(moonGeoLocalHourAngle)), cos(Math.toRadians(moonApparentGeoDeclination)) * cos(Math.toRadians(moonGeoLocalHourAngle)) - suku_x * sin(Math.toRadians(moonEquatorialHorizontalParallax))))
+    
+    /**
+    * moon apparent topocentric local hour angle DMS, H`
+    */
+    val moonApparentTopoLocalHourAngleDMS = toDegreeFullRound2(moonApparentTopoLocalHourAngle)
+    
+    /**
+    * moon topocentric azimuth, A`
+    */
+    val moonTopocentricAzimuth = (Math.toDegrees(atan2(sin(Math.toRadians(moonApparentTopoLocalHourAngle)), cos(Math.toRadians(moonApparentTopoLocalHourAngle)) * sin(Math.toRadians(latitude)) - tan(Math.toRadians(moonApparentTopoDeclination)) * cos(Math.toRadians(latitude)))) + 180).mod(360.0)
+    
+    /**
+    * moon topocentric azimuth DMS, A`
+    */
+    val moonTopocentricAzimuthDMS = toDegreeFullRound2(moonTopocentricAzimuth)
     
     
     

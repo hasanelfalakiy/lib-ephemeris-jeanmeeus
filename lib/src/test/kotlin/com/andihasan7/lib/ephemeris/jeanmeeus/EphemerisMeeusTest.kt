@@ -116,6 +116,18 @@ class EphemerisMeeusTest {
         val moonApparentGeoPhaseAngleDMS = jm.moonApparentGeoPhaseAngleDMS
         val moonApparentGeoDiskIlluminatedFraction = jm.moonApparentGeoDiskIlluminatedFraction
         val moonApparentGeoDiskIlluminatedFractionPercent = jm.moonApparentGeoDiskIlluminatedFractionPercent
+        val moonApparentGeoBrightLimbAngle = jm.moonApparentGeoBrightLimbAngle
+        
+        // moon topo
+        val suku_n_moon = jm.suku_n_moon
+        val moonApparentTopoLongitude = jm.moonApparentTopoLongitude
+        val moonApparentTopoLatitude = jm.moonApparentTopoLatitude
+        val moonApparentTopoSemidiameter = jm.moonApparentTopoSemidiameter
+        val parallaxMoonRightAscension = jm.parallaxMoonRightAscension
+        val moonApparentTopoRightAscension = jm.moonApparentTopoRightAscension
+        val moonApparentTopoDeclination = jm.moonApparentTopoDeclination
+        val moonApparentTopoLocalHourAngle = jm.moonApparentTopoLocalHourAngle
+        val moonTopocentricAzimuth = jm.moonTopocentricAzimuth
         
         // val test = jm.test
     
@@ -214,6 +226,19 @@ class EphemerisMeeusTest {
         println("moonSunAppaGeoElonga  = $moonSunApparentGeoElongation, ${jm.moonSunApparentGeoElongationDMS}")
         println("moonAppaGeoPhaseAngle = $moonApparentGeoPhaseAngle | $moonApparentGeoPhaseAngleDMS")
         println("moonAppaGeoIllumFrac  = $moonApparentGeoDiskIlluminatedFraction | $moonApparentGeoDiskIlluminatedFractionPercent")
+        println("moonAppGeoBrightLimbA = $moonApparentGeoBrightLimbAngle | ${jm.moonApparentGeoBrightLimbAngleDMS}")
+        println("")
+        println("bulan topocentric :")
+        println("")
+        println("suku_n_moon           = $suku_n_moon")
+        println("moonAppaTopoLongitude = $moonApparentTopoLongitude | ${jm.moonApparentTopoLongitudeDMS}")
+        println("moonAppaTopoLatitude  = $moonApparentTopoLatitude | ${jm.moonApparentTopoLatitudeDMS}")
+        println("moonAppaTopoSemidiame = $moonApparentTopoSemidiameter | ${jm.moonApparentTopoSemidiameterDMS}")
+        println("parallaxMoonRightAsce = $parallaxMoonRightAscension | ${jm.parallaxMoonRightAscensionDMS}")
+        println("moonAppaTopoRightAsce = $moonApparentTopoRightAscension | ${jm.moonApparentTopoRightAscensionDMS}")
+        println("moonAppaTopoDeclinati = $moonApparentTopoDeclination | ${jm.moonApparentTopoDeclinationDMS}")
+        println("moonAppaTopoLocHourAn = $moonApparentTopoLocalHourAngle | ${jm.moonApparentTopoLocalHourAngleDMS}")
+        println("moonTopocentriAzimuth = $moonTopocentricAzimuth | ${jm.moonTopocentricAzimuthDMS}")
         
         
         
