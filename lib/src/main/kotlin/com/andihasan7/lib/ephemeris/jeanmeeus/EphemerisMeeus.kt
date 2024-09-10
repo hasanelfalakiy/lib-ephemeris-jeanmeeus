@@ -308,6 +308,8 @@ class EphemerisMeeus(
     * abrasi degrees, abr deg
     */
     val abrasiDegrees = abrasiArcsec / 3600
+    // val abrasiDegrees = -20.4898 / (3600 * sunTrueGeocentricDistanceAU)
+    
     
     /**
     * sun apparent geocentric longitude deg, lambda
@@ -1004,6 +1006,145 @@ class EphemerisMeeus(
     * moon topocentric azimuth DMS, A`
     */
     val moonTopocentricAzimuthDMS = toDegreeFullRound2(moonTopocentricAzimuth)
+    
+    /**
+    * parallax in the moon altitude, P
+    */
+    val parallaxMoonAltitude = Math.toDegrees(asin(suku_rho * sin(Math.toRadians(moonEquatorialHorizontalParallax)) * cos(Math.toRadians(moonGeoAltitude))))
+    
+    /**
+    * parallax in the moon altitude DMS, P
+    */
+    val parallaxMoonAltitudeDMS = toDegreeFullRound2(parallaxMoonAltitude)
+    
+    // center
+    
+    /**
+    * moon airless topocentric altitude center limb, h`c
+    */
+    val moonAirlessTopoAltitudeCenterLimb = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(moonApparentTopoDeclination)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(moonApparentTopoDeclination)) * cos(Math.toRadians(moonApparentTopoLocalHourAngle))))
+    
+    /**
+    * moon airless topocentric altitude center limb DMS, h`c
+    */
+    val moonAirlessTopoAltitudeCenterLimbDMS = toDegreeFullRound2(moonAirlessTopoAltitudeCenterLimb)
+    
+    /**
+    * moon atmospheric refraction for center limb, Rc
+    */
+    val moonAtmosphericRefractionForCenterLimb = (1.02 / tan(Math.toRadians(moonAirlessTopoAltitudeCenterLimb + 10.3 / (moonAirlessTopoAltitudeCenterLimb + 5.11))) * pressure / 1010 * 283.0 / (273.0 + temperature) + 0.0019279204034639303) / 60
+    
+    /**
+    * moon atmospheric refraction for center limb DMS, Rc
+    */
+    val moonAtmosphericRefractionForCenterLimbDMS = toDegreeFullRound2(moonAtmosphericRefractionForCenterLimb)
+    
+    /**
+    * moon apparent topocentric altitude center limb, h`ac
+    */
+    val moonApparentTopoAltitudeCenterLimb = moonAirlessTopoAltitudeCenterLimb + moonAtmosphericRefractionForCenterLimb
+    
+    /**
+    * moon apparent topocentric altitude center limb DMS, h`ac
+    */
+    val moonApparentTopoAltitudeCenterLimbDMS = toDegreeFullRound2(moonApparentTopoAltitudeCenterLimb)
+    
+    /**
+    * moon observed altitude center limb, h`oc
+    */
+    val moonObservedAltitudeCenterLimb = moonApparentTopoAltitudeCenterLimb + dip
+    
+    /**
+    * moon observed altitude center limb DMS, h`oc
+    */
+    val moonObservedAltitudeCenterLimbDMS = toDegreeFullRound2(moonObservedAltitudeCenterLimb)
+    
+    // upper
+    
+    /**
+    * moon airless topocentric altitude upper limb, h`u
+    */
+    val moonAirlessTopoAltitudeUpperLimb = moonAirlessTopoAltitudeCenterLimb + moonApparentTopoSemidiameter
+    
+    /**
+    * moon airless topocentric altitude upper limb DMS, h`u
+    */
+    val moonAirlessTopoAltitudeUpperLimbDMS = toDegreeFullRound2(moonAirlessTopoAltitudeUpperLimb)
+    
+    /**
+    * moon atmospheric refraction for upper limb, Ru
+    */
+    val moonAtmosphericRefractionForUpperLimb = (1.02 / tan(Math.toRadians(moonAirlessTopoAltitudeUpperLimb + 10.3 / (moonAirlessTopoAltitudeUpperLimb + 5.11))) * pressure / 1010 * 283.0 / (273.0 + temperature) + 0.0019279204034639303) / 60
+    
+    /**
+    * moon atmospheric refraction for upper limb DMS, Ru
+    */
+    val moonAtmosphericRefractionForUpperLimbDMS = toDegreeFullRound2(moonAtmosphericRefractionForUpperLimb)
+    
+    /**
+    * moon apparent topocentric altitude upper limb, h`au
+    */
+    val moonApparentTopoAltitudeUpperLimb = moonAirlessTopoAltitudeUpperLimb + moonAtmosphericRefractionForUpperLimb
+    
+    /**
+    * moon apparent topocentric altitude upper limb DMS, h`au
+    */
+    val moonApparentTopoAltitudeUpperLimbDMS = toDegreeFullRound2(moonApparentTopoAltitudeUpperLimb)
+    
+    /**
+    * moon observed altitude upper limb, h`ou
+    */
+    val moonObservedAltitudeUpperLimb = moonApparentTopoAltitudeUpperLimb + dip
+    
+    /**
+    * moon observed altitude upper limb DMS, h`ou
+    */
+    val moonObservedAltitudeUpperLimbDMS = toDegreeFullRound2(moonObservedAltitudeUpperLimb)
+    
+    // lower
+    
+    /**
+    * moon airless topocentric altitude lower limb, h`l
+    */
+    val moonAirlessTopoAltitudeLowerLimb = moonAirlessTopoAltitudeCenterLimb - moonApparentTopoSemidiameter
+    
+    /**
+    * moon airless topocentric altitude lower limb DMS, h`l
+    */
+    val moonAirlessTopoAltitudeLowerLimbDMS = toDegreeFullRound2(moonAirlessTopoAltitudeLowerLimb)
+    
+    /**
+    * moon atmospheric refraction for lower limb, Rl
+    */
+    val moonAtmosphericRefractionForLowerLimb = (1.02 / tan(Math.toRadians(moonAirlessTopoAltitudeLowerLimb + 10.3 / (moonAirlessTopoAltitudeLowerLimb + 5.11))) * pressure / 1010 * 283.0 / (273.0 + temperature) + 0.0019279204034639303) / 60
+    
+    /**
+    * moon atmospheric refraction for lower limb DMS, Rl
+    */
+    val moonAtmosphericRefractionForLowerLimbDMS = toDegreeFullRound2(moonAtmosphericRefractionForLowerLimb)
+    
+    /**
+    * moon apparent topocentric altitude lower limb, h`al
+    */
+    val moonApparentTopoAltitudeLowerLimb = moonAirlessTopoAltitudeLowerLimb + moonAtmosphericRefractionForLowerLimb
+    
+    /**
+    * moon apparent topocentric altitude lower limb DMS, h`al
+    */
+    val moonApparentTopoAltitudeLowerLimbDMS = toDegreeFullRound2(moonApparentTopoAltitudeLowerLimb)
+    
+    /**
+    * moon observed altitude lower limb, h`ol
+    */
+    val moonObservedAltitudeLowerLimb = moonApparentTopoAltitudeLowerLimb + dip
+    
+    /**
+    * moon observed altitude lower limb DMS, h`ol
+    */
+    val moonObservedAltitudeLowerLimbDMS = toDegreeFullRound2(moonObservedAltitudeLowerLimb)
+    
+    
+    
     
     
     

@@ -128,12 +128,27 @@ class EphemerisMeeusTest {
         val moonApparentTopoDeclination = jm.moonApparentTopoDeclination
         val moonApparentTopoLocalHourAngle = jm.moonApparentTopoLocalHourAngle
         val moonTopocentricAzimuth = jm.moonTopocentricAzimuth
+        val parallaxMoonAltitude = jm.parallaxMoonAltitude
+        // center limb
+        val moonAirlessTopoAltitudeCenterLimb = jm.moonAirlessTopoAltitudeCenterLimb
+        val moonAtmosphericRefractionForCenterLimb = jm.moonAtmosphericRefractionForCenterLimb
+        val moonApparentTopoAltitudeCenterLimb = jm.moonApparentTopoAltitudeCenterLimb
+        val moonObservedAltitudeCenterLimb = jm.moonObservedAltitudeCenterLimb
+        // upper limb
+        val moonAirlessTopoAltitudeUpperLimb = jm.moonAirlessTopoAltitudeUpperLimb
+        val moonAtmosphericRefractionForUpperLimb = jm.moonAtmosphericRefractionForUpperLimb
+        val moonApparentTopoAltitudeUpperLimb = jm.moonApparentTopoAltitudeUpperLimb
+        val moonObservedAltitudeUpperLimb = jm.moonObservedAltitudeUpperLimb
+        // lower limb
+        val moonAirlessTopoAltitudeLowerLimb = jm.moonAirlessTopoAltitudeLowerLimb
+        val moonAtmosphericRefractionForLowerLimb = jm.moonAtmosphericRefractionForLowerLimb
+        val moonApparentTopoAltitudeLowerLimb = jm.moonApparentTopoAltitudeLowerLimb
+        val moonObservedAltitudeLowerLimb = jm.moonObservedAltitudeLowerLimb
+        
+        
         
         // val test = jm.test
     
-        println("")
-        // println("test : $test")
-        println("jar bm po: ${jm.jari2BumiPolar}")
         println("")
         println("JD                    = $jd")
         println("DeltaT                = $deltaT")
@@ -239,8 +254,28 @@ class EphemerisMeeusTest {
         println("moonAppaTopoDeclinati = $moonApparentTopoDeclination | ${jm.moonApparentTopoDeclinationDMS}")
         println("moonAppaTopoLocHourAn = $moonApparentTopoLocalHourAngle | ${jm.moonApparentTopoLocalHourAngleDMS}")
         println("moonTopocentriAzimuth = $moonTopocentricAzimuth | ${jm.moonTopocentricAzimuthDMS}")
+        println("parallaxMoonAltitude  = $parallaxMoonAltitude | ${jm.parallaxMoonAltitudeDMS}")
+        println("center limb:")
+        println("moonAirTopoAltituCent = $moonAirlessTopoAltitudeCenterLimb | ${jm.moonAirlessTopoAltitudeCenterLimbDMS}")
+        println("moonAtmosRefractiCent = $moonAtmosphericRefractionForCenterLimb | ${jm.moonAtmosphericRefractionForCenterLimbDMS}")
+        println("moonAppaTopoAltitCent = $moonApparentTopoAltitudeCenterLimb | ${jm.moonApparentTopoAltitudeCenterLimbDMS}")
+        println("moonObserAltitudCente = $moonObservedAltitudeCenterLimb | ${jm.moonObservedAltitudeCenterLimbDMS}")
+        println("upper limb:")
+        println("moonAirTopoAltituUppe = $moonAirlessTopoAltitudeUpperLimb | ${jm.moonAirlessTopoAltitudeUpperLimbDMS}")
+        println("moonAtmosRefractiUppe = $moonAtmosphericRefractionForUpperLimb | ${jm.moonAtmosphericRefractionForUpperLimbDMS}")
+        println("moonAppaTopoAltitUppe = $moonApparentTopoAltitudeUpperLimb | ${jm.moonApparentTopoAltitudeUpperLimbDMS}")
+        println("moonObserAltitudUpper = $moonObservedAltitudeUpperLimb | ${jm.moonObservedAltitudeUpperLimbDMS}")
+        println("lower limb:")
+        println("moonAirTopoAltituLowe = $moonAirlessTopoAltitudeLowerLimb | ${jm.moonAirlessTopoAltitudeLowerLimbDMS}")
+        println("moonAtmosRefractiLowe = $moonAtmosphericRefractionForLowerLimb | ${jm.moonAtmosphericRefractionForLowerLimbDMS}")
+        println("moonAppaTopoAltitLowe = $moonApparentTopoAltitudeLowerLimb | ${jm.moonApparentTopoAltitudeLowerLimbDMS}")
+        println("moonObserAltitudLower = $moonObservedAltitudeLowerLimb | ${jm.moonObservedAltitudeLowerLimbDMS}")
         
         
         
+        
+        
+        
+        // println("test : $test")
     }
 }
