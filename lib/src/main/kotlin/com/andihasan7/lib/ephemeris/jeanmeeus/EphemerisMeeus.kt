@@ -1143,12 +1143,47 @@ class EphemerisMeeus(
     */
     val moonObservedAltitudeLowerLimbDMS = toDegreeFullRound2(moonObservedAltitudeLowerLimb)
     
+    /**
+    * moon sun apparent topocentric elongation, d`
+    */
+    val moonSunApparentTopoElongation = Math.toDegrees(acos(sin(Math.toRadians(sunTopocentricDeclination)) * sin(Math.toRadians(moonApparentTopoDeclination)) + cos(Math.toRadians(sunTopocentricDeclination)) * cos(Math.toRadians(moonApparentTopoDeclination)) * cos(Math.toRadians(sunTopocentricRightAscension - moonApparentTopoRightAscension))))
     
+    /**
+    * moon sun apparent topocentric elongation DMS, d`
+    */
+    val moonSunApparentTopoElongationDMS = toDegreeFullRound2(moonSunApparentTopoElongation)
     
+    /**
+    * moon apparent topocentric phase angle, i
+    */
+    val moonApparentTopoPhaseAngle = Math.toDegrees(atan2(sunTrueGeocentricDistanceKM * sin(Math.toRadians(moonSunApparentTopoElongation)), moonApparentGeocentricDistanceKM - sunTrueGeocentricDistanceKM * cos(Math.toRadians(moonSunApparentTopoElongation))))
     
+    /**
+    * moon apparent topocentric phase angle DMS, i
+    */
+    val moonApparentTopoPhaseAngleDMS = toDegreeFullRound2(moonApparentTopoPhaseAngle)
     
+    /**
+    * moon apparent topocentric disk illuminated fraction, k
+    */
+    val moonApparentTopoDiskIlluminatedFraction = (1 + cos(Math.toRadians(moonApparentTopoPhaseAngle))) / 2
     
+    /**
+    * moon apparent topocentric disk illuminated fraction % percent, k%
+    */
+    val moonApparentTopoDiskIlluminatedFractionPercent = 100 * moonApparentTopoDiskIlluminatedFraction
     
+    /*
+    /*
+    * moon apparent topocentric bright limb angle, X
+    */
+    val moonApparentTopoBrightLimbAngle = (Math.toDegrees(atan2(cos(Math.toRadians(sunTopocentricDeclination)) * sin(Math.toRadians(sunTopocentricRightAscension - moonApparentTopoRightAscension)), sin(Math.toRadians(sunTopocentricDeclination)) * cos(Math.toRadians(moonApparentTopoDeclination)) - cos(Math.toRadians(sunTopocentricDeclination)) * sin(Math.toRadians(moonApparentTopoDeclination)) * cos(Math.toRadians(sunTopocentricRightAscension - moonApparentTopoRightAscension))))).mod(360.0)
+    
+    /*
+    * moon apparent topocentric bright limb angle DMS, X
+    */
+    val moonApparentTopoBrightLimbAngleDMS = toDegreeFullRound2(moonApparentTopoBrightLimbAngle)
+    */
     // val test = Nutasi.deltaPsiDanEpsilon(nilaiT)[1]
     
     

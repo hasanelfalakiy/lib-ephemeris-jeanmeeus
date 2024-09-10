@@ -144,7 +144,10 @@ class EphemerisMeeusTest {
         val moonAtmosphericRefractionForLowerLimb = jm.moonAtmosphericRefractionForLowerLimb
         val moonApparentTopoAltitudeLowerLimb = jm.moonApparentTopoAltitudeLowerLimb
         val moonObservedAltitudeLowerLimb = jm.moonObservedAltitudeLowerLimb
-        
+        val moonSunApparentTopoElongation = jm.moonSunApparentTopoElongation
+        val moonApparentTopoPhaseAngle = jm.moonApparentTopoPhaseAngle
+        val moonApparentTopoDiskIlluminatedFraction = jm.moonApparentTopoDiskIlluminatedFraction
+        val moonApparentTopoBrightLimbAngle = jm.moonApparentTopoBrightLimbAngle
         
         
         // val test = jm.test
@@ -270,6 +273,11 @@ class EphemerisMeeusTest {
         println("moonAtmosRefractiLowe = $moonAtmosphericRefractionForLowerLimb | ${jm.moonAtmosphericRefractionForLowerLimbDMS}")
         println("moonAppaTopoAltitLowe = $moonApparentTopoAltitudeLowerLimb | ${jm.moonApparentTopoAltitudeLowerLimbDMS}")
         println("moonObserAltitudLower = $moonObservedAltitudeLowerLimb | ${jm.moonObservedAltitudeLowerLimbDMS}")
+        println("")
+        println("moonSunAppaTopoElonga = $moonSunApparentTopoElongation | ${jm.moonSunApparentTopoElongationDMS}")
+        println("moonAppareTopoPhaseAn = $moonApparentTopoPhaseAngle | ${jm.moonApparentTopoPhaseAngleDMS}")
+        println("moonAppaTopoIllumFrac = $moonApparentTopoDiskIlluminatedFraction | ${jm.moonApparentTopoDiskIlluminatedFractionPercent}")
+        println("moonAppTopoBrigLimbAn = $moonApparentTopoBrightLimbAngle | ${jm.moonApparentTopoBrightLimbAngleDMS}")
         
         
         
