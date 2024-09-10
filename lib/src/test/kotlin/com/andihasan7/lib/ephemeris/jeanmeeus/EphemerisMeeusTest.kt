@@ -147,7 +147,7 @@ class EphemerisMeeusTest {
         val moonSunApparentTopoElongation = jm.moonSunApparentTopoElongation
         val moonApparentTopoPhaseAngle = jm.moonApparentTopoPhaseAngle
         val moonApparentTopoDiskIlluminatedFraction = jm.moonApparentTopoDiskIlluminatedFraction
-        val moonApparentTopoBrightLimbAngle = jm.moonApparentTopoBrightLimbAngle
+        // val moonApparentTopoBrightLimbAngle = jm.moonApparentTopoBrightLimbAngle
         
         
         // val test = jm.test
@@ -243,7 +243,7 @@ class EphemerisMeeusTest {
         println("moonGeoAltitude       = $moonGeoAltitude, ${jm.moonGeoAltitudeDMS}")
         println("moonSunAppaGeoElonga  = $moonSunApparentGeoElongation, ${jm.moonSunApparentGeoElongationDMS}")
         println("moonAppaGeoPhaseAngle = $moonApparentGeoPhaseAngle | $moonApparentGeoPhaseAngleDMS")
-        println("moonAppaGeoIllumFrac  = $moonApparentGeoDiskIlluminatedFraction | $moonApparentGeoDiskIlluminatedFractionPercent")
+        println("moonAppaGeoIllumFrac  = $moonApparentGeoDiskIlluminatedFraction | $moonApparentGeoDiskIlluminatedFractionPercent %")
         println("moonAppGeoBrightLimbA = $moonApparentGeoBrightLimbAngle | ${jm.moonApparentGeoBrightLimbAngleDMS}")
         println("")
         println("bulan topocentric :")
@@ -276,14 +276,9 @@ class EphemerisMeeusTest {
         println("")
         println("moonSunAppaTopoElonga = $moonSunApparentTopoElongation | ${jm.moonSunApparentTopoElongationDMS}")
         println("moonAppareTopoPhaseAn = $moonApparentTopoPhaseAngle | ${jm.moonApparentTopoPhaseAngleDMS}")
-        println("moonAppaTopoIllumFrac = $moonApparentTopoDiskIlluminatedFraction | ${jm.moonApparentTopoDiskIlluminatedFractionPercent}")
-        println("moonAppTopoBrigLimbAn = $moonApparentTopoBrightLimbAngle | ${jm.moonApparentTopoBrightLimbAngleDMS}")
+        println("moonAppaTopoIllumFrac = $moonApparentTopoDiskIlluminatedFraction | ${jm.moonApparentTopoDiskIlluminatedFractionPercent} %")
         
-        
-        
-        
-        
-        
+        // println("moonAppTopoBrigLimbAn = $moonApparentTopoBrightLimbAngle | ${jm.moonApparentTopoBrightLimbAngleDMS}")
         // println("test : $test")
     }
 }
