@@ -4,14 +4,29 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeus.kt",
       "selection": {
         "end": {
-          "column": 0,
-          "index": 44841,
-          "line": 1190
+          "column": 46,
+          "index": 48,
+          "line": 2
         },
         "start": {
           "column": 0,
-          "index": 44841,
-          "line": 1190
+          "index": 2,
+          "line": 2
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/arahqiblat.kt/ArahQiblat.kt",
+      "selection": {
+        "end": {
+          "column": 57,
+          "index": 58,
+          "line": 1
+        },
+        "start": {
+          "column": 0,
+          "index": 1,
+          "line": 1
         }
       }
     },
@@ -19,17 +34,47 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/test/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeusTest.kt",
       "selection": {
         "end": {
-          "column": 138,
-          "index": 19864,
-          "line": 278
+          "column": 60,
+          "index": 132,
+          "line": 3
         },
         "start": {
-          "column": 138,
-          "index": 19864,
-          "line": 278
+          "column": 60,
+          "index": 132,
+          "line": 3
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/test/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/ArahQiblatTest.kt",
+      "selection": {
+        "end": {
+          "column": 12,
+          "index": 1418,
+          "line": 40
+        },
+        "start": {
+          "column": 12,
+          "index": 1418,
+          "line": 40
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/waktusholat/WaktuSholat.kt",
+      "selection": {
+        "end": {
+          "column": 18,
+          "index": 334,
+          "line": 19
+        },
+        "start": {
+          "column": 18,
+          "index": 334,
+          "line": 19
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeus.kt"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/test/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/ArahQiblatTest.kt"
 }
