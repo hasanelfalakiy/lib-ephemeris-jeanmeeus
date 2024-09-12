@@ -32,8 +32,11 @@ class ArahQiblatTest {
         println("")
         println("rashdu 1 : ${toTimeFullRound2(rashdu[0])}")
         println("rashdu 2 : ${toTimeFullRound2(rashdu[1])}")
+        println("")
+        println("dek : ${toDegreeFullRound2(rashdu[2])}")
+        println("eq : ${toDegreeFullRound2(rashdu[3])}")
     }
-    
+    /*
     @Test
     fun waktuSholatTest() {
         
@@ -41,4 +44,5 @@ class ArahQiblatTest {
             
         )
     }
+    */
 }

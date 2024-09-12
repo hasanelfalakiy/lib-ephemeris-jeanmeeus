@@ -14,10 +14,10 @@ class WaktuSholat(
     ihtiyatDzuhur: Int = 0,
     ihtiyatLain: Int = 0
 ) {
-    
+    /*
     fun dzuhur(): Double {
         
-        val lmt = 
+        val lmt = 0
     }
-    
+    */
 }
