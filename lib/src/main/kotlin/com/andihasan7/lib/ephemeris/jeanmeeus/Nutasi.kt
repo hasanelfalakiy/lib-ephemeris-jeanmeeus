@@ -1,3 +1,26 @@
+/**
+ * This file is part of lib-ephemeris-jeanmeeus.
+ *
+ * lib-ephemeris-jeanmeeus is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * lib-ephemeris-jeanmeeus is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with lib-ephemeris-jeanmeeus.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ *
+ * @programmed by: Andi Hasan A
+ * @github: https://github.com/hasanelfalakiy
+ * 
+ *
+ */
+
 package com.andihasan7.lib.ephemeris.jeanmeeus
 
 import kotlin.math.cos
@@ -9,6 +32,13 @@ import kotlin.mod
 * Nutasi, total koreksi 101
 */
 object Nutasi {
+    
+    /**
+    * deltaPsiDanEpsilon(t: Double): DoubleArray
+    * 
+    * @param t, nilaiT
+    * @return doubleArrayOf(0.0, deltaPsi, deltaPsi_d, u, epsilonZero, deltaEpsilon, deltaEpsilon_d, epsilon)
+    */
     fun deltaPsiDanEpsilon(t: Double): DoubleArray {
         val d = Math.toRadians((297.85036 + 445267.111480 * t - 0.0019142 * t.pow(2) + t.pow(3) / 189474).mod(360.0))
         val m = Math.toRadians((357.52772 + 35999.05034 * t - 0.0001603 * t.pow(2) - t.pow(3) / 300000).mod(360.0))

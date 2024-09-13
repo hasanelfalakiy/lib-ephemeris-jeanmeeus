@@ -1,3 +1,26 @@
+/**
+ * This file is part of lib-ephemeris-jeanmeeus.
+ *
+ * lib-ephemeris-jeanmeeus is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * lib-ephemeris-jeanmeeus is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with lib-ephemeris-jeanmeeus.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ *
+ * @programmed by: Andi Hasan A
+ * @github: https://github.com/hasanelfalakiy
+ * 
+ *
+ */
+
 package com.andihasan7.lib.ephemeris.jeanmeeus
 
 import kotlin.test.Test
@@ -13,36 +36,13 @@ class ArahQiblatTest {
         
         val kiblat = ArahQiblat()
         
-        val utsb = kiblat.arahQiblat(-7.433333333334, 111.43333333334)[2]
-        
-        val rashdu = kiblat.rashduQiblat(
-            date = 11,
-            month = 9,
-            year = 2024,
-            latitude = -7.433333333334,
-            longitude = 111.4333333333334,
-            elevation = 150.0,
-            timeZone = 7.0,
-            azimuthUTSB = utsb
-        )
-        
         println("Azimuth UB : ${toDegreeFullRound2(kiblat.arahQiblat(-7.43333333334, 111.4333333333334)[0])}")
         println("Azimuth BU : ${toDegreeFullRound2(kiblat.arahQiblat(-7.43333333334, 111.4333333333334)[1])}")
         println("Azimuth UTSB : ${toDegreeFullRound2(kiblat.arahQiblat(-7.43333333334, 111.4333333333334)[2])}")
         println("")
-        println("rashdu 1 : ${toTimeFullRound2(rashdu[0])}")
-        println("rashdu 2 : ${toTimeFullRound2(rashdu[1])}")
-        println("")
-        println("dek : ${toDegreeFullRound2(rashdu[2])}")
-        println("eq : ${toDegreeFullRound2(rashdu[3])}")
-    }
-    /*
-    @Test
-    fun waktuSholatTest() {
         
-        val ws = WaktuSholat(
-            
-        )
     }
-    */
+    
+    
+    
 }

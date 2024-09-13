@@ -1,11 +1,53 @@
+/**
+ * This file is part of lib-ephemeris-jeanmeeus.
+ *
+ * lib-ephemeris-jeanmeeus is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * lib-ephemeris-jeanmeeus is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with lib-ephemeris-jeanmeeus.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ *
+ * @programmed by: Andi Hasan A
+ * @github: https://github.com/hasanelfalakiy
+ * 
+ *
+ */
+
 package com.andihasan7.lib.ephemeris.jeanmeeus
 
 import kotlin.math.pow
 
-
+/**
+* TabelBulan
+*/
 object TabelBulan {
+    
+    /**
+    * periodikBujur(t: Double, l1: Double): DoubleArray
+    * t = nilaiT
+    * l1 = bujur rata-rata bulan
+    *
+    * @param {nilaiT, l1}
+    * @return doubleArrayOf(0.0, d, m, ma, f, e, bujur_bulan, lintang_bulan, jarakBulan)
+    *
+    * 1 = d = elongasi rata2 bulan
+    * 2 = m = anomali rata2 Matahari
+    * 3 = ma = anomali rata2 bulan
+    * 4 = f = argumen bujur bulan
+    * 5 = e = eksentrisitas orbit
+    * 6 = bujur_bulan = koreksi bujur bulan
+    * 7 = lintang_bulan = true/apparent lintang bulan
+    * 8 = jarakBulan = koreksi jarak bumi-bulan
+    */    
     fun periodikBujur(t: Double, l1: Double): DoubleArray {
-        
         
         val l1_r = Math.toRadians(l1)
         // elongsi rata2 bulan
@@ -418,7 +460,21 @@ object TabelBulan {
          */
         return doubleArrayOf(0.0, d, m, ma, f, e, bujur_bulan, lintang_bulan, jarakBulan)
     }
-
+    
+    /**
+    * periodikLintang(
+    *     e: Double,
+    *     d_r: Double,
+    *     m_r: Double,
+    *     ma_r: Double,
+    *     f_r: Double,
+    *     l1_r: Double,
+    *     aA1_r: Double,
+    *     aA3_r: Double
+    *     ): DoubleArray
+    *
+    * @return doubleArrayOf(0.0, lintang_bulan)
+    */
     fun periodikLintang(
         e: Double,
         d_r: Double,
@@ -799,7 +855,18 @@ object TabelBulan {
                 127 * Math.sin(l1_r - ma_r) - 115 * Math.sin(l1_r + ma_r)) / 1000000
         return doubleArrayOf(0.0, lintang_bulan)
     }
-
+    
+    /**
+    * jarakBumiBulan(
+    *     e: Double,
+    *     d_r: Double,
+    *     m_r: Double,
+    *     ma_r: Double,
+    *     f_r: Double
+    *     ): DoubleArray
+    * 
+    * @return doubleArrayOf(0.0, jarakBulan)
+    */
     fun jarakBumiBulan(
         e: Double,
         d_r: Double,
