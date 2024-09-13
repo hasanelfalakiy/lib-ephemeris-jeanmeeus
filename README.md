@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./img/banner_meeus.jpg" alt="app_banner"/>
+  <img src="./img/banner_meeus.png" alt="app_banner"/>
 </p>
 
 <h2 align="center"><b>lib-ephemeris-jeanmeeus</b></h2>
@@ -29,8 +29,8 @@ Algoritma Jean Meeus merupakan reduksi dari model VSOP87 & ELP2000/82 full
 ## Fitur
 
 - [x] Data Posisi Matahari & Bulan
-- [ ] Arah Qiblat & Rashdul Qiblat
-- [ ] Waktu Sholat
+- [x] Arah Qiblat & Rashdul Qiblat
+- [x] Waktu Sholat
 - [ ] Hisab Ijtima & Awal Bulan Hijriyah
 - [ ] Fase-fase Bulan
 
