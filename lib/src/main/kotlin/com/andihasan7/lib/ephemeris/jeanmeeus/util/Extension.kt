@@ -40,7 +40,7 @@ fun Double.round(decimals: Int): Double {
 /**
  * fungsi untuk merubah DMS/HMS ke Double
  * jika true maka positif, jika false maka negatif
- * @param[degree, minute, second]
+ * @param[degree, minute, second, check: Boolean]
  * @return decimal
  */
 fun toDecimalCheck(degree: Int, minute: Int, second: Number, check: Boolean): Double {

@@ -31,21 +31,23 @@ import kotlin.math.pow
 object TabelBulan {
     
     /**
-    * periodikBujur(t: Double, l1: Double): DoubleArray
+    * periodikBujur
     * t = nilaiT
     * l1 = bujur rata-rata bulan
     *
     * @param {nilaiT, l1}
     * @return doubleArrayOf(0.0, d, m, ma, f, e, bujur_bulan, lintang_bulan, jarakBulan)
     *
-    * 1 = d = elongasi rata2 bulan
-    * 2 = m = anomali rata2 Matahari
-    * 3 = ma = anomali rata2 bulan
-    * 4 = f = argumen bujur bulan
-    * 5 = e = eksentrisitas orbit
-    * 6 = bujur_bulan = koreksi bujur bulan
-    * 7 = lintang_bulan = true/apparent lintang bulan
-    * 8 = jarakBulan = koreksi jarak bumi-bulan
+    * ```
+    *     1 = d = elongasi rata2 bulan
+    *     2 = m = anomali rata2 Matahari
+    *     3 = ma = anomali rata2 bulan
+    *     4 = f = argumen bujur bulan
+    *     5 = e = eksentrisitas orbit
+    *     6 = bujur_bulan = koreksi bujur bulan
+    *     7 = lintang_bulan = true/apparent lintang bulan
+    *     8 = jarakBulan = koreksi jarak bumi-bulan
+    * ```
     */    
     fun periodikBujur(t: Double, l1: Double): DoubleArray {
         
@@ -462,7 +464,10 @@ object TabelBulan {
     }
     
     /**
-    * periodikLintang(
+    * periodikLintang
+    * agar lebih mudah, akses dari fungsi periodikBujur
+    * 
+    * ```
     *     e: Double,
     *     d_r: Double,
     *     m_r: Double,
@@ -471,7 +476,7 @@ object TabelBulan {
     *     l1_r: Double,
     *     aA1_r: Double,
     *     aA3_r: Double
-    *     ): DoubleArray
+    * ```
     *
     * @return doubleArrayOf(0.0, lintang_bulan)
     */
@@ -857,13 +862,16 @@ object TabelBulan {
     }
     
     /**
-    * jarakBumiBulan(
+    * jarakBumiBulan
+    * agar lebih mudah, akses dari fungsi periodikBujur
+    * 
+    * ```
     *     e: Double,
     *     d_r: Double,
     *     m_r: Double,
     *     ma_r: Double,
     *     f_r: Double
-    *     ): DoubleArray
+    * ```
     * 
     * @return doubleArrayOf(0.0, jarakBulan)
     */

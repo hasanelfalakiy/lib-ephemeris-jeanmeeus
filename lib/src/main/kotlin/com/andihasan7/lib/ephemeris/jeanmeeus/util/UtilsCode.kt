@@ -25,9 +25,18 @@ package com.andihasan7.lib.ephemeris.jeanmeeus.util
 
 import kotlin.math.floor
 
+/**
+* rentang derajat 0 - 360, sama dengan mod
+* 
+* @param data: Double
+*/
 fun toRange360(data: Double) = data - 360 * floor(data / 360)
 
-
+/**
+* konversi masehi ke julian day
+* @param {date: Int, month: Int, year: Int, hourDouble: Double = 0.0, timeZone: Double = 0.0}
+* @return jd
+*/
 fun masehiToJD(
     date: Int,
     month: Int,

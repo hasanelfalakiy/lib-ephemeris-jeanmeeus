@@ -26,9 +26,10 @@ package com.andihasan7.lib.ephemeris.jeanmeeus
 import kotlin.math.pow
 
 /**
-* deltaT(date: Int, month: Int, year: Int): Double
+* deltaT
+* input data masehi
 * 
-* @param {date, month, year}, masehi
+* @param {date, month, year}
 * @return deltaT
 */
 fun deltaT(date: Int, month: Int, year: Int): Double {

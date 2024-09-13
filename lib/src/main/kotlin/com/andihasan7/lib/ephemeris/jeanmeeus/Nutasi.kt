@@ -34,10 +34,10 @@ import kotlin.mod
 object Nutasi {
     
     /**
-    * deltaPsiDanEpsilon(t: Double): DoubleArray
+    * deltaPsiDanEpsilon
     * 
-    * @param t, nilaiT
-    * @return doubleArrayOf(0.0, deltaPsi, deltaPsi_d, u, epsilonZero, deltaEpsilon, deltaEpsilon_d, epsilon)
+    * @param t=nilaiT
+    * @return doubleArrayOf(0.0, 1 = deltaPsi, 2 = deltaPsi_d, 3 = u, 4 = epsilonZero, 5 = deltaEpsilon, 6 = deltaEpsilon_d, 7 = epsilon)
     */
     fun deltaPsiDanEpsilon(t: Double): DoubleArray {
         val d = Math.toRadians((297.85036 + 445267.111480 * t - 0.0019142 * t.pow(2) + t.pow(3) / 189474).mod(360.0))

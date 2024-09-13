@@ -41,22 +41,21 @@ import com.andihasan7.lib.ephemeris.jeanmeeus.util.toRange360
 
 /**
 * 
+* EphemerisMeeus
 * data ephemeris matahari bulan
 *
 * ```
-*    class EphemerisMeeus(
-*        date: Int = 1, // tanggal masehi
-*        month: Int = 1, // bulan masehi
-*        year: Int = 2000, // tahun masehi
-*        latitude: Double = 0.0, // lintang tempat
-*        longitude: Double = 0.0, // bujur tempat
-*        elevation: Double = 0.0, // tinggi tempat
-*        timeZone: Double = 0.0, // zona waktu
-*        hourDouble: Double = 0.0, // jam double/desimal
-*        temperature: Double = 10, // suhu lokal rata-rata tahunan (dalam °C)
-*        pressure: Double = 1010, // tekanan udara lokal rata-rata tahunan (dalam millibars)
-*        checkDeltaT: Boolean = true // pilihan pakai deltaT atau tidak, true = deltaT, false = abaikan deltaT
-*    )
+*    date: Int = 1, // tanggal masehi
+*    month: Int = 1, // bulan masehi
+*    year: Int = 2000, // tahun masehi
+*    latitude: Double = 0.0, // lintang tempat
+*    longitude: Double = 0.0, // bujur tempat
+*    elevation: Double = 0.0, // tinggi tempat
+*    timeZone: Double = 0.0, // zona waktu
+*    hourDouble: Double = 0.0, // jam double/desimal
+*    temperature: Double = 10, // suhu lokal rata-rata tahunan (dalam °C)
+*    pressure: Double = 1010, // tekanan udara lokal rata-rata tahunan (dalam millibars)
+*    checkDeltaT: Boolean = true // pilihan pakai deltaT atau tidak, true = deltaT, false = abaikan deltaT
 * ```
 */
 class EphemerisMeeus(

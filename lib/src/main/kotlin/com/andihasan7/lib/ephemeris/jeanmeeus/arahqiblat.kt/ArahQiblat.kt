@@ -34,9 +34,9 @@ import kotlin.math.sin
 class ArahQiblat {
     
     /**
-    * arahQiblat(latitude: Double, longitude: Double): DoubleArray
-    *
-    * @return doubleArrayOf(azimuthUB, azimuthBU, azimuthUTSB)
+    * arahQiblat
+    * @param [latitude: Double, longitude: Double]
+    * @return [0 = azimuthUB, 1 = azimuthBU, 2 = azimuthUTSB]
     */
     fun arahQiblat(latitude: Double, longitude: Double): DoubleArray {
         

@@ -38,18 +38,18 @@ import com.andihasan7.lib.ephemeris.jeanmeeus.util.toTimeFullRound2
 
 /**
 *
+* WaktuSholat
+*
 * ```
-*    class WaktuSholat(
-*        date: Int = 1, // tanggal masehi
-*        month: Int = 1, // bulan masehi
-*        year: Int = 2000, // tahun masehi
-*        latitude: Double = 0.0, // lintang tempat
-*        longitude: Double = 0.0, // bujur tempat
-*        elevation: Double = 0.0, // tinggi tempat
-*        timeZone: Double = 0.0, // zona waktu
-*        ihtiyatDzuhur: Int = 0, // ihtiyat dzuhur
-*        ihtiyatLain: Int = 0 // ihtiyat selain dzuhur ditambah kecuali terbit dikurangi
-*    )
+*    date: Int = 1, // tanggal masehi
+*    month: Int = 1, // bulan masehi
+*    year: Int = 2000, // tahun masehi
+*    latitude: Double = 0.0, // lintang tempat
+*    longitude: Double = 0.0, // bujur tempat
+*    elevation: Double = 0.0, // tinggi tempat
+*    timeZone: Double = 0.0, // zona waktu
+*    ihtiyatDzuhur: Int = 0, // ihtiyat dzuhur
+*    ihtiyatLain: Int = 0 // ihtiyat selain dzuhur ditambah kecuali terbit dikurangi
 * ```
 */
 class WaktuSholat(
