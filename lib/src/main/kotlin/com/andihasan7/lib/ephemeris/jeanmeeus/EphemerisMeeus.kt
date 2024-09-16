@@ -38,6 +38,9 @@ import com.andihasan7.lib.ephemeris.jeanmeeus.util.masehiToJD
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toDegreeFullRound2
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toTimeFullRound2
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toRange360
+import com.andihasan7.lib.ephemeris.jeanmeeus.util.toDegreeSS2
+import com.andihasan7.lib.ephemeris.jeanmeeus.util.toDegreeMMSS2
+import com.andihasan7.lib.ephemeris.jeanmeeus.util.toCounterMMSS2
 
 /**
 * 
