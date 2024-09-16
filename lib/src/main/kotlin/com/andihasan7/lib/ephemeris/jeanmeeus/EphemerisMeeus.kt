@@ -352,6 +352,11 @@ class EphemerisMeeus(
     val sunApparentGeoLatitudeDMS = toDegreeFullRound2(sunApparentGeoLatitude)
     
     /**
+    * sun apparent geocentric latitude sec SS,ss , beta
+    */
+    val sunApparentGeoLatitudeSecSS2 = toDegreeSS2(sunApparentGeoLatitude * 3600)
+    
+    /**
     * sun apparent geocentric semidiameter, s
     */
     val sunApparentGeocentricSemidiameter = 0.266563888889 / sunTrueGeocentricDistanceAU
@@ -360,6 +365,11 @@ class EphemerisMeeus(
     * sun apparent geocentric semidiameter DMS, s
     */
     val sunApparentGeocentricSemidiameterDMS = toDegreeFullRound2(sunApparentGeocentricSemidiameter)
+    
+    /**
+    * sun apparent geocentric semidiameter MM' SS,ss'', s
+    */
+    val sunApparentGeocentricSemidiameterMMSS2 = toDegreeMMSS2(sunApparentGeocentricSemidiameter)
     
     /**
     * sun apparent geocentric right ascension, a
@@ -718,6 +728,11 @@ class EphemerisMeeus(
     */
     val equationOfTimeHourHMS = toTimeFullRound2(equationOfTimeHour)
     
+    /**
+    * equation of time satuan jam format MM m SS,ss s , e
+    */
+    val equationOfTimeHourMMSS2 = toCounterMMSS2(equationOfTimeHour)
+    
     
     // data bulan
     
@@ -824,6 +839,11 @@ class EphemerisMeeus(
     * moon apparent geocentric semidiameter DMS, s
     */
     val moonApparentGeocentricSemidiameterDMS = toDegreeFullRound2(moonApparentGeocentricSemidiameter)
+    
+    /**
+    * moon apparent geocentric semidiameter MM' SS,ss'' , s
+    */
+    val moonApparentGeocentricSemidiameterMMSS2 = toDegreeMMSS2(moonApparentGeocentricSemidiameter)
     
     /**
     * moon apparent geocentric right ascension, a
