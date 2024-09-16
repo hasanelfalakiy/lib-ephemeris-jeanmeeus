@@ -1,0 +1,35 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/util/Extension.kt",
+      "selection": {
+        "end": {
+          "column": 17,
+          "index": 7955,
+          "line": 268
+        },
+        "start": {
+          "column": 4,
+          "index": 7942,
+          "line": 268
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeus.kt",
+      "selection": {
+        "end": {
+          "column": 36,
+          "index": 10727,
+          "line": 369
+        },
+        "start": {
+          "column": 36,
+          "index": 10727,
+          "line": 369
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisMeeus.kt"
+}
