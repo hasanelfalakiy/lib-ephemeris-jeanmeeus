@@ -72,7 +72,7 @@ fun toDoubleDegree(decimal: Double): String {
  * @return hasil
  */
 fun toDegreeSS2(decimal: Double): String {
-        val hasil = decimal.round(1)
+        val hasil = decimal.round(2)
 
     return "$hasil\u2033"
 }
