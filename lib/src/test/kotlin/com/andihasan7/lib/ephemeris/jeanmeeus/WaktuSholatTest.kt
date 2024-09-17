@@ -77,6 +77,10 @@ class WaktuSholatTest {
         println("rashdu 1     : ${ws.rashdu1HMS}")
         println("rashdu 2     : ${ws.rashdu2HMS}")
         println("")
+        println("selisih jam  : ${ws.selisihJamHMS}")
+        println("jarak keduany: ${ws.jarakKeduanya}")
+        println("selisih deklk: ${ws.selisihDecLintangKabahDMS}")
+        println("selisih deklt: ${ws.selisihDecLintangTempatDMS}")
     }
     
 }

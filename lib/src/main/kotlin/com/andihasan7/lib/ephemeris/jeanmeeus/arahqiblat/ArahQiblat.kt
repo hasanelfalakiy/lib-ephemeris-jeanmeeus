@@ -33,15 +33,15 @@ import kotlin.math.sin
 */
 class ArahQiblat {
     
+	val LATITUDEKABAH = 21.4225
+    val LONGITUDEKABAH = 39.826111111111
+	
     /**
     * arahQiblat
     * @param [latitude: Double, longitude: Double]
     * @return [0 = azimuthUB, 1 = azimuthBU, 2 = azimuthUTSB]
     */
     fun arahQiblat(latitude: Double, longitude: Double): DoubleArray {
-        
-        val LATITUDEKABAH = 21.4225
-        val LONGITUDEKABAH = 39.826111111111
 
         // Selisih azimuthBUjur
 

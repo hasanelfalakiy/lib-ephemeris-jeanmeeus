@@ -33,6 +33,7 @@ import kotlin.math.sqrt
 import kotlin.mod
 import com.andihasan7.lib.ephemeris.jeanmeeus.EphemerisMeeus
 import com.andihasan7.lib.ephemeris.jeanmeeus.arahqiblat.ArahQiblat
+import com.andihasan7.lib.ephemeris.jeanmeeus.util.toCounterHHMMSS2
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toDegreeFullRound2
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toTimeFullRound2
 
@@ -477,5 +478,55 @@ class WaktuSholat(
     * roshdul qiblat 2 lokal HMS
     */
     val rashdu2HMS = toTimeFullRound2(rashdu2)
+	
+	
+	private val LATITUDEKABAH = ArahQiblat().LATITUDEKABAH
+	private val LONGITUDEKABAH = ArahQiblat().LONGITUDEKABAH
+	
+	
+    private val selisih = (longitude - LONGITUDEKABAH)
+	
+	/**
+	 * selisih jam antara markaz ~ makkah
+	 */ 
+    val selisihJam = selisih / 15
+    
+    /**
+	 * selisih jam antara markaz ~ makkah HMS HH h MM m SS,ss s
+	 */ 
+    val selisihJamHMS = toCounterHHMMSS2(selisihJam)
+    
+	private val nilaiAwal = Math.toDegrees(acos(sin(Math.toRadians(latitude)) * sin(Math.toRadians(LATITUDEKABAH)) + cos(Math.toRadians(latitude)) * cos(Math.toRadians(LATITUDEKABAH)) * cos(Math.toRadians(selisih))))
+	
+    /**
+	 * jarak antara markas ~ makkah (kilometer)
+	 */ 
+    val jarakKeduanya = nilaiAwal / 360 * 6.283185307 * 6378.388
+    
+    /**
+	 * 
+	 * selisih deklinasi dengan lintang ka'bah
+	 */
+    val selisihDecLintangKabah = dek - LATITUDEKABAH
+    
+    /**
+    * selisih deklinasi dengan lintang ka'bah DMS
+    */
+    val selisihDecLintangKabahDMS = toDegreeFullRound2(selisihDecLintangKabah)
+    
+    /**
+	 * 
+	 * selisih deklinasi dengan lintang tempat
+	 * 
+	 */
+    val selisihDecLintangTempat = dek - latitude
+    
+    /**
+	 * 
+	 * selisih deklinasi dengan lintang tempat DMS
+	 * 
+	 */
+    val selisihDecLintangTempatDMS = toDegreeFullRound2(selisihDecLintangTempat)
+	
     
 }
