@@ -47,7 +47,7 @@ subprojects {
 }
 
 group = "com.andihasan7.lib-ephemeris-jeanmeeus"
-version = "1.1.1"
+version = "2.0.0"
 
 publishing {
 	publications {
