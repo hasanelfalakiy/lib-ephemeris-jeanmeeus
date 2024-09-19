@@ -328,16 +328,20 @@ class EphemerisMeeus(
     val abrasiArcsec = Abrasi.abrasi(tau, sunTrueGeocentricDistanceAU)
     
     /**
-    * abrasi degrees, abr deg
+    * abrasi degrees, abr deg, rumus abrasi ke dua menggunakan tabel koreksi abrasi
     */
     val abrasiDegrees = abrasiArcsec / 3600
-    // val abrasiDegrees = -20.4898 / (3600 * sunTrueGeocentricDistanceAU)
+    
+    /**
+    * abrasi degrees, abr deg, rumus pertama menggunakan acuan jarak matahari bumi au
+    */
+    val abrasiDegree = -20.4898 / (3600 * sunTrueGeocentricDistanceAU)
     
     
     /**
     * sun apparent geocentric longitude deg, lambda
     */
-    val sunApparentGeoLongitude = (sunTrueGeocentricLonJ2000Degrees + deltaPsiDegrees + abrasiDegrees).mod(360.0)
+    val sunApparentGeoLongitude = (sunTrueGeocentricLonJ2000Degrees + deltaPsiDegrees + abrasiDegree).mod(360.0)
     
     /**
     * sun apparent geocentric longitude deg DMS, lambda
