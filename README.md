@@ -57,11 +57,11 @@ Jika menggunakan groovy dsl
 di dalam blok ```dependencies``` 
 
 ```kotlin.kts
-implementation("com.github.hasanelfalakiy:lib-ephemeris-jeanmeeus:1.1.1")
+implementation("com.github.hasanelfalakiy:lib-ephemeris-jeanmeeus:2.0.0")
 ```
 jika menggunakan groovy dsl
 ```groovy
-implementation 'com.github.hasanelfalakiy:lib-ephemeris-jeanmeeus:1.1.1'
+implementation 'com.github.hasanelfalakiy:lib-ephemeris-jeanmeeus:2.0.0'
 ```
 ## Ingin berkontribusi?
 
