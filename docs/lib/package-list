@@ -3,6 +3,8 @@ $dokka.linkExtension:html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.arahqiblat////PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.arahqiblat/index.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.arahqiblat/ArahQiblat///PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.arahqiblat/-arah-qiblat/index.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.arahqiblat/ArahQiblat/ArahQiblat/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.arahqiblat/-arah-qiblat/-arah-qiblat.html
+$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.arahqiblat/ArahQiblat/LATITUDEKABAH/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.arahqiblat/-arah-qiblat/-l-a-t-i-t-u-d-e-k-a-b-a-h.html
+$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.arahqiblat/ArahQiblat/LONGITUDEKABAH/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.arahqiblat/-arah-qiblat/-l-o-n-g-i-t-u-d-e-k-a-b-a-h.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.arahqiblat/ArahQiblat/arahQiblat/#kotlin.Double#kotlin.Double/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.arahqiblat/-arah-qiblat/arah-qiblat.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.util////PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.util/index.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.util//masehiToJD/#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.Double#kotlin.Double/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.util/masehi-to-j-d.html
@@ -10,6 +12,7 @@ $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.util//numberAhad/#kotlin.
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.util//numberJanuari/#kotlin.Int/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.util/number-januari.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.util//numberLegi/#kotlin.Int/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.util/number-legi.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.util//round/kotlin.Double#kotlin.Int/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.util/round.html
+$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.util//toCounterHHMMSS2/#kotlin.Double/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.util/to-counter-h-h-m-m-s-s2.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.util//toCounterMMSS/#kotlin.Double/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.util/to-counter-m-m-s-s.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.util//toCounterMMSS2/#kotlin.Double/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.util/to-counter-m-m-s-s2.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.util//toDecimalCheck/#kotlin.Int#kotlin.Int#kotlin.Number#kotlin.Boolean/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.util/to-decimal-check.html
@@ -50,6 +53,7 @@ $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/i
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/isyaWD_HMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/isya-w-d_-h-m-s.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/isyaWIS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/isya-w-i-s.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/isyaWIS_HMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/isya-w-i-s_-h-m-s.html
+$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/jarakKeduanya/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/jarak-keduanya.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/maghribWD/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/maghrib-w-d.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/maghribWD_HMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/maghrib-w-d_-h-m-s.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/maghribWIS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/maghrib-w-i-s.html
@@ -58,6 +62,12 @@ $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/r
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/rashdu1HMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/rashdu1-h-m-s.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/rashdu2/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/rashdu2.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/rashdu2HMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/rashdu2-h-m-s.html
+$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/selisihDecLintangKabah/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/selisih-dec-lintang-kabah.html
+$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/selisihDecLintangKabahDMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/selisih-dec-lintang-kabah-d-m-s.html
+$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/selisihDecLintangTempat/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/selisih-dec-lintang-tempat.html
+$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/selisihDecLintangTempatDMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/selisih-dec-lintang-tempat-d-m-s.html
+$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/selisihJam/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/selisih-jam.html
+$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/selisihJamHMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/selisih-jam-h-m-s.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/semidiameter/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/semidiameter.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/shubuhWD/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/shubuh-w-d.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/WaktuSholat/shubuhWD_HMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus.waktusholat/-waktu-sholat/shubuh-w-d_-h-m-s.html
@@ -81,6 +91,7 @@ $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/EphemerisMeeus/JARI2BUMIE
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/EphemerisMeeus/_e/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-ephemeris-meeus/_e.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/EphemerisMeeus/_lo/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-ephemeris-meeus/_lo.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/EphemerisMeeus/abrasiArcsec/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-ephemeris-meeus/abrasi-arcsec.html
+$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/EphemerisMeeus/abrasiDegree/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-ephemeris-meeus/abrasi-degree.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/EphemerisMeeus/abrasiDegrees/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-ephemeris-meeus/abrasi-degrees.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/EphemerisMeeus/betaZero/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-ephemeris-meeus/beta-zero.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/EphemerisMeeus/bujurRata2Bulan/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-ephemeris-meeus/bujur-rata2-bulan.html
