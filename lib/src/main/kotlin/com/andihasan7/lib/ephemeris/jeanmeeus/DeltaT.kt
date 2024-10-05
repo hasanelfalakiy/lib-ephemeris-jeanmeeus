@@ -35,7 +35,7 @@ import kotlin.math.pow
 fun deltaT(date: Int, month: Int, year: Int): Double {
     
     var u: Double
-    // var korC: Double
+    var korC: Double
     var deltaT: Double
     
     val y = year + (month - 1).toDouble() / 12 + (date).toDouble() / 365
@@ -108,11 +108,10 @@ fun deltaT(date: Int, month: Int, year: Int): Double {
         }
         
         y > 2050 && y <= 2150 -> {
-            
-            deltaT = -20 + 32 * ((y - 1820) / 100).pow(2) - 0.5628 * (2150 - y)
+            deltaT = -20 + 32 * ((y-1820)/100).pow(2) - 0.5628 * (2150 - y)
         }
         
-        y >= 2150 -> {
+        y > 2150 -> {
             u = (y - 1820) / 100
             deltaT = -20 + 32 * u.pow(2)
         }
@@ -123,32 +122,14 @@ fun deltaT(date: Int, month: Int, year: Int): Double {
         
         
     }
-    /*
+    
     if (y < 1955 || y > 2005) {
         korC = -0.000012932 * (y - 1955).pow(2)
         deltaT = deltaT + korC
     } else {
         deltaT = deltaT
     }
-    */
+    
     
     return deltaT
 }
-
-/*
-dr astronomical algorithm jean meeus
-fun deltaT(date: Int, month: Int, year: Int): Double {
-    
-    var t = (year - 2000).toDouble() / 100
-    var deltaT: Double
-    
-    deltaT = when {
-        year < 948 -> (2715.6 + 573.36 * t + 46.5 * t.pow(2))
-        year <= 948 && year <= 1600 -> (50.6 + 67.5 * t + 22.5 * t.pow(2))
-        year > 1600 -> (102.3 + 123.5 * t + 32.5 * t.pow(2))
-        else -> 0.0
-    }
-    
-    return deltaT
-}
-*/ 
