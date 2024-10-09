@@ -102,6 +102,17 @@ fun deltaT(date: Int, month: Int, year: Int): Double {
             deltaT = 63.86 + 0.3345 * u - 0.060374 * u.pow(2) + 0.0017275 * u.pow(3) + 0.000651814 * u.pow(4) + 0.00002373599 * u.pow(5)
         }
         
+        y > 2005 && y <= 2015 -> {
+            u = (y - 2005)
+            deltaT = 64.69 + 0.2930 * u
+        }
+        
+        y > 2015 && y <= 3000 -> {
+            u = (y - 2015)
+            deltaT = 67.62 + 0.3645 * u + 0.0039755 * u.pow(2)
+        }
+        
+        /* rumus lama
         y > 2005 && y <= 2050 -> {
             u = y - 2000
             deltaT = 62.92 + 0.32217 * u + 0.005589 * u.pow(2)
@@ -115,6 +126,7 @@ fun deltaT(date: Int, month: Int, year: Int): Double {
             u = (y - 1820) / 100
             deltaT = -20 + 32 * u.pow(2)
         }
+        */
         
         else -> {
             deltaT = 0.0
