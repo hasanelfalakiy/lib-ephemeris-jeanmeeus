@@ -700,7 +700,8 @@ class EphemerisMeeus(
     val sunTopocentricSemidiameterDMS = toDegreeFullRound2(sunTopocentricSemidiameter)
     
     // equation of time
-    val _lo = (280.4664567 + 360007.6982779 * tau + 0.03032028 * tau.pow(2) + tau.pow(3) / 49931 - tau.pow(4) / 15300 - tau.pow(5) / 2000000).mod(360.0)
+    val _lo = (280.4664567 + 360007.6982779 * tau + 0.03032028 * tau.pow(2) + tau.pow(3) / 49931 - tau.pow(4) / 15299 - tau.pow(5) / 1988000).mod(360.0)
+    
     val _e = (_lo - 0.0057183 - sunApparentGeoRightAscension + deltaPsiDegrees * cos(Math.toRadians(trueObliquityOfEcliptic)))
     
     /**
