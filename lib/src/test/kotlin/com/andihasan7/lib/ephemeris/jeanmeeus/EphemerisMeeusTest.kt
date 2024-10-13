@@ -174,7 +174,6 @@ class EphemerisMeeusTest {
         
         
         // val test = jm.test
-    
         println("")
         println("JD                    = $jd")
         println("DeltaT                = $deltaT")
