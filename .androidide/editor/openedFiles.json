@@ -1,21 +1,6 @@
 {
   "allFiles": [
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/build.gradle.kts",
-      "selection": {
-        "end": {
-          "column": 0,
-          "index": 1606,
-          "line": 50
-        },
-        "start": {
-          "column": 0,
-          "index": 1606,
-          "line": 50
-        }
-      }
-    },
-    {
       "file": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/README.md",
       "selection": {
         "end": {
@@ -31,5 +16,5 @@
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/lib/build.gradle.kts"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/lib-ephemeris-jeanmeeus/README.md"
 }
