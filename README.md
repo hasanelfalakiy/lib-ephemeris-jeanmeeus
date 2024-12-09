@@ -67,6 +67,11 @@ implementation 'com.github.hasanelfalakiy:lib-ephemeris-jeanmeeus:2.0.1'
 
 > Jika Anda ingin berkontribusi, silahkan menggarpu (Fork) repositori ini, clone ke local machine, buat perubahan, push ke repositori fork, kirim pull request ke repositori ini
 
+## Modifikasi
+> [!WARNING]
+>
+> Jika Anda ingin menyalin, memodifikasi, dan atau mendistribusikan ulang program ini, harap mematuhi ketentuan lisensi dari program ini.
+
 ## Kontak Kami
 
 - [Telegram](https://t.me/moonelfalakiy)
