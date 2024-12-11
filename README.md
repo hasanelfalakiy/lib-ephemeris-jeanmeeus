@@ -32,7 +32,7 @@ Algoritma Jean Meeus merupakan reduksi dari model VSOP87 & ELP2000/82 full
 - [x] Arah Qiblat & Rashdul Qiblat
 - [x] Waktu Sholat
 - [ ] Hisab Ijtima & Awal Bulan Hijriyah
-- [ ] Fase-fase Bulan
+- [x] Fase-fase Bulan
 
 ## Konfigurasi pertama
 
