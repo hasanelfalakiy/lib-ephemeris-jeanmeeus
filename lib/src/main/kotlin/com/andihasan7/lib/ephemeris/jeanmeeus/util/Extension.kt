@@ -390,6 +390,28 @@ fun numberAhad(number: Int): String {
         }
     return hari
 }
+
+/**
+* convert number of day to day name
+* 1 = Monday, 2 = Tuesday etc.
+* 
+* @param value as a number of day
+* @return day name
+*/
+fun toNameDay(value: Int): String {
+    return when (value) {
+        0 -> "Senin"
+        1 -> "Selasa"
+        2 -> "Rabu"
+        3 -> "Kamis"
+        4 -> "Jum`at"
+        5 -> "Sabtu"
+        6 -> "Ahad"
+        7 -> "Senin"
+        else -> "Senin"
+    }
+}
+    
 /**
  * fungsi merubah data Int ke nama-nama pasaran yang dimulai dari pahing
  * @param number
