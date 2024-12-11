@@ -1222,7 +1222,7 @@ class EphemerisMeeus(
     */
     val moonApparentTopoDiskIlluminatedFractionPercent = 100 * moonApparentTopoDiskIlluminatedFraction
     
-    /*
+    
     /*
     * moon apparent topocentric bright limb angle, X
     */
@@ -1232,7 +1232,7 @@ class EphemerisMeeus(
     * moon apparent topocentric bright limb angle DMS, X
     */
     val moonApparentTopoBrightLimbAngleDMS = toDegreeFullRound2(moonApparentTopoBrightLimbAngle)
-    */
+    
     // val test = Nutasi.deltaPsiDanEpsilon(nilaiT)[1]
     
     
