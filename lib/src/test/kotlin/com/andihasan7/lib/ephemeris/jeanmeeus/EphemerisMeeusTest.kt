@@ -33,14 +33,14 @@ class EphemerisMeeusTest {
     fun testEphemerisMeeus() {
         
         val jm = EphemerisMeeus(
-            20, // 20
-            4, 
-            2023, // 2023
-            -7.029055555556, // -6.166666666667, //-7.029055555556,
-            106.557722222222, // 106.85, //106.557722222222,
-            52.685, //elev
+            28, // 20
+            2, 
+            2025, // 2023
+            -7.4333333333, // -7.029055555556, // -6.166666666667, //-7.029055555556,
+            111.43333333334, // 106.557722222222, // 106.85, //106.557722222222,
+            150.0,  // 52.685, //elev
             7.0, //tz
-            17.8575,//17.828611111111, // 17.8575
+            17.946713888889, // 17.8575,//17.828611111111, // 17.8575
             10.0, // suhu lokal rata-rata tahunan
             1010.0, // tekanan udara lokal rata-rata tahunan
             true
@@ -170,7 +170,7 @@ class EphemerisMeeusTest {
         val moonSunApparentTopoElongation = jm.moonSunApparentTopoElongation
         val moonApparentTopoPhaseAngle = jm.moonApparentTopoPhaseAngle
         val moonApparentTopoDiskIlluminatedFraction = jm.moonApparentTopoDiskIlluminatedFraction
-        // val moonApparentTopoBrightLimbAngle = jm.moonApparentTopoBrightLimbAngle
+        val moonApparentTopoBrightLimbAngle = jm.moonApparentTopoBrightLimbAngle
         
         
         // val test = jm.test
@@ -299,8 +299,7 @@ class EphemerisMeeusTest {
         println("moonSunAppaTopoElonga = $moonSunApparentTopoElongation | ${jm.moonSunApparentTopoElongationDMS}")
         println("moonAppareTopoPhaseAn = $moonApparentTopoPhaseAngle | ${jm.moonApparentTopoPhaseAngleDMS}")
         println("moonAppaTopoIllumFrac = $moonApparentTopoDiskIlluminatedFraction | ${jm.moonApparentTopoDiskIlluminatedFractionPercent} %")
-        
-        // println("moonAppTopoBrigLimbAn = $moonApparentTopoBrightLimbAngle | ${jm.moonApparentTopoBrightLimbAngleDMS}")
+        println("moonAppTopoBrigLimbAn = $moonApparentTopoBrightLimbAngle | ${jm.moonApparentTopoBrightLimbAngleDMS}")
         // println("test : $test")
     }
 }

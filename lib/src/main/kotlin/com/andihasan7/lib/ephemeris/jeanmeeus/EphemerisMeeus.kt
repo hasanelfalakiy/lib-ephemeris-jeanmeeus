@@ -34,7 +34,7 @@ import kotlin.math.sqrt
 import kotlin.math.tan
 import kotlin.math.pow
 import kotlin.math.PI
-import com.andihasan7.lib.ephemeris.jeanmeeus.util.masehiToJD
+import com.andihasan7.lib.ephemeris.jeanmeeus.timeutil.TimeUtil
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toDegreeFullRound2
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toTimeFullRound2
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toRange360
@@ -78,7 +78,7 @@ class EphemerisMeeus(
     /**
     * julian day (JD)
     */
-    val jd = masehiToJD(
+    val jd = TimeUtil.gregorianToJD(
         date,
         month,
         year,

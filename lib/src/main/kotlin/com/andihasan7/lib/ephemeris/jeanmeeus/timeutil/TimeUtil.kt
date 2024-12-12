@@ -57,12 +57,12 @@ object TimeUtil {
     
         val d = date + ((hourDouble - timeZone) / 24.0)
     
-        if (month < 2) {
-            m = (month + 12).toDouble()
-            y = (year - 1).toDouble()
-        } else {
+        if (month > 2) {
             m = month.toDouble()
             y = year.toDouble()
+        } else {
+            m = (month + 12).toDouble()
+            y = (year - 1).toDouble()
         }
     
         val _j = (year.toDouble() + month.toDouble() / 100 + date.toDouble() / 10000)
