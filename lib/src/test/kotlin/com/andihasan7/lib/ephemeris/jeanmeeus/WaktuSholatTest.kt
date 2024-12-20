@@ -33,15 +33,15 @@ class WaktuSholatTest {
     fun waktuSholatTest() {
         
         val ws = WaktuSholat(
-            date = 10,
-            month = 5,
-            year = 2018,
-            latitude = -7.813166666667, // -6.166667, //-7.433333333334,
-            longitude = 112.02425, //106.85, //111.4333333333334,
-            elevation = 95.0,
+            date = 28,
+            month = 2,
+            year = 2025,
+            latitude = -7.433333333334, //-7.813166666667, // -6.166667, //-7.433333333334,
+            longitude = 111.4333333333334, //112.02425, //106.85, //111.4333333333334,
+            elevation = 150.0,
             timeZone = 7.0,
             ihtiyatDzuhur = 2,
-            ihtiyatLain = 2
+            ihtiyatLain = 0
         )
         
         println("dzuhur wd    : ${ws.dzuhurWD_HMS}")
