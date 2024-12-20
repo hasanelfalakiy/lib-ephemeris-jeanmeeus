@@ -151,7 +151,7 @@ object MoonPhase {
                     0.00002 * sin(3 * m1 + m)
         }
 
-        val w = 0.00306 - 0.00038 * cos(m) + 0.00026 * cos(m1) - 0.00002 * cos(m1 - m) + 0.00002 * cos(m1 + m) + 0.00002 * cos(2 * f)
+        val w = 0.00306 - 0.00038 * e * cos(m) + 0.00026 * cos(m1) - 0.00002 * cos(m1 - m) + 0.00002 * cos(m1 + m) + 0.00002 * cos(2 * f)
         val jdeCorrected = when (phaseType) {
             PhaseType.FIRSTQUARTER -> jdeCor1 + w
             PhaseType.LASTQUARTER -> jdeCor1 - w
