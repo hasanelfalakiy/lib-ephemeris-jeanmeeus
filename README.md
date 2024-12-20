@@ -21,7 +21,7 @@
 </p>
 
 # Tentang Algoritma Jean Meeus
-Algoritma Jean Meeus merupakan reduksi dari model VSOP87 & ELP2000/82 full
+Algoritma Jean Meeus merupakan reduksi dari model VSOP87 & ELP2000/82 suku koreksi lengkap sekitar 39 ribu, dari puluhan ribu tersebut Meeus hanya menggunakan 360 suku koreksi untuk menghitung posisi matahari dan bulan, yang jika dibandingkan dengan suku koreksi lengkap tersebut algoritma Meeus memiliki selisih tidak lebih dari 1 detik busur selama rentang waktu dari tahun -2000 sampai 6000 masehi.
 
 # Dokumentasi penggunaan
 - [Dokumentasi](https://hasanelfalakiy.github.io/lib-ephemeris-jeanmeeus/docs/index.html)
@@ -57,11 +57,11 @@ Jika menggunakan groovy dsl
 di dalam blok ```dependencies``` 
 
 ```kotlin.kts
-implementation("com.github.hasanelfalakiy:lib-ephemeris-jeanmeeus:2.0.1")
+implementation("com.github.hasanelfalakiy:lib-ephemeris-jeanmeeus:2.1.3")
 ```
 jika menggunakan groovy dsl
 ```groovy
-implementation 'com.github.hasanelfalakiy:lib-ephemeris-jeanmeeus:2.0.1'
+implementation 'com.github.hasanelfalakiy:lib-ephemeris-jeanmeeus:2.1.3'
 ```
 ## Ingin berkontribusi?
 
