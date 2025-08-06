@@ -172,6 +172,27 @@ class EphemerisMeeusTest {
         val moonApparentTopoDiskIlluminatedFraction = jm.moonApparentTopoDiskIlluminatedFraction
         val moonApparentTopoBrightLimbAngle = jm.moonApparentTopoBrightLimbAngle
         
+        // for realtime
+        val gst = jm.greenwichApparentSideralTimeHMS
+        val lst = jm.localApparentSideralTimeHMS
+        val sunGHA = jm.sunTopocentricGreenwichHourAngleHMS
+        val sunLHA = jm.sunTopocentricLocalHourAngleHMS
+        val sunLon = jm.sunTopocentricEclipLongitudeDMS
+        val sunLat = jm.sunTopocentricEclipLatitudeDMS
+        val sunRa = jm.sunTopocentricRightAscensionHMS
+        val sunDec = jm.sunTopocentricDeclinationDMS
+        val sunAz = jm.sunTopocentricAzimuthDMS
+        val sunAlt = jm.sunApparentTopocentricAltitudeDMS
+        
+        val moonGHA = jm.moonAppaTopoGreenwichHourAngleHMS
+        val moonLHA = jm.moonApparentTopoLocalHourAngleHMS
+        val moonLon = jm.moonApparentTopoLongitudeDMS
+        val moonLat = jm.moonApparentTopoLatitudeDMS
+        val moonRa = jm.moonApparentTopoRightAscensionHMS
+        val moonDec = jm.moonApparentTopoDeclinationDMS
+        val moonAz = jm.moonTopocentricAzimuthDMS
+        val moonAlt = jm.moonApparentTopoAltitudeCenterLimbDMS
+        
         
         // val test = jm.test
         println("")
@@ -242,6 +263,17 @@ class EphemerisMeeusTest {
         println("sunObservedAltitude   = $sunObservedAltitude, ${jm.sunObservedAltitudeDMS}")
         println("sunTopocentricSemidi  = $sunTopocentricSemidiameter, ${jm.sunTopocentricSemidiameterDMS}")
         println("equationOfTimeHour    = $equationOfTimeHour, ${jm.equationOfTimeHourHMS}")
+        println(" ")
+        println("GST/LST: $gst/$lst")
+        println("sun GHA/LHA: $sunGHA/$sunLHA")
+        println("sun Lon/Lat: $sunLon/$sunLat")
+        println("sun Ra/Dec: $sunRa/$sunDec")
+        println("sun Az/Alt: $sunAz/$sunAlt")
+        println(" ")
+        println("moon GHA/LHA: $moonGHA/$moonLHA")
+        println("moon Lon/Lat: $moonLon/$moonLat")
+        println("moon Ra/Dec: $moonRa/$moonDec")
+        println("moon Az/Alt: $moonAz/$moonAlt")
         println(" ")
         println("data bulan : ")
         println(" ")

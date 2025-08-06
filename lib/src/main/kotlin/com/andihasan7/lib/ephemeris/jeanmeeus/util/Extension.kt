@@ -25,6 +25,7 @@ package com.andihasan7.lib.ephemeris.jeanmeeus.util
 
 import kotlin.math.abs
 import kotlin.math.round
+import kotlin.mod
 
 // fungsi custom round dibelakang koma
 /**
@@ -181,7 +182,7 @@ fun toCounterMMSS(decimal: Double): String {
         minute = "-$minute"
     }
 
-    return "$minute m $second s"
+    return "$minute\u006d $second\u0073"
 }
 
 
@@ -218,7 +219,7 @@ fun toCounterMMSS2(decimal: Double): String {
         minute = "-$minute"
     }
 
-    return "$minute m $second s"
+    return "$minute\u006d $second\u0073"
 }
 
 // HH h MM m SS,ss s dibulatkan ke 2 angka di belakang koma
@@ -255,7 +256,45 @@ fun toCounterHHMMSS2(decimal: Double): String {
         time = "-$time"
     }
 
-    return "$time h $minute m $second s"
+    return "$time\u0068 $minute\u006d $second\u0073"
+}
+
+/**
+* format 24 h
+* HH h MM m SS,ss s rounded to 2 (by default) and can custom digits after the decimal point
+* function to change decimal data to HH h MM m SS,ss s format, rounding to 2 digits behind the comma, seconds rounded to minutes, minutes to hours
+* @param decimal
+* @return String
+*/
+fun toCounterHHMMSS24(decimal: Double, round: Int = 2): String {
+    var time = abs(decimal).toInt().toString()
+    var minute = ((abs(decimal) - time.toDouble()) * 60).toInt().toString()
+    var second =
+        ((((abs(decimal) - time.toDouble()) * 60) - minute.toDouble()) * 60)
+            .round(round)
+            .toString()
+
+    // Add calculation to round seconds to minutes & minutes to hours if seconds & minutes == 60
+    if (second.toDouble() == 60.0) {
+        second = (second.toDouble() - 60).toString()
+        minute = (minute.toInt() + 1).toString()
+    }
+
+    if (minute.toInt() == 60) {
+        minute = (minute.toInt() - 60).toString()
+        time = (time.toInt() + 1).toString()
+    }
+        
+    // time = time.toDouble().mod(24.0).toInt().toString()
+
+    // Add zero before numbers less than 10
+    time = time.padStart(2, '0')
+    minute = minute.padStart(2, '0')
+    second = second.padStart(3, '0')
+        
+        
+
+    return "$time\u0068 $minute\u006d $second\u0073"
 }
 
 

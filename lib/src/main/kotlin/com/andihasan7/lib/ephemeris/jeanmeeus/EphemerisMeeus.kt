@@ -41,6 +41,7 @@ import com.andihasan7.lib.ephemeris.jeanmeeus.util.toRange360
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toDegreeSS2
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toDegreeMMSS2
 import com.andihasan7.lib.ephemeris.jeanmeeus.util.toCounterMMSS2
+import com.andihasan7.lib.ephemeris.jeanmeeus.util.toCounterHHMMSS24
 
 /**
 * 
@@ -428,17 +429,27 @@ class EphemerisMeeus(
     /**
     * greenwich sideral time hour, gst pukul
     */
-    val greenwichSideralTimeHour = greenwichMeanSideralTime / 15
+    val greenwichSideralTimeHour = (greenwichMeanSideralTime / 15).mod(24.0)
     
     /**
     * greenwich apparent sideral time, apparent gst pukul
     */
-    val greenwichApparentSideralTimeHour = greenwichSideralTimeHour + deltaPsiDegrees * cos(Math.toRadians(trueObliquityOfEcliptic)) / 15
+    val greenwichApparentSideralTimeHour = (greenwichMeanSideralTime + deltaPsiDegrees * cos(Math.toRadians(trueObliquityOfEcliptic)) / 15).mod(24.0)
+    
+    /**
+    * greenwich apparent sideral time HMS, GAST
+    */
+    val greenwichApparentSideralTimeHMS = toCounterHHMMSS24(greenwichApparentSideralTimeHour, 3)
     
     /**
     * local apparent sideral time jam, theta, apparent lst pukul
     */
     val localApparentSideralTimeHour = (greenwichApparentSideralTimeHour + longitude / 15).mod(24.0)
+    
+    /**
+    * local apparent sideral time jam, theta, apparent lst pukul HMS
+    */
+    val localApparentSideralTimeHMS = toCounterHHMMSS24(localApparentSideralTimeHour, 3)
     
     /**
     * sun geocentric greenwich hour angle, Ho, GHA
@@ -451,6 +462,11 @@ class EphemerisMeeus(
     val sunGeocentricGreenwichHourAngleDMS = toDegreeFullRound2(sunGeocentricGreenwichHourAngle)
     
     /**
+    * sun geocentric greenwich hour angle HMS, Ho, GHA
+    */
+    val sunGeocentricGreenwichHourAngleHMS = toCounterHHMMSS24((sunGeocentricGreenwichHourAngle / 15.0).mod(24.0), 3)
+    
+    /**
     * sun geocentric local hour angle, H, LHA
     */
     val sunGeocentricLocalHourAngle = (sunGeocentricGreenwichHourAngle + longitude).mod(360.0)
@@ -459,6 +475,11 @@ class EphemerisMeeus(
     * sun geocentric local hour angle DMS, H, LHA
     */
     val sunGeocentricLocalHourAngleDMS = toDegreeFullRound2(sunGeocentricLocalHourAngle)
+    
+    /**
+    * sun geocentric local hour angle HMS, H, LHA
+    */
+    val sunGeocentricLocalHourAngleHMS = toCounterHHMMSS24((sunGeocentricLocalHourAngle / 15.0).mod(24.0), 3)
     
     /**
     * sun geocentric azimuth, A
@@ -619,7 +640,7 @@ class EphemerisMeeus(
     /**
     * sun topocentric right ascension HMS, a`
     */
-    val sunTopocentricRightAscensionHMS = toTimeFullRound2(sunTopocentricRightAscension / 15.0)
+    val sunTopocentricRightAscensionHMS = toCounterHHMMSS24((sunTopocentricRightAscension / 15.0).mod(24.0), 3)
     
     /**
     * sun topocentric declination, d`
@@ -635,7 +656,22 @@ class EphemerisMeeus(
     // sun topocentric horizontal coor
     
     /**
-    * sun topocentric local hour angle, H`
+    * sun topocentric greenwich hour angle, GHA'
+    */
+    val sunTopocentricGreenwichHourAngle = (greenwichApparentSideralTime - sunTopocentricRightAscension).mod(360.0)
+    
+    /**
+    * sun topocentric greenwich hour angle DMS, GHA'
+    */
+    val sunTopocentricGreenwichHourAngleDMS = toDegreeFullRound2(sunTopocentricGreenwichHourAngle)
+    
+    /**
+    * sun topocentric greenwich hour angle HMS, GHA'
+    */
+    val sunTopocentricGreenwichHourAngleHMS = toCounterHHMMSS24((sunTopocentricGreenwichHourAngle / 15.0).mod(24.0), 3)
+    
+    /**
+    * sun topocentric local hour angle, H` LHA'
     */
     val sunTopocentricLocalHourAngle = sunGeocentricLocalHourAngle - parallaxSunRightAscension
     
@@ -643,6 +679,11 @@ class EphemerisMeeus(
     * sun topocentric local hour angle DMS, H`
     */
     val sunTopocentricLocalHourAngleDMS = toDegreeFullRound2(sunTopocentricLocalHourAngle)
+    
+    /**
+    * sun topocentric local hour angle HMS, H`
+    */
+    val sunTopocentricLocalHourAngleHMS = toCounterHHMMSS24((sunTopocentricLocalHourAngle / 15.0).mod(24.0), 3)
     
     /**
     * sun topocentric azimuth, A`
@@ -879,7 +920,7 @@ class EphemerisMeeus(
     val moonApparentGeoDeclinationDMS = toDegreeFullRound2(moonApparentGeoDeclination)
     
     /**
-    * moon geocentric greenwich hour angle, Ho
+    * moon geocentric greenwich hour angle, Ho GHA
     */
     val moonGeoGreenwichHourAngle = (greenwichApparentSideralTime - moonApparentGeocentricRightAscension).mod(360.0)
     
@@ -1027,6 +1068,11 @@ class EphemerisMeeus(
     val moonApparentTopoRightAscensionDMS = toDegreeFullRound2(moonApparentTopoRightAscension)
     
     /**
+    * moon apparent topocentric right ascension HMS, a`
+    */
+    val moonApparentTopoRightAscensionHMS = toCounterHHMMSS24((moonApparentTopoRightAscension / 15.0).mod(24.0), 3)
+    
+    /**
     * moon apparent topocentric declination, d`
     */
     val moonApparentTopoDeclination = Math.toDegrees(atan2(cos(Math.toRadians(parallaxMoonRightAscension)) * (sin(Math.toRadians(moonApparentGeoDeclination)) - suku_y * sin(Math.toRadians(moonEquatorialHorizontalParallax))), cos(Math.toRadians(moonApparentGeoDeclination)) - suku_x * sin(Math.toRadians(moonEquatorialHorizontalParallax)) * cos(Math.toRadians(moonGeoLocalHourAngle))))
@@ -1037,7 +1083,22 @@ class EphemerisMeeus(
     val moonApparentTopoDeclinationDMS = toDegreeFullRound2(moonApparentTopoDeclination)
     
     /**
-    * moon apparent topocentric local hour angle, H`
+    * moon apparent topocentric greenwich hour angle, Ho` GHA`
+    */
+    val moonAppaTopoGreenwichHourAngle = (greenwichApparentSideralTime - moonApparentTopoRightAscension).mod(360.0)
+    
+    /**
+    * moon apparent topocentric greenwich hour angle DMS, Ho` GHA`
+    */
+    val moonAppaTopoGreenwichHourAngleDMS = toDegreeFullRound2(moonAppaTopoGreenwichHourAngle)
+    
+    /**
+    * moon apparent topocentric greenwich hour angle HMS, Ho` GHA`
+    */
+    val moonAppaTopoGreenwichHourAngleHMS = toCounterHHMMSS24((moonAppaTopoGreenwichHourAngle / 15.0).mod(24.0), 3)
+    
+    /**
+    * moon apparent topocentric local hour angle, H` LHA`
     */
     val moonApparentTopoLocalHourAngle = Math.toDegrees(atan2(cos(Math.toRadians(moonApparentGeoDeclination)) * sin(Math.toRadians(moonGeoLocalHourAngle)), cos(Math.toRadians(moonApparentGeoDeclination)) * cos(Math.toRadians(moonGeoLocalHourAngle)) - suku_x * sin(Math.toRadians(moonEquatorialHorizontalParallax))))
     
@@ -1045,6 +1106,11 @@ class EphemerisMeeus(
     * moon apparent topocentric local hour angle DMS, H`
     */
     val moonApparentTopoLocalHourAngleDMS = toDegreeFullRound2(moonApparentTopoLocalHourAngle)
+    
+    /**
+    * moon apparent topocentric local hour angle HMS, H`
+    */
+    val moonApparentTopoLocalHourAngleHMS = toCounterHHMMSS24((moonApparentTopoLocalHourAngle / 15.0).mod(24.0), 3)
     
     /**
     * moon topocentric azimuth, A`
