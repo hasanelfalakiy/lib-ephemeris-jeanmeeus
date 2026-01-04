@@ -68,7 +68,7 @@ object MoonPosition {
 		/**
         * bujur rata-rata bulan, L`, l1
         */
-        val l1_r = Math.toRadians((218.3164591 + 481267.88134236 * t - 0.0013268 * t.pow(2) + t.pow(3) / 538841 - t.pow(4) / 65194000).mod(360.0))
+        val l1_r = (218.3164591 + 481267.88134236 * t - 0.0013268 * t.pow(2) + t.pow(3) / 538841 - t.pow(4) / 65194000).mod(360.0)
 		
 
         val l000 = MoonLBRReader.moonLongitudeReader(t, moonL)
