@@ -23,24 +23,36 @@
 
 package com.andihasan7.lib.ephemeris.jeanmeeus.timeutil
 
+import com.andihasan7.lib.ephemeris.jeanmeeus.enum.DateFormat
 import kotlin.math.pow
 
 /**
-* deltaT
-* input data masehi
-* 
-* @param {date, month, year}
-* @return deltaT
-*/
-object {
-	
-	fun deltaT(date: Int, month: Int, year: Int): Double {
+ * 
+ * Delta T
+ */
+object DeltaT {
+    
+    /**
+     * Delta T in arcsecond
+     *
+     * @param jd Julian Day
+     * @return deltaT in arcsecond
+     */
+	fun deltaT(jd: Double): Double {
     
         var u: Double
         var korC: Double
         var deltaT: Double
+        
+        val thnI: Int = TimeUtil.jdToGregorian(jd, 0.0, DateFormat.YEAR) ?: 0
+        val jdFirst = TimeUtil.gregorianToJD(1, 1, thnI, 0.0, 0.0)
+        val jdLatest = TimeUtil.gregorianToJD(31, 12, thnI, 24.0, 0.0)
+        val totalDayOfTheYear = jd - jdFirst
+        val totalDayInTheYear = jdLatest - jdFirst
+
+        val y = thnI + totalDayOfTheYear / totalDayInTheYear
     
-        val y = year + (month - 1).toDouble() / 12 + (date).toDouble() / 365
+        // val y = year + (month - 1).toDouble() / 12 + (date).toDouble() / 365
     
         when {
         

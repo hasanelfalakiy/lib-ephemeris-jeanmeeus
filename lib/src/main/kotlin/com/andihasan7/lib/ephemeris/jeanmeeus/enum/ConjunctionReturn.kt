@@ -21,19 +21,9 @@
  *
  */
  
-package com.andihasan7.lib.ephemeris.jeanmeeus.earthterms
+package com.andihasan7.lib.ephemeris.jeanmeeus.enum
 
-/**
-* Terms for earth heliocentric radius, R
-*/
-object EARTH_R2 {
-	// format: A, B, C
-	val earth_R2 = arrayOf(
-		doubleArrayOf(4359.0, 5.7846, 6283.0758),
-        doubleArrayOf(124.0, 5.579, 12566.152),
-        doubleArrayOf(12.0, 3.14, 0.0),
-        doubleArrayOf(9.0, 3.63, 77713.77),
-        doubleArrayOf(6.0, 1.87, 5573.14),
-        doubleArrayOf(3.0, 5.47, 18849.23),
-	)
+enum class ConjunctionReturn {
+    JDCONJUNCTION,
+    LONGITUDE
 }

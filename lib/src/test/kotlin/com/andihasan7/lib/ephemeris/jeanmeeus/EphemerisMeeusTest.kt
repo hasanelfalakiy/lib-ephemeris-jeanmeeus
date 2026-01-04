@@ -216,6 +216,7 @@ class EphemerisMeeusTest {
         println("sunTrueGeoLonJ2000    = $sunTrueGeocentricLonJ2000Degrees, ${jm.sunTrueGeocentricLonJ2000DegreesDMS}")
 		println("sunTrueGeoLonFK5Deg   = $sunTrueGeocentricLonFK5Degrees, ${jm.sunTrueGeocentricLonFK5DegreesDMS}")
         println("")
+		println("earthHelioLatDeg      = ")
         println("earthHelioLatRad      = $earthHeliocentricLatitudeRadians, ${jm.earthHeliocentricLatitudeRadiansDMS}")
         println("betaZero              = $betaZero, ${jm.betaZero}")
         println("deltaBeta             = $deltaBeta, ${jm.deltaBeta}")

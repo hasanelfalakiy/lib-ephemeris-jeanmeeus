@@ -57,7 +57,7 @@ object EARTH_R0 {
         doubleArrayOf(47.0, 2.58, 775.52),
         doubleArrayOf(45.0, 5.54, 9437.76),
         doubleArrayOf(43.0, 6.01, 6275.96),
-        doubleArrayOf(39.0, 5.36, 4694),
+        doubleArrayOf(39.0, 5.36, 4694.0),
         doubleArrayOf(38.0, 2.39, 8827.39),
         doubleArrayOf(37.0, 0.83, 19651.05),
         doubleArrayOf(37.0, 4.9, 12139.55),
