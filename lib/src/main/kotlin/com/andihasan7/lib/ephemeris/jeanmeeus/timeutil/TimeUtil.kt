@@ -23,9 +23,7 @@
 
 package com.andihasan7.lib.ephemeris.jeanmeeus.timeutil
 
-import com.andihasan7.lib.ephemeris.jeanmeeus.util.numberLegi
-import com.andihasan7.lib.ephemeris.jeanmeeus.util.numberJanuari
-import com.andihasan7.lib.ephemeris.jeanmeeus.util.toNameDay
+import com.andihasan7.lib.ephemeris.jeanmeeus.convertutil.ConvertUtil
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.JulianType
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.DateFormat
 import kotlin.math.floor
@@ -123,11 +121,11 @@ object TimeUtil {
         // number of pasaran
         val numbPasaran = (cjdn).toInt().mod(5)
         // name of day
-        val nameDay = toNameDay(numbDay)
+        val nameDay = ConvertUtil.toNameDay(numbDay)
         // name of pasaran
-        val namePasaran = numberLegi(numbPasaran)
+        val namePasaran = ConvertUtil.toNamePasaran(numbPasaran)
         // name of month
-        val nameMonth = numberJanuari(blnGreg.toInt())
+        val nameMonth = ConvertUtil.toNameMonth(blnGreg.toInt())
         // DPDDMMYY format eq. Rabu Pon, 1 Januari 2025
         val dpddmmyy = "$nameDay $namePasaran, ${(tglGreg).toInt()} $nameMonth ${(thnGreg).toInt()}"
         // DPDDMMYY format eq. Rabu Pon, 1 Januari 2025 M
@@ -148,6 +146,47 @@ object TimeUtil {
             DateFormat.FRAC_DAY -> fracD as? T
         }
     }
+
+    /**
+    * Julian Day Ephemeris (JDE)
+    *
+    * @param jd
+    * @param deltaT
+    * @return jde
+    */
+    fun jde(jd: Double, deltaT: Double) = jd + (deltaT / 86400.0)
+
+    /**
+    * Julian Century (JC) for standart epoch 2000
+    *
+    * @param jd
+    * @return jde
+    */
+    fun jc(jd: Double) = (jd - 2451545.0) / 36525.0
+
+    /**
+    * Julian Century Ephemeris (JCE) for standart epoch 2000
+    *
+    * @param jde or jd
+    * @return jce
+    */
+    fun jce(jde: Double) = (jde - 2451545.0) / 36525.0
+
+    /**
+    * Julian Millennium (JM) for standart epoch 2000
+    *
+    * @param jc
+    * @return jm
+    */
+    fun jm(_jc: Double) = _jc / 10.0
+
+    /**
+    * Julian Millennium Ephemeris (JME) for standart epoch 2000
+    *
+    * @param jce
+    * @return jme
+    */
+    fun jme(_jce: Double) = _jce / 10.0
     
     /**
     * Julian Date with option type
@@ -175,4 +214,8 @@ object TimeUtil {
             JulianType.JME -> jme
         }
     }
+    
+    
+
+
 }
