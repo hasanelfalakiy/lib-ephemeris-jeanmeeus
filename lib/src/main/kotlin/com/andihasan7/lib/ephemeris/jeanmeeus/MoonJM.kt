@@ -31,6 +31,7 @@ import com.andihasan7.lib.ephemeris.jeanmeeus.enum.PositionType
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.MoonAltType
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.UnitType
 import com.andihasan7.lib.ephemeris.jeanmeeus.moonposition.MoonPosition
+import kotlin.mod
 
 /**
 * Moon Datas of Jean Meeus
@@ -328,6 +329,13 @@ class MoonJM(
      * Moon Topocentric Right Ascension DMS default in degree, alpha apostrophe
      */
     val moonTopoRightAscensionDMS get() = ConvertUtil.toDegreeFullRound2(moonTopoRightAscension)
+    
+    /**
+    * Moon Topocentric Right Ascension Hour, HMS, a`
+    */
+    val moonTopoRightAscensionHMS get() = ConvertUtil.toCounterHHMMSS24((moonTopoRightAscension / 15.0).mod(24.0), 3)
+    
+    
 
     /**
     * Moon Topocentric Declination default in degree, delta apostrophe
@@ -355,24 +363,36 @@ class MoonJM(
     val moonTopoSemidiameterMMSS2 get() = ConvertUtil.toDegreeMMSS2(moonTopoSemidiameter)
 
     /**
-    * Moon Topocentric Greenwich Hour Angle default in degree, GHA
+    * Moon Topocentric Greenwich Hour Angle default in degree, Ho', GHA'
     */
     val moonTopoGreenwichHourAngle get() = MoonPosition.moonTopoGreenwichHourAngle(jd, longitude, latitude, deltaT)
 
     /**
-     * Moon Topocentric Greenwich Hour Angle DMS default in degree, GHA
+     * Moon Topocentric Greenwich Hour Angle DMS default in degree, Ho', GHA
      */
     val moonTopoGreenwichHourAngleDMS get() = ConvertUtil.toDegreeFullRound2(moonTopoGreenwichHourAngle)
+    
+    /**
+     * Moon Topocentric Greenwich Hour Angle Hour HMS, Ho` GHA`
+     */
+    val moonTopoGreenwichHourAngleHMS get() = ConvertUtil.toCounterHHMMSS24((moonTopoGreenwichHourAngle / 15.0).mod(24.0), 3)
+    
 
     /**
-    * Moon Topocentric Local Hour Angle default in degree, LHA
+    * Moon Topocentric Local Hour Angle default in degree, LHA', H'
     */
     val moonTopoLocalHourAngle get() = MoonPosition.moonTopoLocalHourAngle(jd, longitude, latitude, elevation, deltaT)
 
     /**
-     * Moon Topocentric Local Hour Angle DMS default in degree, LHA
+     * Moon Topocentric Local Hour Angle DMS default in degree, LHA', H'
      */
     val moonTopoLocalHourAngleDMS get() = ConvertUtil.toDegreeFullRound2(moonTopoLocalHourAngle)
+    
+    /**
+    * Moon Topocentric Local Hour Angle Hour HMS, LHA', H`
+    */
+    val moonTopoLocalHourAngleHMS get() = ConvertUtil.toCounterHHMMSS24((moonTopoLocalHourAngle / 15.0).mod(24.0), 3)
+    
 
     /**
     * Moon Topocentric Azimuth default in degree, A apostrophe
