@@ -24,14 +24,18 @@
 Algoritma Jean Meeus merupakan reduksi dari model VSOP87 & ELP2000/82 suku koreksi lengkap sekitar 39 ribu, dari puluhan ribu tersebut Meeus hanya menggunakan 360 suku koreksi untuk menghitung posisi matahari dan bulan, yang jika dibandingkan dengan suku koreksi lengkap tersebut algoritma Meeus memiliki selisih tidak lebih dari 1 detik busur selama rentang waktu dari tahun -2000 sampai 6000 masehi.
 
 # Dokumentasi penggunaan
-- [Dokumentasi](https://hasanelfalakiy.github.io/lib-ephemeris-jeanmeeus/docs/index.html)
+ [Dokumentasi](https://hasanelfalakiy.github.io/lib-ephemeris-jeanmeeus/docs/index.html)
+> [!WARNING]
+> Sejak versi 3.0.0 hampir semua kode berubah (refactor code) diperbarui, harap baca dokumentasi atau lihat kode langsung sebelum migrasi ke versi 3.0.0
+>
+
 
 ## Fitur
 
 - [x] Data Posisi Matahari & Bulan
 - [x] Arah Qiblat & Rashdul Qiblat
 - [x] Waktu Sholat
-- [ ] Hisab Ijtima & Awal Bulan Hijriyah
+- [x] Hisab Ijtima & Awal Bulan Hijriyah
 - [x] Fase-fase Bulan
 
 ## Konfigurasi pertama
