@@ -171,6 +171,27 @@ class EphemerisJM {
         val moonTopoPhaseAngle = elp.moonTopoPhaseAngle
         val moonTopoDiskIlluminatedFraction = elp.moonTopoDiskIlluminatedFraction
         val moonTopoBrightLimbAngle = elp.moonTopoBrightLimbAngle
+        
+        // for realtime
+        val gst = ephe.greenwichApparentSiderealTimeHMS
+        val lst = ephe.localApparentSiderealTimeHMS
+        val sunGHA = ephe.sunTopoGreenwichHourAngleHMS
+        val sunLHA = ephe.sunTopoLocalHourAngleHMS
+        val sunLon = ephe.sunTopoLongitudeDMS
+        val sunLat = ephe.sunTopoLatitudeDMS
+        val sunRa = ephe.sunTopoRightAscensionHMS
+        val sunDec = ephe.sunTopoDeclinationDMS
+        val sunAz = ephe.sunTopoAzimuthDMS
+        val sunAlt = ephe.sunApparentTopoAltitudeDMS
+        
+        val moonGHA = elp.moonTopoGreenwichHourAngleHMS
+        val moonLHA = elp.moonTopoLocalHourAngleHMS
+        val moonLon = elp.moonTopoLongitudeDMS
+        val moonLat = elp.moonTopoLatitudeDMS
+        val moonRa = elp.moonTopoRightAscensionHMS
+        val moonDec = elp.moonTopoDeclinationDMS
+        val moonAz = elp.moonTopoAzimuthDMS
+        val moonAlt = elp.moonApparentTopoAltitudeCenterLimbDMS
 		
         
         println("Ephemeris Jean Meeus New Refactor code Periodic Terms (-+ 360)")
@@ -245,8 +266,20 @@ class EphemerisJM {
         println("Sun Topo Semidiameter: $sunTopoSemidiameter, ${cv.toDegreeFullRound2(sunTopoSemidiameter)}, ${ephe.sunTopoSemidiameterMMSS2}")
         println("Sun Equation of Time: $equationOfTime, ${cv.toTimeFullRound2(equationOfTime)}")
         println("")
-        println("Moon Geocentric Coor:")
+        println("")
+        println("GST/LST: $gst/$lst")
+        println("sun GHA/LHA: $sunGHA/$sunLHA")
+        println("sun Lon/Lat: $sunLon/$sunLat")
+        println("sun Ra/Dec: $sunRa/$sunDec")
+        println("sun Az/Alt: $sunAz/$sunAlt")
+        println(" ")
+        println("moon GHA/LHA: $moonGHA/$moonLHA")
+        println("moon Lon/Lat: $moonLon/$moonLat")
+        println("moon Ra/Dec: $moonRa/$moonDec")
+        println("moon Az/Alt: $moonAz/$moonAlt")
+        println(" ")
         
+        println("Moon Geocentric Coor:")
         println("")
         println("Moon True Geo Lon: $moonTrueGeoLon, ${cv.toDegreeFullRound2(moonTrueGeoLon)}")
         println("Moon Appa Geo Lon: $moonAppaGeoLon, ${cv.toDegreeFullRound2(moonAppaGeoLon)}")

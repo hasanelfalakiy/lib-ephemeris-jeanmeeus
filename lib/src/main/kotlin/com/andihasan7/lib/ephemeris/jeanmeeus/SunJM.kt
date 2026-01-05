@@ -34,6 +34,8 @@ import com.andihasan7.lib.ephemeris.jeanmeeus.enum.JulianType
 import com.andihasan7.lib.ephemeris.jeanmeeus.timeutil.TimeUtil
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.UnitType
 import com.andihasan7.lib.ephemeris.jeanmeeus.timeutil.DeltaT
+import kotlin.math.cos
+import kotlin.mod
 
 /**
 * Sun Datas of Jean Meeus
@@ -159,25 +161,25 @@ class SunJM(
     
     /**
     * Nutation in Longitude, deltaPsi
-    * model of IAU 2000B
+    * model of IAU 1980
     */
     val nutationInLongitude get() = Nutation.nutationInLonAndObliquity(jd, deltaT)[0]
 
     /**
      * Nutation in Longitude DMS, deltaPsi
-     * model of IAU 2000B
+     * model of IAU 1980
      */
     val nutationInLongitudeDMS get() = ConvertUtil.toDegreeFullRound2(nutationInLongitude)
     
     /**
     * Nutation of Obliquity, deltaEpsilon
-    * model of IAU 2000B
+    * model of IAU 1980
     */
     val nutationInObliquity get() = Nutation.nutationInLonAndObliquity(jd, deltaT)[1]
 
     /**
      * Nutation of Obliquity DMS, deltaEpsilon
-     * model of IAU 2000B
+     * model of IAU 1980
      */
     val nutationInObliquityDMS get() = ConvertUtil.toDegreeFullRound2(nutationInObliquity)
     
@@ -335,6 +337,11 @@ class SunJM(
      * Greenwich Mean Sidereal Time DMS default in degree, GMST, v0
      */
     val greenwichMeanSiderealTimeDMS get() = ConvertUtil.toDegreeFullRound2(greenwichMeanSiderealTime)
+    
+    /**
+    * Greenwich Sidereal Time Hour, GMST pukul, v0
+    */
+    val greenwichMeanSiderealTimeHour get() = (greenwichMeanSiderealTime / 15).mod(24.0)
 
     /**
     * Greenwich Apparent Sidereal Time, GAST, v
@@ -345,7 +352,17 @@ class SunJM(
      * Greenwich Apparent Sidereal Time DMS, GAST, v
      */
     val greenwichApparentSiderealTimeDMS get() = ConvertUtil.toDegreeFullRound2(greenwichApparentSiderealTime)
-
+    
+    /**
+    * Greenwich Apparent Sidereal Time Hour, apparent GAST pukul, v
+    */
+    val greenwichApparentSiderealTimeHour get() = (greenwichMeanSiderealTime + nutationInLongitude * cos(Math.toRadians(trueObliquityOfEcliptic)) / 15).mod(24.0)
+    
+    /**
+    * Greenwich Apparent Sidereal Time Hour HMS, GAST, v
+    */
+    val greenwichApparentSiderealTimeHMS get() = ConvertUtil.toCounterHHMMSS24(greenwichApparentSiderealTimeHour, 3)
+    
     /**
     * Local Apparent Sidereal Time, LAST, theta
     */
@@ -355,6 +372,16 @@ class SunJM(
      * Local Apparent Sidereal Time DMS, LAST, theta
      */
     val localApparentSiderealTimeDMS get() = ConvertUtil.toDegreeFullRound2(localApparentSiderealTime)
+    
+    /**
+    * Local Apparent Sidereal Time Hour, theta, apparent LAST pukul
+    */
+    val localApparentSiderealTimeHour get() = (greenwichApparentSiderealTimeHour + longitude / 15).mod(24.0)
+
+    /**
+    * Local Apparent Sidereal Time Hour, theta, apparent LAST pukul HMS
+    */
+    val localApparentSiderealTimeHMS get() = ConvertUtil.toCounterHHMMSS24(localApparentSiderealTimeHour, 3)
     
     /**
     * Sun Geocentric Greenwich Hour Angle, GHA, Ho
@@ -367,6 +394,11 @@ class SunJM(
     val sunGeoGreenwichHourAngleDMS get() = ConvertUtil.toDegreeFullRound2(sunGeoGreenwichHourAngle)
     
     /**
+    * Sun Geocentric Greenwich Hour Angle Hour HMS, GHA, Ho
+    */
+    val sunGeoGreenwichHourAngleHMS get() = ConvertUtil.toCounterHHMMSS24((sunGeoGreenwichHourAngle / 15.0).mod(24.0), 3)
+    
+    /**
     * Sun Geocentric Local Hour Angle, LHA, H
     */
     val sunGeoLocalHourAngle get() = SunPosition.sunGeoLocalHourAngle(jd, longitude, deltaT, UnitType.DEGREES)
@@ -375,6 +407,11 @@ class SunJM(
      * Sun Geocentric Local Hour Angle DMS, LHA, H
      */
     val sunGeoLocalHourAngleDMS get() = ConvertUtil.toDegreeFullRound2(sunGeoLocalHourAngle)
+    
+    /**
+    * Sun Geocentric Local Hour Angle Hour HMS, LHA, H
+    */
+    val sunGeoLocalHourAngleHMS get() = ConvertUtil.toCounterHHMMSS24((sunGeoLocalHourAngle / 15.0).mod(24.0), 3)
     
     /**
     * Sun Geocentric Azimuth, A
@@ -487,6 +524,12 @@ class SunJM(
      * Sun Topocentric Right Ascension DMS, alpha apostrophe
      */
     val sunTopoRightAscensionDMS get() = ConvertUtil.toDegreeFullRound2(sunTopoRightAscension)
+    
+    /**
+    * Sun Topocentric Right Ascension Hour HMS, a`
+    */
+    val sunTopoRightAscensionHMS get() = ConvertUtil.toCounterHHMMSS24((sunTopoRightAscension / 15.0).mod(24.0), 3)
+    
 
     /**
     * Sun Topocentric Declination, delta apostrophe
@@ -497,6 +540,22 @@ class SunJM(
      * Sun Topocentric Declination DMS, delta apostrophe
      */
     val sunTopoDeclinationDMS get() = ConvertUtil.toDegreeFullRound2(sunTopoDeclination)
+    
+    /**
+    * Sun Topocentric Greenwich Hour Angle, GHA'
+    */
+    val sunTopoGreenwichHourAngle get() = (greenwichApparentSiderealTime - sunTopoRightAscension).mod(360.0)
+    
+    /**
+    * Sun Topocentric Greenwich Hour Angle DMS, GHA'
+    */
+    val sunTopoGreenwichHourAngleDMS get() = ConvertUtil.toDegreeFullRound2(sunTopoGreenwichHourAngle)
+    
+    /**
+    * Sun Topocentric Greenwich Hour Angle Hour HMS, GHA'
+    */
+    val sunTopoGreenwichHourAngleHMS get() = ConvertUtil.toCounterHHMMSS24((sunTopoGreenwichHourAngle / 15.0).mod(24.0), 3)
+    
 
     /**
     * Sun Topocentric Local Hour Angle default in degree, H apostrophe
@@ -507,6 +566,12 @@ class SunJM(
      * Sun Topocentric Local Hour Angle DMS default in degree, H apostrophe
      */
     val sunTopoLocalHourAngleDMS get() = ConvertUtil.toDegreeFullRound2(sunTopoLocalHourAngle)
+    
+    /**
+    * Sun Topocentric Local Hour Angle Hour HMS, H`
+    */
+    val sunTopoLocalHourAngleHMS get() = ConvertUtil.toCounterHHMMSS24((sunTopoLocalHourAngle / 15.0).mod(24.0), 3)
+    
 
     /**
     * Sun Topocentric Azimuth, A apostrophe 
