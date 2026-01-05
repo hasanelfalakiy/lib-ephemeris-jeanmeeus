@@ -27,7 +27,6 @@ import kotlin.test.Test
 import com.andihasan7.lib.ephemeris.jeanmeeus.convertutil.ConvertUtil
 import com.andihasan7.lib.ephemeris.jeanmeeus.SunJM
 import com.andihasan7.lib.ephemeris.jeanmeeus.MoonJM
-import com.andihasan7.lib.ephemeris.jeanmeeus.util.toDegreeFullRound2
 
 class EphemerisJM {
     
