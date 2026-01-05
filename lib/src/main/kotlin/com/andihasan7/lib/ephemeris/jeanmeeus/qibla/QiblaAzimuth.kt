@@ -21,7 +21,7 @@
  *
  */
 
-package com.andihasan7.lib.ephemeris.jeanmeeus.arahqiblat
+package com.andihasan7.lib.ephemeris.jeanmeeus.qibla
 
 import kotlin.math.acos
 import kotlin.math.asin
@@ -31,7 +31,7 @@ import kotlin.math.sin
 /**
 * ArahQiblat
 */
-class ArahQiblat {
+class QiblaAzimuth {
     
 	val LATITUDEKABAH = 21.4225
     val LONGITUDEKABAH = 39.826111111111
@@ -41,7 +41,7 @@ class ArahQiblat {
     * @param [latitude: Double, longitude: Double]
     * @return [0 = azimuthUB, 1 = azimuthBU, 2 = azimuthUTSB]
     */
-    fun arahQiblat(latitude: Double, longitude: Double): DoubleArray {
+    fun qiblaAzimuth(latitude: Double, longitude: Double): DoubleArray {
 
         // Selisih azimuthBUjur
 
