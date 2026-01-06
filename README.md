@@ -86,7 +86,7 @@ implementation 'com.github.hasanelfalakiy:lib-ephemeris-jeanmeeus:$version'
 ```
 lib-ephemeris-jeanmeeus
 
-Copyright (C) 2024-2025  Andi Hasan Ashari
+Copyright (C) 2024-2026  Andi Hasan Ashari
 
 lib-ephemeris-jeanmeeus is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
