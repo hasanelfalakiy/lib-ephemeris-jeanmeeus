@@ -35,8 +35,7 @@ import com.andihasan7.lib.ephemeris.jeanmeeus.enum.PositionType
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.SunAltType
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.UnitType
 import com.andihasan7.lib.ephemeris.jeanmeeus.moonactivity.MoonActivity
-import com.andihasan7.lib.ephemeris.jeanmeeus.moonphase.MoonPhase
-import com.andihasan7.lib.ephemeris.jeanmeeus.prayertimes.PrayerTimes
+import com.andihasan7.lib.ephemeris.jeanmeeus.moonphase.MoonPhaseJM
 import com.andihasan7.lib.ephemeris.jeanmeeus.moonposition.MoonPosition
 import com.andihasan7.lib.ephemeris.jeanmeeus.sunposition.SunPosition
 import com.andihasan7.lib.ephemeris.jeanmeeus.timeutil.DeltaT
@@ -70,7 +69,7 @@ import kotlin.math.sqrt
 *    var pressure: Double = 1010.0, // annual average local air pressure (in millibars)
 * ```
 */ 
-class MoonSighting(
+class MoonSightingJM(
     var monthOfHijri: Int = 1, // month of hijri
     var yearOfHijri: Int = 1446, // year of hijri
     var longitude: Double = 0.0, // longitude of observer
@@ -86,12 +85,12 @@ class MoonSighting(
     /**
      * jd New Moon from Astronomical Algorithm book without tabular interpolation
      */
-    val jdNewMoonAstronomicalAlgorithm get() = MoonPhase.moonPhase(monthOfHijri, yearOfHijri, PhaseType.NEWMOON)
+    val jdNewMoonAstronomicalAlgorithm get() = MoonPhaseJM.moonPhase(monthOfHijri, yearOfHijri, PhaseType.NEWMOON)
 
     /**
      * JD julian day when new moon/JD ijtima with tabular interpolation without deltaT
      */
-    val jdGeoNewMoon get() = MoonPhase.moonGeoConjunction(monthOfHijri, yearOfHijri, 0.0, ConjunctionReturn.JDCONJUNCTION)
+    val jdGeoNewMoon get() = MoonPhaseJM.moonGeoConjunction(monthOfHijri, yearOfHijri, 0.0, ConjunctionReturn.JDCONJUNCTION)
 
     /**
      * jd when maghrib with tabular interpolation without deltaT
@@ -116,7 +115,7 @@ class MoonSighting(
     /**
      * jd julian day geo when new moon/JD ijtima with deltaT
      */
-    val jdGeoNewMoonCor get() = MoonPhase.moonGeoConjunction(monthOfHijri, yearOfHijri, deltaT, ConjunctionReturn.JDCONJUNCTION)
+    val jdGeoNewMoonCor get() = MoonPhaseJM.moonGeoConjunction(monthOfHijri, yearOfHijri, deltaT, ConjunctionReturn.JDCONJUNCTION)
     
     // jdGeoNewMoonCor + addDate for argumen elp
     val jdGeoNewMoonCorPlus get() = jdGeoNewMoonCor + addDate
@@ -124,7 +123,7 @@ class MoonSighting(
     /**
      * longitude new moon geocentric
      */
-    val lonGeoNewMoon get() = MoonPhase.moonGeoConjunction(monthOfHijri, yearOfHijri, deltaT, ConjunctionReturn.LONGITUDE)
+    val lonGeoNewMoon get() = MoonPhaseJM.moonGeoConjunction(monthOfHijri, yearOfHijri, deltaT, ConjunctionReturn.LONGITUDE)
     
     /**
      * longitude new moon geocentric DMS
@@ -134,12 +133,12 @@ class MoonSighting(
     /**
      * jd julian day topo when new moon/jd ijtima with deltaT
      */
-    val jdTopoNewMoon get() = MoonPhase.moonTopoConjunction(monthOfHijri, yearOfHijri, deltaT, longitude, latitude, elevation, ConjunctionReturn.JDCONJUNCTION)
+    val jdTopoNewMoon get() = MoonPhaseJM.moonTopoConjunction(monthOfHijri, yearOfHijri, deltaT, longitude, latitude, elevation, ConjunctionReturn.JDCONJUNCTION)
 
     /**
      * longitude new moon topocentric
      */
-    val lonTopoNewMoon get() = MoonPhase.moonTopoConjunction(monthOfHijri, yearOfHijri, deltaT, longitude, latitude, elevation, ConjunctionReturn.LONGITUDE)
+    val lonTopoNewMoon get() = MoonPhaseJM.moonTopoConjunction(monthOfHijri, yearOfHijri, deltaT, longitude, latitude, elevation, ConjunctionReturn.LONGITUDE)
     
     /**
      * longitude new moon topocentric DMS

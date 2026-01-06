@@ -31,7 +31,7 @@ import kotlin.math.sin
 /**
 * ArahQiblat
 */
-class QiblaAzimuth {
+class QiblaAzimuthJM {
     
 	val LATITUDEKABAH = 21.4225
     val LONGITUDEKABAH = 39.826111111111
@@ -48,9 +48,9 @@ class QiblaAzimuth {
         val selisihazimuthBUjur = 360 - LONGITUDEKABAH + longitude - 360
 
         val h = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(LATITUDEKABAH)) + cos(Math.toRadians(latitude))  * cos(Math.toRadians(LATITUDEKABAH)) * cos(Math.toRadians(selisihazimuthBUjur))))
-        
+                                
         // Azimuth U-B
-        val azimuthUB = Math.toDegrees(acos((sin(Math.toRadians(LATITUDEKABAH)) - sin(Math.toRadians(latitude)) * sin(Math.toRadians(h))) / cos(Math.toRadians(latitude)) / cos(Math.toRadians(h))))
+        val azimuthUB = Math.toDegrees(((sin(Math.toRadians(LATITUDEKABAH)) - sin(Math.toRadians(latitude)) * sin(Math.toRadians(h))) / cos(Math.toRadians(latitude)) / cos(Math.toRadians(h))))
 
         // Azimuth B-U
         val azimuthBU = 90 - azimuthUB

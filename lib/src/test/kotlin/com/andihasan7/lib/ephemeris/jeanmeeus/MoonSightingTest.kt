@@ -25,7 +25,7 @@ package com.andihasan7.lib.ephemeris.jeanmeeus
 
 import kotlin.test.Test
 import com.andihasan7.lib.ephemeris.jeanmeeus.convertutil.ConvertUtil
-import com.andihasan7.lib.ephemeris.jeanmeeus.moonsighting.MoonSighting
+import com.andihasan7.lib.ephemeris.jeanmeeus.moonsighting.MoonSightingJM
 
 class MoonSightingTest {
     
@@ -33,7 +33,7 @@ class MoonSightingTest {
     @Test
     fun moonSightingTest() {
 		
-		val ms = MoonSighting(
+		val ms = MoonSightingJM(
             monthOfHijri = 3,
             yearOfHijri = 1447,
             longitude = 111.4333333334, // 98.67383333, // 111.461388888889,

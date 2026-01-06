@@ -25,7 +25,7 @@ package com.andihasan7.lib.ephemeris.jeanmeeus.prayertimes
 
 import com.andihasan7.lib.ephemeris.jeanmeeus.SunJM
 import com.andihasan7.lib.ephemeris.jeanmeeus.convertutil.ConvertUtil
-import com.andihasan7.lib.ephemeris.jeanmeeus.qibla.QiblaAzimuth
+import com.andihasan7.lib.ephemeris.jeanmeeus.qibla.QiblaAzimuthJM
 import kotlin.math.acos
 import kotlin.math.atan
 import kotlin.math.tan
@@ -51,7 +51,7 @@ import kotlin.mod
  *    otherIhtiyat: Int = 0 // ihtiyat other than dzuhur is added except sunrise is reduced
  * ```
  */
-class PrayerTimes(
+class PrayerTimesJM(
     date: Int,
     month: Int,
     year: Int,
@@ -440,7 +440,7 @@ class PrayerTimes(
 
 
 
-    private val azimuthUTSB = QiblaAzimuth().qiblaAzimuth(latitude, longitude)[2]
+    private val azimuthUTSB = QiblaAzimuthJM().qiblaAzimuth(latitude, longitude)[2]
 
     // daily rashdul qiblat
     private val b = 90 - latitude
@@ -477,8 +477,8 @@ class PrayerTimes(
     val rashdu2HMS = ConvertUtil.toTimeFullRound2(rashdu2)
 
 
-    private val LATITUDEKABAH = QiblaAzimuth().LATITUDEKABAH
-    private val LONGITUDEKABAH = QiblaAzimuth().LONGITUDEKABAH
+    private val LATITUDEKABAH = QiblaAzimuthJM().LATITUDEKABAH
+    private val LONGITUDEKABAH = QiblaAzimuthJM().LONGITUDEKABAH
 
 
     private val selisih = (longitude - LONGITUDEKABAH)

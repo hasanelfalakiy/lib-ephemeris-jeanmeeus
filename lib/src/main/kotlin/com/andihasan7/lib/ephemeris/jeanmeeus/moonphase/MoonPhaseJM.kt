@@ -29,7 +29,7 @@ import com.andihasan7.lib.ephemeris.jeanmeeus.sunposition.SunPosition
 import kotlin.math.*
 import kotlin.mod
 
-object MoonPhase {
+object MoonPhaseJM {
     /**
      * function to compute moon phases
      *
@@ -51,7 +51,7 @@ object MoonPhase {
         }
         val k = floor(vHY) + type
         val t = k.toDouble() / 1236.85
-        val jdeMoonPhase = 2451550.09766 + 29.530588861 * k +
+        val jdeMoonPhaseJM = 2451550.09766 + 29.530588861 * k +
                 0.00015437 * t.pow(2) -
                 0.00000015 * t.pow(3) +
                 0.00000000073 * t.pow(4)
@@ -193,9 +193,9 @@ object MoonPhase {
                 0.000035 * sin(a13) +
                 0.000023 * sin(a14)
 
-        val finalJdeMoonPhase = (jdeMoonPhase + jdeCorrected + jdeCor2)
+        val finalJdeMoonPhaseJM = (jdeMoonPhaseJM + jdeCorrected + jdeCor2)
         
-        return finalJdeMoonPhase
+        return finalJdeMoonPhaseJM
     }
 
     /**

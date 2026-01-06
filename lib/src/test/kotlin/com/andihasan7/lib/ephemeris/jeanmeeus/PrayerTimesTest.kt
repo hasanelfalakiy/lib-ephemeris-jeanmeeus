@@ -24,7 +24,7 @@
 package com.andihasan7.lib.ephemeris.jeanmeeus
 
 import com.andihasan7.lib.ephemeris.jeanmeeus.convertutil.ConvertUtil
-import com.andihasan7.lib.ephemeris.jeanmeeus.prayertimes.PrayerTimes
+import com.andihasan7.lib.ephemeris.jeanmeeus.prayertimes.PrayerTimesJM
 import kotlin.test.Test
 
 class PrayerTimesTest {
@@ -32,7 +32,7 @@ class PrayerTimesTest {
     @Test
     fun prayerTimesTest() {
 
-        val ws = PrayerTimes(
+        val ws = PrayerTimesJM(
             date = 1,
             month = 1,
             year = 2026,
