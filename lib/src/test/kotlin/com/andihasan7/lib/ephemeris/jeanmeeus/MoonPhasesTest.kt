@@ -26,7 +26,7 @@ package com.andihasan7.lib.ephemeris.jeanmeeus
 import com.andihasan7.lib.ephemeris.jeanmeeus.convertutil.ConvertUtil
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.DateFormat
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.PhaseType
-import com.andihasan7.lib.ephemeris.jeanmeeus.moonphase.MoonPhase
+import com.andihasan7.lib.ephemeris.jeanmeeus.moonphase.MoonPhaseJM
 import com.andihasan7.lib.ephemeris.jeanmeeus.timeutil.TimeUtil
 import kotlin.test.Test
 
@@ -35,7 +35,7 @@ class MoonPhasesTest {
     @Test
     fun moonPhasesTest() {
 
-        val mp = MoonPhase
+        val mp = MoonPhaseJM
         val month = 9
         val year = 1446
 
