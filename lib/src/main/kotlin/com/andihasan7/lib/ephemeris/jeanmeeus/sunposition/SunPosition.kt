@@ -497,7 +497,7 @@ object SunPosition {
         val y = Correction.termY(lat, elev)
         val n = sunTermN(jd, lon, lat, elev, deltaT)
         
-        val betaPDeg = (Math.toDegrees(atan(cos(Math.toRadians(lambdaP)) * (sin(Math.toRadians(beta)) - sin(Math.toRadians(phi)) * (y * cos(Math.toRadians(epsilon)) - x * sin(Math.toRadians(epsilon)) * sin(Math.toRadians(theta)))) / n))).mod(360.0)
+        val betaPDeg = Math.toDegrees(atan(cos(Math.toRadians(lambdaP)) * (sin(Math.toRadians(beta)) - sin(Math.toRadians(phi)) * (y * cos(Math.toRadians(epsilon)) - x * sin(Math.toRadians(epsilon)) * sin(Math.toRadians(theta)))) / n))
         val betaPRad = Math.toRadians(betaPDeg)
         return when (unitType) {
             UnitType.DEGREES -> betaPDeg
