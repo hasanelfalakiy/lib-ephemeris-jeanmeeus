@@ -356,12 +356,12 @@ class SunJM(
     /**
     * Greenwich Apparent Sidereal Time Hour, apparent GAST pukul, v
     */
-    val greenwichApparentSiderealTimeHour get() = (greenwichMeanSiderealTime + nutationInLongitude * cos(Math.toRadians(trueObliquityOfEcliptic)) / 15).mod(24.0)
+    val greenwichApparentSiderealTimeHour get() = (greenwichApparentSiderealTime / 15).mod(24.0) // (greenwichMeanSiderealTime + nutationInLongitude * cos(Math.toRadians(trueObliquityOfEcliptic)) / 15).mod(24.0)
     
     /**
     * Greenwich Apparent Sidereal Time Hour HMS, GAST, v
     */
-    val greenwichApparentSiderealTimeHMS get() = ConvertUtil.toCounterHHMMSS24(greenwichApparentSiderealTimeHour, 3)
+    val greenwichApparentSiderealTimeHourHMS get() = ConvertUtil.toCounterHHMMSS24(greenwichApparentSiderealTimeHour, 3)
     
     /**
     * Local Apparent Sidereal Time, LAST, theta
@@ -376,12 +376,12 @@ class SunJM(
     /**
     * Local Apparent Sidereal Time Hour, theta, apparent LAST pukul
     */
-    val localApparentSiderealTimeHour get() = (greenwichApparentSiderealTimeHour + longitude / 15).mod(24.0)
+    val localApparentSiderealTimeHour get() = (localApparentSiderealTime / 15).mod(24.0)
 
     /**
     * Local Apparent Sidereal Time Hour, theta, apparent LAST pukul HMS
     */
-    val localApparentSiderealTimeHMS get() = ConvertUtil.toCounterHHMMSS24(localApparentSiderealTimeHour, 3)
+    val localApparentSiderealTimeHourHMS get() = ConvertUtil.toCounterHHMMSS24(localApparentSiderealTimeHour, 3)
     
     /**
     * Sun Geocentric Greenwich Hour Angle, GHA, Ho

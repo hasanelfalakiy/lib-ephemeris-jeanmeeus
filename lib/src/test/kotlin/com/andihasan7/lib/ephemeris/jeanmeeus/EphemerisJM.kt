@@ -40,26 +40,26 @@ class EphemerisJM {
         */
        
         val ephe = SunJM(
-            date = 27,
+            date = 28,
             month = 1,
             year = 2026,
             latitude = -7.476016667, // -7.029055555556,
             longitude = 111.3133556, // 106.557722222222,
             elevation = 0.0, // 52.685,
             timeZone = 7.0,
-            hourDouble = 9.1461111111, // 17.8575,// 17.94671437500343, // 17.8575,
+            hourDouble = 10.48861111, // 17.8575,// 17.94671437500343, // 17.8575,
             checkDeltaT = true
         )
         
         val elp = MoonJM(
-            date = 27,
+            date = 28,
             month = 1,
             year = 2026,
             latitude = -7.476016667, // -7.029055555556,
             longitude = 111.3133556, // 106.557722222222,
             elevation = 0.0, // 52.685,
             timeZone = 7.0,
-            hourDouble = 9.1461111111, // 17.8575,// 17.94671437500343, // 17.8575,
+            hourDouble = 10.48861111, // 17.8575,// 17.94671437500343, // 17.8575,
             checkDeltaT = true
         )
         
@@ -90,9 +90,9 @@ class EphemerisJM {
         val sunAppaGeoSemidiameter = ephe.sunApparentGeoSemidiameter
         val sunAppaGeoRA = ephe.sunApparentGeoRightAscension
         val sunAppaGeoDec = ephe.sunApparentGeoDeclination
-        val gmst = ephe.greenwichMeanSiderealTime
-        val gast = ephe.greenwichApparentSiderealTime
-        val last = ephe.localApparentSiderealTime
+        val gmst = ephe.greenwichMeanSiderealTimeDMS
+        val gast = ephe.greenwichApparentSiderealTimeDMS
+        val last = ephe.localApparentSiderealTimeDMS
         val gha = ephe.sunGeoGreenwichHourAngle
         val lha = ephe.sunGeoLocalHourAngle
         val sunGeoAzimuth = ephe.sunGeoAzimuth
@@ -173,8 +173,8 @@ class EphemerisJM {
         val moonTopoBrightLimbAngle = elp.moonTopoBrightLimbAngle
         
         // for realtime
-        val gst = ephe.greenwichApparentSiderealTimeHMS
-        val lst = ephe.localApparentSiderealTimeHMS
+        val gst = ephe.greenwichApparentSiderealTimeHourHMS
+        val lst = ephe.localApparentSiderealTimeHourHMS
         val sunGHA = ephe.sunTopoGreenwichHourAngleHMS
         val sunLHA = ephe.sunTopoLocalHourAngleHMS
         val sunLon = ephe.sunTopoLongitudeDMS

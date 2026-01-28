@@ -610,8 +610,8 @@ $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/equationOfTimeHMS/#
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/fracDay/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/frac-day.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/greenwichApparentSiderealTime/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/greenwich-apparent-sidereal-time.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/greenwichApparentSiderealTimeDMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/greenwich-apparent-sidereal-time-d-m-s.html
-$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/greenwichApparentSiderealTimeHMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/greenwich-apparent-sidereal-time-h-m-s.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/greenwichApparentSiderealTimeHour/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/greenwich-apparent-sidereal-time-hour.html
+$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/greenwichApparentSiderealTimeHourHMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/greenwich-apparent-sidereal-time-hour-h-m-s.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/greenwichMeanSiderealTime/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/greenwich-mean-sidereal-time.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/greenwichMeanSiderealTimeDMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/greenwich-mean-sidereal-time-d-m-s.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/greenwichMeanSiderealTimeHour/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/greenwich-mean-sidereal-time-hour.html
@@ -626,8 +626,8 @@ $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/jme/#/PointingToDec
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/latitude/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/latitude.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/localApparentSiderealTime/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/local-apparent-sidereal-time.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/localApparentSiderealTimeDMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/local-apparent-sidereal-time-d-m-s.html
-$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/localApparentSiderealTimeHMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/local-apparent-sidereal-time-h-m-s.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/localApparentSiderealTimeHour/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/local-apparent-sidereal-time-hour.html
+$dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/localApparentSiderealTimeHourHMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/local-apparent-sidereal-time-hour-h-m-s.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/longitude/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/longitude.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/meanObliquityOfEcliptic/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/mean-obliquity-of-ecliptic.html
 $dokka.location:com.andihasan7.lib.ephemeris.jeanmeeus/SunJM/meanObliquityOfEclipticDMS/#/PointingToDeclaration/lib/com.andihasan7.lib.ephemeris.jeanmeeus/-sun-j-m/mean-obliquity-of-ecliptic-d-m-s.html
