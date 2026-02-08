@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./img/banner_meeus.png" alt="app_banner"/>
+  <img src="./img/banner_meeus_new.png" alt="app_banner"/>
 </p>
 
 <h2 align="center"><b>lib-ephemeris-jeanmeeus</b></h2>
