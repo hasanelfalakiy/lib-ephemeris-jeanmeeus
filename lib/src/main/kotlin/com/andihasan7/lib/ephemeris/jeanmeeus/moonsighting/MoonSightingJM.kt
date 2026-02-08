@@ -101,7 +101,12 @@ class MoonSightingJM(
      * jd when maghrib + addDate
      */
     val jdGhurubSyamsPlus get() = SunPosition.jdMaghrib(jdGeoNewMoon + addDate, longitude, latitude, elevation, timeZone)
-    
+
+    /**
+     * deltaT without addDate
+     */
+    val deltaTNoAdd get() = DeltaT.deltaT(floor(jdGeoNewMoon) + 0.5)
+
     /**
      * deltaT + addDate
      */
@@ -115,7 +120,7 @@ class MoonSightingJM(
     /**
      * jd julian day geo when new moon/JD ijtima with deltaT
      */
-    val jdGeoNewMoonCor get() = MoonPhaseJM.moonGeoConjunction(monthOfHijri, yearOfHijri, deltaT, ConjunctionReturn.JDCONJUNCTION)
+    val jdGeoNewMoonCor get() = MoonPhaseJM.moonGeoConjunction(monthOfHijri, yearOfHijri, deltaTNoAdd, ConjunctionReturn.JDCONJUNCTION)
     
     // jdGeoNewMoonCor + addDate for argumen elp
     val jdGeoNewMoonCorPlus get() = jdGeoNewMoonCor + addDate
