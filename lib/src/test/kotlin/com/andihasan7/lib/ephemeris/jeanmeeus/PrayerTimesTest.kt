@@ -50,6 +50,8 @@ class PrayerTimesTest {
         val dluha = ws.dluhaWD_HMS
         val dzuhur = ws.dzuhurWD_HMS
         val ashar = ws.asharWD_HMS
+        val sunset = ws.maghribWDWithoutIhtiyat_HMS
+        val sunrise = ws.terbitWDWithoutIhtiyat_HMS
         val maghrib = ws.maghribWD_HMS
         val isya = ws.isyaWD_HMS
         val tMalam = ws.tengahMalamWD_HMS
@@ -65,6 +67,10 @@ class PrayerTimesTest {
         val semi12Noon = ConvertUtil.toDegreeFullRound2(ws.semidiameter)
 
         println("1 Jan 2026")
+        println("")
+        println("Sunrise : $sunrise")
+        println("Sunset  : $sunset")
+        println("")
         println("Imsak   : $imsak")
         println("Shubuh  : $shubuh")
         println("Terbit  : $terbit")
