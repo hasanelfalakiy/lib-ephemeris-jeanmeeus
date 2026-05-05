@@ -34,7 +34,7 @@ class MoonSightingTest {
     fun moonSightingTest() {
 		
 		val ms = MoonSightingJM(
-            monthOfHijri = 3,
+            monthOfHijri = 11,
             yearOfHijri = 1447,
             longitude = 111.4333333334, // 98.67383333, // 111.461388888889,
             latitude = -7.4333333334, // 3.589666667, //-7.367222222222,
