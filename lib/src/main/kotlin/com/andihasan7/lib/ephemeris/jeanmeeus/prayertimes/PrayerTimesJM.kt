@@ -186,11 +186,18 @@ class PrayerTimesJM(
     private val hMaghrib = -((34.0 / 60) + semid_maghr + dip)
     private val t_maghr = Math.toDegrees(acos((sin(Math.toRadians(hMaghrib)) - sin(Math.toRadians(latitude)) * sin(Math.toRadians(dek_maghr))) / (cos(Math.toRadians(latitude)) * cos(Math.toRadians(dek_maghr)))))
 
-    private val _maghribWD = meridianPassMaghr + (t_maghr / 15) - kwd
+    /**
+     * maghrib lokal tanpa ihtiyat
+     */
+    val maghribWDWithoutIhtiyat = meridianPassMaghr + (t_maghr / 15) - kwd
+    /**
+     * maghrib lokal tanpa ihtiyat
+     */
+    val maghribWDWithoutIhtiyat_HMS = ConvertUtil.toTimeFullRound2(maghribWDWithoutIhtiyat)
     /**
      * maghrib local
      */
-    val maghribWD = _maghribWD + (otherIhtiyat.toDouble() / 60)
+    val maghribWD = maghribWDWithoutIhtiyat + (otherIhtiyat.toDouble() / 60)
 
     /**
      * maghrib local HMS
@@ -324,9 +331,18 @@ class PrayerTimesJM(
     private val meridianPassTerbit = 12 - eq_terbit
 
     /**
+     * sunrise local tanpa ihtiyat
+     */
+    val terbitWDWithoutIhtiyat = meridianPassTerbit - (t_maghr / 15) - kwd
+
+    /**
+     * sunrise local tanpa ihtiyat HMS
+     */
+    val terbitWDWithoutIhtiyat_HMS = ConvertUtil.toTimeFullRound2(terbitWDWithoutIhtiyat)
+    /**
      * sunrise local
      */
-    val terbitWD = meridianPassTerbit - (t_maghr / 15) - kwd - (otherIhtiyat.toDouble() / 60)
+    val terbitWD = terbitWDWithoutIhtiyat - (otherIhtiyat.toDouble() / 60)
 
     /**
      * sunrise local HMS
@@ -399,7 +415,7 @@ class PrayerTimesJM(
     /**
      * midnight local
      */
-    val tengahMalamWD = (((_shubuhWD + 24) - _maghribWD) / 2 + _maghribWD).mod(24.0)
+    val tengahMalamWD = (((_shubuhWD + 24) - maghribWDWithoutIhtiyat) / 2 + maghribWDWithoutIhtiyat).mod(24.0)
 
     /**
      * midnight local HMS
@@ -421,7 +437,7 @@ class PrayerTimesJM(
     /**
      * 2/3 night local
      */
-    val duaPer3MalamWD = ((24 + _shubuhWD - _maghribWD) / 3.0) * 2 + _maghribWD - 24
+    val duaPer3MalamWD = ((24 + _shubuhWD - maghribWDWithoutIhtiyat) / 3.0) * 2 + maghribWDWithoutIhtiyat - 24
 
     /**
      * 2/3 night local HMS
