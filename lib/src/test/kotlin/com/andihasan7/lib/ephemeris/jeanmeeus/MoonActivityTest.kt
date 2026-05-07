@@ -11,43 +11,53 @@ class MoonActivityTest {
     fun moonActivityTest() {
 
         val ma = MoonActivity
+        
+        val date = 7
+        val month = 5
+        val year = 2026
+        val lat = 59.91388889
+        val lon = 10.75222222
+        val elev = 50.0
+        val tz = 1.0
+        
         val moonRise = ma.moonActivity(
-            5,
-            5,
-            2026,
-            111.43333334,
-            -7.43333334,
-            150.0,
-            7.0,
+            date,
+            month,
+            year,
+            lon,
+            lat,
+            elev,
+            tz,
             5,
             MoonActivityType.RISE
         )
         val moonSet = ma.moonActivity(
-            5,
-            5,
-            2026,
-            111.43333334,
-            -7.43333334,
-            150.0,
-            7.0,
+            date,
+            month,
+            year,
+            lon,
+            lat,
+            elev,
+            tz,
             5,
             MoonActivityType.SET
         )
         val moonTransit = ma.moonActivity(
-            5,
-            5,
-            2026,
-            111.43333334,
-            -7.43333334,
-            150.0,
-            7.0,
+            date,
+            month,
+            year,
+            lon,
+            lat,
+            elev,
+            tz,
             5,
             MoonActivityType.TRANSIT
         )
 
         println("Moon Activity Test")
         println("Moon Rise: ${ConvertUtil.toTimeFullRound2(moonRise ?: 0.0)}")
-        println("Moon Set : ${ConvertUtil.toTimeFullRound2(moonSet ?: 0.0)}")
         println("Moon Transit: ${ConvertUtil.toTimeFullRound2(moonTransit ?: 0.0)}")
+        println("Moon Set : ${ConvertUtil.toTimeFullRound2(moonSet ?: 0.0)}")
+        
     }
 }

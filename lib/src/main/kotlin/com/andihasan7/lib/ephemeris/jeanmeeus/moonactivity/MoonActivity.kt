@@ -115,7 +115,8 @@ object MoonActivity {
             
            pi = MoonPosition.moonEquatorialHorizontalParallax(jde0UT)
             
-           h0 = -(34.0 / 60) + 0.7275 * pi - 0.0353 * sqrt(elevation)
+           // h0 = -(34.0 / 60) + 0.7275 * pi - 0.0353 * sqrt(elevation)
+           h0 = 0.7275 * pi - (34.0 / 60)
            cosHA0 = (sin(Math.toRadians(h0)) - sin(Math.toRadians(latitude)) * sin(Math.toRadians(deltaM00d))) / (cos(Math.toRadians(latitude)) * cos(Math.toRadians(deltaM00d)))
             
            if (abs(cosHA0) <= 1.0) {
