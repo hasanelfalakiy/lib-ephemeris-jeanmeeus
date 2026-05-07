@@ -27,4 +27,11 @@
 
     
     
+<file path="/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/moonactivity/MoonActivity.kt"/>
+    <file path="/lib/src/test/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/MoonPhasesTest.kt"/>
+    <file path="/lib/src/test/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/PrayerTimesTest.kt"/>
+    <file path="/lib/src/test/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/EphemerisJM.kt"/>
+    <file path="/lib/src/test/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/MoonSightingTest.kt"/>
+    <file path="/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/moonphase/MoonPhaseJM.kt"/>
+    <file path="/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/moonsighting/MoonSightingJM.kt"/>
 </aml>
