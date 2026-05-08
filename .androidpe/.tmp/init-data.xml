@@ -13,6 +13,7 @@
     <deps>
     </deps>
     <tasks>
+      <item task=":artifactTransforms" desc="Displays the Artifact Transforms that can be executed in root project 'lib-ephemeris-jeanmeeus'." />
       <item task=":buildEnvironment" desc="Displays all buildscript dependencies declared in root project 'lib-ephemeris-jeanmeeus'." />
       <item task=":components" desc="Displays the components produced by root project 'lib-ephemeris-jeanmeeus'. [deprecated]" />
       <item task=":dependencies" desc="Displays all dependencies declared in root project 'lib-ephemeris-jeanmeeus'." />
@@ -42,6 +43,7 @@
       <dep name="org.junit.platform:junit-platform-launcher:" path="" />
     </deps>
     <tasks>
+      <item task=":lib:artifactTransforms" desc="Displays the Artifact Transforms that can be executed in project ':lib'." />
       <item task=":lib:assemble" desc="Assembles the outputs of this project." />
       <item task=":lib:build" desc="Assembles and tests this project." />
       <item task=":lib:buildDependents" desc="Assembles and tests this project and all projects that depend on it." />
