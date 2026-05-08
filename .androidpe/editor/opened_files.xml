@@ -36,5 +36,6 @@
     
 <file path="/lib/src/test/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/MoonActivityTest.kt"/>
     <file path="/lib/src/main/kotlin/com/andihasan7/lib/ephemeris/jeanmeeus/moonactivity/MoonActivity.kt"/>
-    <file path="/lib/build/reports/tests/test/index.html"/>
+    
+<file path="/lib/build/reports/tests/test/index.html"/>
 </aml>

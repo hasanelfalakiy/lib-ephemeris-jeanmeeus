@@ -19,6 +19,7 @@ class MoonActivityTest {
         val lon = 10.75222222
         val elev = 50.0
         val tz = 1.0
+        val useDip = true
         
         val moonRise = ma.moonActivity(
             date,
@@ -29,7 +30,8 @@ class MoonActivityTest {
             elev,
             tz,
             5,
-            MoonActivityType.RISE
+            MoonActivityType.RISE,
+            useDip
         )
         val moonSet = ma.moonActivity(
             date,
@@ -40,7 +42,8 @@ class MoonActivityTest {
             elev,
             tz,
             5,
-            MoonActivityType.SET
+            MoonActivityType.SET,
+            useDip
         )
         val moonTransit = ma.moonActivity(
             date,
@@ -51,7 +54,8 @@ class MoonActivityTest {
             elev,
             tz,
             5,
-            MoonActivityType.TRANSIT
+            MoonActivityType.TRANSIT,
+            useDip
         )
 
         println("Moon Activity Test")
