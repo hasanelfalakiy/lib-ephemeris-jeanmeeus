@@ -25,6 +25,7 @@ package com.andihasan7.lib.ephemeris.jeanmeeus
 
 import kotlin.test.Test
 import com.andihasan7.lib.ephemeris.jeanmeeus.convertutil.ConvertUtil
+import com.andihasan7.lib.ephemeris.jeanmeeus.enum.DeltaTMode
 import com.andihasan7.lib.ephemeris.jeanmeeus.moonsighting.MoonSightingJM
 
 class MoonSightingTest {
@@ -41,7 +42,8 @@ class MoonSightingTest {
             elevation = 150.0, //  128.0,
             timeZone = 7.0,
             addDate = 0,
-            checkDeltaT = true
+            deltaTMode = DeltaTMode.CUSTOM,
+            customDeltaT = 69.184
         )
 
         val jdNewMoon = ms.jdGeoNewMoonCor
