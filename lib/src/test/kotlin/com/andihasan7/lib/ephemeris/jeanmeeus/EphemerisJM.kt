@@ -27,6 +27,7 @@ import kotlin.test.Test
 import com.andihasan7.lib.ephemeris.jeanmeeus.convertutil.ConvertUtil
 import com.andihasan7.lib.ephemeris.jeanmeeus.SunJM
 import com.andihasan7.lib.ephemeris.jeanmeeus.MoonJM
+import com.andihasan7.lib.ephemeris.jeanmeeus.enum.DeltaTMode
 
 class EphemerisJM {
     
@@ -48,7 +49,8 @@ class EphemerisJM {
             elevation = 0.0, // 52.685,
             timeZone = 7.0,
             hourDouble = 10.48861111, // 17.8575,// 17.94671437500343, // 17.8575,
-            checkDeltaT = true
+            deltaTMode = DeltaTMode.CUSTOM,
+            customDeltaT = 69.184
         )
         
         val elp = MoonJM(
@@ -60,7 +62,8 @@ class EphemerisJM {
             elevation = 0.0, // 52.685,
             timeZone = 7.0,
             hourDouble = 10.48861111, // 17.8575,// 17.94671437500343, // 17.8575,
-            checkDeltaT = true
+            deltaTMode = DeltaTMode.CUSTOM,
+            customDeltaT = 69.184
         )
         
         val cv = ConvertUtil

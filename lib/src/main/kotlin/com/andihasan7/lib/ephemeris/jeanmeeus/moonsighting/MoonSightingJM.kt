@@ -27,6 +27,7 @@ import com.andihasan7.lib.ephemeris.jeanmeeus.convertutil.ConvertUtil
 import com.andihasan7.lib.ephemeris.jeanmeeus.correction.Correction
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.ConjunctionReturn
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.DateFormat
+import com.andihasan7.lib.ephemeris.jeanmeeus.enum.DeltaTMode
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.DistanceType
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.MoonActivityType
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.MoonAltType
@@ -77,7 +78,8 @@ class MoonSightingJM(
     var elevation: Double = 0.0, // elevation of observer
     var timeZone: Double = 0.0, // time zone of observer
     var addDate: Int = 0, // additional day/date
-    var checkDeltaT: Boolean = true, // choice to use deltaT or not
+    var deltaTMode: DeltaTMode = DeltaTMode.POLYNOMIAL, // choice deltaT mode
+    var customDeltaT: Double = 0.0, // custom deltaT
     var temperature: Double = 10.0, // average annual local temperature (in °C)
     var pressure: Double = 1010.0, // annual average local air pressure (in millibars)
 ) {
@@ -105,12 +107,20 @@ class MoonSightingJM(
     /**
      * deltaT without addDate
      */
-    val deltaTNoAdd get() = DeltaT.deltaT(floor(jdGeoNewMoon) + 0.5)
+    val deltaTNoAdd get() = when (deltaTMode) {
+        DeltaTMode.POLYNOMIAL -> DeltaT.deltaT(floor(jdGeoNewMoon) + 0.5)
+        DeltaTMode.ABAIKAN -> 0.0
+        DeltaTMode.CUSTOM -> customDeltaT
+    }
 
     /**
      * deltaT + addDate
      */
-    val deltaT get() = DeltaT.deltaT(floor(jdGeoNewMoon + addDate) + 0.5)
+    val deltaT get() = when (deltaTMode) {
+        DeltaTMode.POLYNOMIAL -> DeltaT.deltaT(floor(jdGeoNewMoon + addDate) + 0.5)
+        DeltaTMode.ABAIKAN -> 0.0
+        DeltaTMode.CUSTOM -> customDeltaT
+    }
     
     /**
      * deltaT round 2
