@@ -24,7 +24,6 @@
 package com.andihasan7.lib.ephemeris.jeanmeeus
 
 import com.andihasan7.lib.ephemeris.jeanmeeus.convertutil.ConvertUtil
-import com.andihasan7.lib.ephemeris.jeanmeeus.enum.DeltaTMode
 import com.andihasan7.lib.ephemeris.jeanmeeus.timeutil.DeltaT
 import com.andihasan7.lib.ephemeris.jeanmeeus.timeutil.TimeUtil
 import com.andihasan7.lib.ephemeris.jeanmeeus.enum.DistanceType
@@ -63,7 +62,7 @@ class MoonJM(
     var hourDouble: Double = 0.0, // decimal hour
     var temperature: Double = 10.0, // average annual local temperature (in °C)
     var pressure: Double = 1010.0, // annual average local air pressure (in millibars)
-    var deltaTMode: DeltaTMode = DeltaTMode.POLYNOMIAL,
+    var deltaTMode: Int = 0, // choice deltaT mode: 0=polynomial, 1=ignore, 2=custom
     var customDeltaT: Double = 0.0,
 ) {
     
@@ -76,9 +75,10 @@ class MoonJM(
     * Delta T
     */
     val deltaT: Double get() = when (deltaTMode) {
-        DeltaTMode.POLYNOMIAL -> DeltaT.deltaT(jd)
-        DeltaTMode.ABAIKAN -> 0.0
-        DeltaTMode.CUSTOM -> customDeltaT
+        0 -> DeltaT.deltaT(jd)
+        1 -> 0.0
+        2 -> customDeltaT
+        else -> DeltaT.deltaT(jd)
     }
     
     // Moon Data
