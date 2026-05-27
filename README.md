@@ -11,7 +11,7 @@
 <!-- Latest release -->
 <img src="https://img.shields.io/github/v/release/hasanelfalakiy/lib-ephemeris-jeanmeeus?include_releases&label=latest%20release&style=for-the-badge&color=brightgreen" alt="latest_release"/>
 <!-- Jitpack release -->
-<img src="https://img.shields.io/jitpack/v/hasanelfalakiy/lib-ephemeris-jeanmeeus.svg?style=for-the-badge&color=brightgreen" alt="jitpack_release">
+<img src="https://jitpack.io/v/hasanelfalakiy/lib-ephemeris-jeanmeeus.svg?style=for-the-badge&color=brightgreen" alt="jitpack_release">
 <!-- Github Repo size -->
 <img src="https://img.shields.io/github/repo-size/hasanelfalakiy/lib-ephemeris-jeanmeeus?style=for-the-badge">
 <!-- Build with Kotlin -->
