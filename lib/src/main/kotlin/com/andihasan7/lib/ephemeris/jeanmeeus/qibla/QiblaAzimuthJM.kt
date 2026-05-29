@@ -50,7 +50,7 @@ class QiblaAzimuthJM {
         val h = Math.toDegrees(asin(sin(Math.toRadians(latitude)) * sin(Math.toRadians(LATITUDEKABAH)) + cos(Math.toRadians(latitude))  * cos(Math.toRadians(LATITUDEKABAH)) * cos(Math.toRadians(selisihazimuthBUjur))))
                                 
         // Azimuth U-B
-        val azimuthUB = Math.toDegrees(((sin(Math.toRadians(LATITUDEKABAH)) - sin(Math.toRadians(latitude)) * sin(Math.toRadians(h))) / cos(Math.toRadians(latitude)) / cos(Math.toRadians(h))))
+        val azimuthUB = Math.toDegrees(acos((sin(Math.toRadians(LATITUDEKABAH)) - sin(Math.toRadians(latitude)) * sin(Math.toRadians(h))) / cos(Math.toRadians(latitude)) / cos(Math.toRadians(h))))
 
         // Azimuth B-U
         val azimuthBU = 90 - azimuthUB
