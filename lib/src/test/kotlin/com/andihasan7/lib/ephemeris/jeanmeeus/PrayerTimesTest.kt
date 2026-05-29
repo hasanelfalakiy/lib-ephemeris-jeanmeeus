@@ -33,15 +33,24 @@ class PrayerTimesTest {
     fun prayerTimesTest() {
 
         val ws = PrayerTimesJM(
-            date = 1,
-            month = 1,
+            date = 29,
+            month = 5,
             year = 2026,
             latitude = -7.4333333334,
             longitude = 111.43333333334,
             elevation = 150.0,
             timeZone = 7.0,
-            ihtiyatDzuhur = 3,
-            otherIhtiyat = 2
+            ihtiyatZuhur = 3,
+            ihtiyatAsar = 2,
+            ihtiyatMaghrib = 2,
+            ihtiyatIsya = 2,
+            ihtiyatShubuh = 2,
+            ihtiyatTerbit = 2,
+            ihtiyatDluha = 2,
+            hAltIsya = -18.0,
+            hAltShubuh = -20.0,
+            metodeAsar = true,
+            isUseDip = true,
         )
 
         val imsak = ws.imsakWD_HMS

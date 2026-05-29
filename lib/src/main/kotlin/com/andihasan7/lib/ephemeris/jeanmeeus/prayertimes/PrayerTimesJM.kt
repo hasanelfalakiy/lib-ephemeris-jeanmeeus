@@ -59,8 +59,17 @@ class PrayerTimesJM(
     longitude: Double,
     elevation: Double,
     timeZone: Double,
-    ihtiyatDzuhur: Int = 0,
-    otherIhtiyat: Int = 0
+    ihtiyatZuhur: Int = 0,
+    ihtiyatAsar: Int = 0,
+    ihtiyatMaghrib: Int = 0,
+    ihtiyatIsya: Int = 0,
+    ihtiyatShubuh: Int = 0,
+    ihtiyatTerbit: Int = 0,
+    ihtiyatDluha: Int = 0,
+    hAltIsya: Double = -18.0,
+    hAltShubuh: Double = -20.0,
+    metodeAsar: Boolean = true, // true = Syafi'i, false = Hanafi
+    isUseDip: Boolean = true, // true=use dip for maghrib and sunrise
 ) {
 
     // for dzuhur
@@ -98,7 +107,7 @@ class PrayerTimesJM(
     /**
      * time transit / dzuhur local time/lokal/daerah
      */
-    val dzuhurWD = meridianPass - kwd + (ihtiyatDzuhur.toDouble() / 60)
+    val dzuhurWD = meridianPass - kwd + (ihtiyatZuhur.toDouble() / 60)
 
     /**
      * dzuhur local HMS
@@ -131,13 +140,14 @@ class PrayerTimesJM(
     private val eq_ash = jma.equationOfTime
     private val meridianPassAshar = 12 - eq_ash
     private val zm = abs(latitude - dek_ash)
-    private val alt_ashar = Math.toDegrees(atan(1.0 / (tan(Math.toRadians(zm)) + 1)))
+    private val asrShadowFactor = if (metodeAsar) 1 else 2
+    private val alt_ashar = Math.toDegrees(atan(1.0 / (tan(Math.toRadians(zm)) + asrShadowFactor)))
     private val t_ashar = Math.toDegrees(acos((sin(Math.toRadians(alt_ashar)) - sin(Math.toRadians(latitude)) * sin(Math.toRadians(dek_ash))) / (cos(Math.toRadians(latitude)) * cos(Math.toRadians(dek_ash)))))
 
     /**
      * ashar local
      */
-    val asharWD = meridianPassAshar + (t_ashar / 15) - kwd + (otherIhtiyat.toDouble() / 60)
+    val asharWD = meridianPassAshar + (t_ashar / 15) - kwd + (ihtiyatAsar.toDouble() / 60)
 
     /**
      * ashar local HMS
@@ -182,8 +192,8 @@ class PrayerTimesJM(
     private val eq_maghr = jmm.equationOfTime
     private val semid_maghr = jmm.sunApparentGeoSemidiameter
     private val meridianPassMaghr = 12 - eq_maghr
-
-    private val hMaghrib = -((34.0 / 60) + semid_maghr + dip)
+    private val useDip = if (isUseDip) dip else 0.0
+    private val hMaghrib = -((34.0 / 60) + semid_maghr + useDip)
     private val t_maghr = Math.toDegrees(acos((sin(Math.toRadians(hMaghrib)) - sin(Math.toRadians(latitude)) * sin(Math.toRadians(dek_maghr))) / (cos(Math.toRadians(latitude)) * cos(Math.toRadians(dek_maghr)))))
 
     /**
@@ -197,7 +207,7 @@ class PrayerTimesJM(
     /**
      * maghrib local
      */
-    val maghribWD = maghribWDWithoutIhtiyat + (otherIhtiyat.toDouble() / 60)
+    val maghribWD = maghribWDWithoutIhtiyat + (ihtiyatMaghrib.toDouble() / 60)
 
     /**
      * maghrib local HMS
@@ -229,13 +239,13 @@ class PrayerTimesJM(
     private val dek_isya = jmi.sunApparentGeoDeclination
     private val eq_isya = jmi.equationOfTime
     private val meridianPassIsya = 12 - eq_isya
-    private val hIsya = -18.0 // + hMaghrib
+    private val hIsya = hAltIsya // + hMaghrib
     private val t_isya = Math.toDegrees(acos((sin(Math.toRadians(hIsya)) - sin(Math.toRadians(latitude)) * sin(Math.toRadians(dek_isya))) / (cos(Math.toRadians(latitude)) * cos(Math.toRadians(dek_isya)))))
 
     /**
      * isya local
      */
-    val isyaWD = meridianPassIsya + (t_isya / 15) - kwd + (otherIhtiyat.toDouble() / 60)
+    val isyaWD = meridianPassIsya + (t_isya / 15) - kwd + (ihtiyatIsya.toDouble() / 60)
 
     /**
      * isya local HMS
@@ -268,14 +278,14 @@ class PrayerTimesJM(
     private val dek_shubuh = jms.sunApparentGeoDeclination
     private val eq_shubuh = jms.equationOfTime
     private val meridianPassShubuh = 12 - eq_shubuh
-    private val hShubuh = -20.0 // + hMaghrib
+    private val hShubuh = hAltShubuh // + hMaghrib
     private val t_shubuh = Math.toDegrees(acos((sin(Math.toRadians(hShubuh)) - sin(Math.toRadians(latitude)) * sin(Math.toRadians(dek_shubuh))) / (cos(Math.toRadians(latitude)) * cos(Math.toRadians(dek_shubuh)))))
 
     private val _shubuhWD = meridianPassShubuh - (t_shubuh / 15) - kwd
     /**
      * shubuh local
      */
-    val shubuhWD = _shubuhWD + (otherIhtiyat.toDouble() / 60)
+    val shubuhWD = _shubuhWD + (ihtiyatShubuh.toDouble() / 60)
 
     /**
      * shubuh local HMS
@@ -342,7 +352,7 @@ class PrayerTimesJM(
     /**
      * sunrise local
      */
-    val terbitWD = terbitWDWithoutIhtiyat - (otherIhtiyat.toDouble() / 60)
+    val terbitWD = terbitWDWithoutIhtiyat - (ihtiyatTerbit.toDouble() / 60)
 
     /**
      * sunrise local HMS
@@ -380,7 +390,7 @@ class PrayerTimesJM(
     /**
      * dluha local
      */
-    val dluhaWD = meridianPassDluha - (t_dluha / 15) - kwd + (otherIhtiyat.toDouble() / 60)
+    val dluhaWD = meridianPassDluha - (t_dluha / 15) - kwd + (ihtiyatDluha.toDouble() / 60)
 
     /**
      * dluha local HMS
