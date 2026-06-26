@@ -737,10 +737,12 @@ object SunPosition {
      * @param lat is latitude of observer
      * @param elev is elevation of observer
      * @param timeZone is time zone of observer
+     * @param deltaTMode 0 = Polynomial, 1 = Ignore, 2 = Custom
+     * @param customDeltaT
      *
      * @return jdMaghribFinal
      */
-    fun jdMaghrib(jdNewMoon: Double, lon: Double, lat: Double, elev: Double, timeZone: Double): Double {
+    fun jdMaghrib(jdNewMoon: Double, lon: Double, lat: Double, elev: Double, timeZone: Double, deltaTMode: Int, customDeltaT: Double): Double {
 
         var set = 17.0
         var haMghrb: Double
@@ -748,7 +750,12 @@ object SunPosition {
         val cjdn = floor(jdNewMoon + 0.5 + (timeZone / 24.0))
         for (i in 1..3) {
             var jdMghrb = cjdn - 0.5 + (set - timeZone) / 24.0
-            var jdeMghrb = jdMghrb + DeltaT.deltaT(jdMghrb) / 86400.0
+            var jdeMghrb = when (deltaTMode) {
+                0 -> jdMghrb + DeltaT.deltaT(jdMghrb) / 86400.0
+                1 -> jdMghrb + 0.0 / 86400.0
+                2 -> jdMghrb + customDeltaT / 86400.0
+                else -> jdMghrb + DeltaT.deltaT(jdMghrb) / 86400.0
+            }
             var dekMghrb = sunApparentGeoDeclination(jdeMghrb)
             var semiMghrb = sunApparentGeoSemidiameter(jdeMghrb)
             var eotMghrb = equationOfTime(jdeMghrb)

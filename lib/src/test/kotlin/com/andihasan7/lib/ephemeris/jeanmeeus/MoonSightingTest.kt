@@ -34,14 +34,14 @@ class MoonSightingTest {
     fun moonSightingTest() {
 		
 		val ms = MoonSightingJM(
-            monthOfHijri = 11,
+            monthOfHijri = 12,
             yearOfHijri = 1447,
-            longitude = 111.4333333334, // 98.67383333, // 111.461388888889,
-            latitude = -7.4333333334, // 3.589666667, //-7.367222222222,
-            elevation = 150.0, //  128.0,
+            longitude = 111.46, // 98.67383333, // 111.461388888889,
+            latitude = -7.36, // 3.589666667, //-7.367222222222,
+            elevation = 149.0, //  128.0,
             timeZone = 7.0,
             addDate = 0,
-            deltaTMode = 2,
+            deltaTMode = 0,
             customDeltaT = 69.184
         )
 
@@ -106,7 +106,7 @@ class MoonSightingTest {
         val diffRASunMoon = ms.diffRASunMoon
         val hilalDuration = ms.hilalDurationOld
         val hilalDurationTaqrib = ms.hilalDurationTaqribi
-        val hilalDurationTaqribDMS = ms.hilalDurationTaqribiDMS
+        val hilalDurationTaqribHMS = ms.hilalDurationTaqribiHMS
         val moonSet = ms.moonSet
         val moonAge = ms.moonAge
         val nurulHilal = ms.nurulHilal
@@ -123,6 +123,22 @@ class MoonSightingTest {
         val moonHorizontalParallaxDMS = ms.moonHorizontalParallaxDMS
         val moonTopoAzimuthSetDMS = ms.moonTopoAzimuthSetDMS
         val predictionNeoMabims = ms.predictionIRNU
+
+        val moonSetDiffAR = ms.moonSetDiffAR
+        val moonSetDiffARHMS = ms.moonSetDiffARHMS
+
+        // mencari lama hilal algoritma ephemeris kemenag
+        val sunApparentGeoDeclination = ms.sunApparentGeoDeclination
+        val sunApparentGeoSemidiameter = ms.sunApparentGeoSemidiameter
+        val ho = ms.ho
+        val to = ms.to
+        val tc = ms.tc
+        val nf = ms.nf
+        val pnf = ms.pnf
+        val sbsh = ms.sbsh
+        val sbs = ms.sbs
+        val hilalDurationEphe = ms.hilalDurationEphe
+        val moonSetEphe = ms.moonSetEphe
         
         
         println("jd astronomical algorithm: ${ms.jdNewMoonAstronomicalAlgorithm}")
@@ -180,10 +196,17 @@ class MoonSightingTest {
         println("moon topo elongation  : $moonSunTopoElongationDMS")
         println("")
         println("diff RA: $diffRASunMoon, ${ConvertUtil.toDegreeFullRound2(diffRASunMoon)}")
-        println("hilal duration: $hilalDuration, ${ms.hilalDurationOldHMS}")
-        println("hilal duration taqribi: $hilalDurationTaqrib | $hilalDurationTaqribDMS")
         println("")
-        println("moon set: $moonSet, ${ms.moonSetHMS}")
+        println("hilal duration taqribi (hc x 4 menit)        : $hilalDurationTaqribHMS")
+        println("hilal duration diff ARm - ARs / 15           : ${ms.hilalDurationOldHMS}")
+        println("hilal duration ephe kemenag ((sbs - tc) / 15): ${ConvertUtil.toCounterHHMMSS2(hilalDurationEphe)}")
+        println("")
+        println("moon set taqribi (hc x 4 menit)        : ${ConvertUtil.toTimeFullRound2(ms.moonSetTaqribi)}")
+        println("moon set As Algorithm Meeus (AA)       : ${ms.moonSetHMS}")
+        println("moon set LH = ARm - ARs / 15           : $moonSetDiffARHMS")
+        println("moon set ephe kemenag ((sbs - tc) / 15): ${ConvertUtil.toTimeFullRound2(moonSetEphe)}")
+        println("")
+        println("")
         println("moon age: $moonAge, ${ms.moonAgeHMS}")
         println("")
         println("crecent width : $crecentWidth, ${ms.crecentWidthTopoDMS}")
@@ -201,8 +224,20 @@ class MoonSightingTest {
         println("moon geo distance km: $moonGeoDistanceKM")
         println("nurul hilal: $nurulHilal")
         println("mrg: $mrg, $mrgString")
-        println("tHilal: ${ms.tHilal}")
-        println("moonSunElo: ${ms.moonSunElo}")
+        println("tHilal: ${ms.tHilal} | ${ConvertUtil.toDegreeFullRound2(ms.tHilal)}")
+        println("moonSunElo: ${ms.moonSunElo} | ${ConvertUtil.toDegreeFullRound2(ms.moonSunElo)}")
+        println("")
+        println("sunApparentGeoDeclination: ${ConvertUtil.toDegreeFullRound2(sunApparentGeoDeclination)}")
+        println("sunApparentGeoSemidiameter: ${ConvertUtil.toDegreeFullRound2(sunApparentGeoSemidiameter)}")
+        println("ho: ${ConvertUtil.toDegreeFullRound2(ho)}")
+        println("to: ${ConvertUtil.toDegreeFullRound2(to)}")
+        println("tc: ${ConvertUtil.toDegreeFullRound2(tc)}")
+        println("nf: ${ConvertUtil.toDegreeFullRound2(nf)} | $nf")
+        println("pnf: ${ConvertUtil.toDegreeFullRound2(pnf)}")
+        println("sbsh: $sbsh | ${ConvertUtil.toDegreeFullRound2(sbsh)}")
+        println("sbs: $sbs | ${ConvertUtil.toDegreeFullRound2(sbs)}")
+        println("hilalDurationEphe: ${ConvertUtil.toTimeFullRound2(hilalDurationEphe)}")
+        println("moonSetEphe: ${ConvertUtil.toTimeFullRound2(moonSetEphe)}")
         println("")
 	}
 	
