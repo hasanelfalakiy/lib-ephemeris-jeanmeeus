@@ -45,7 +45,11 @@ import kotlin.math.atan
 import kotlin.math.cos
 import kotlin.math.pow
 import kotlin.math.abs
+import kotlin.math.acos
+import kotlin.math.asin
+import kotlin.math.sin
 import kotlin.math.sqrt
+import kotlin.math.tan
 
 
 /**
@@ -644,12 +648,12 @@ class MoonSightingJM(
     /**
     * muktsul hilal taqribi
     */
-    val hilalDurationTaqribi = (moonGeoAltitude * (4.0 / 60))
+    val hilalDurationTaqribi get() = (moonGeoAltitude * (4.0 / 60))
     
     /**
-    * muktsul hilal taqribi DMS
+    * muktsul hilal taqribi HMS
     */
-    val hilalDurationTaqribiDMS = ConvertUtil.toDegreeFullRound2(hilalDurationTaqribi)
+    val hilalDurationTaqribiHMS get() = ConvertUtil.toCounterHHMMSS2(hilalDurationTaqribi)
     
     /**
     * diff RA sun - RA moon
@@ -669,6 +673,11 @@ class MoonSightingJM(
     * hilal duration/muktsu Counter HMS from diff RA sun - RA moon
     */
     val hilalDurationOldHMS get() = ConvertUtil.toCounterHHMMSS2(hilalDurationOld)
+
+    /**
+     * moon set taqribi hc * 0 4m
+     */
+    val moonSetTaqribi get() = (maghribLocalDateNewMoon ?: 0.0) + hilalDurationTaqribi
     
     /**
     * moon set/hilal terbenam from Astronomical Algorithm & Explanatory Supplement 
@@ -690,6 +699,48 @@ class MoonSightingJM(
      */
     val moonSetDiffARHMS get() = ConvertUtil.toTimeFullRound2(moonSetDiffAR)
 
+    // =========== rumus mencari lama hilal dan terbenam hilal ephemeris kemenag =========
+
+    // sun geo dec
+    val sunApparentGeoDeclination get() = SunPosition.sunApparentGeoDeclination(jdGhurubSyamsPlus, deltaT)
+    // sun geo semidiameter
+    val sunApparentGeoSemidiameter get() = SunPosition.sunApparentGeoSemidiameter(jdGhurubSyamsPlus, deltaT)
+    // tinggi matahari ho
+    val ho get() = 0 - sunApparentGeoSemidiameter - 0.575 - dip // 0.575 = 0 34 30
+
+    // sudut waktu matahari (to)
+    val to get() = Math.toDegrees(acos(-tan(Math.toRadians(latitude)) * tan(Math.toRadians(sunApparentGeoDeclination)) + sin(Math.toRadians(ho)) / cos(Math.toRadians(latitude)) / cos(Math.toRadians(sunApparentGeoDeclination))))
+    // sudut waktu bulan (tc)
+    val tc get() = sunGeoRightAscension - moonGeoRightAscension + to
+    // nisful fudlah NF
+
+    val nf: Double get() {
+        val x =
+            (sin(Math.toRadians(latitude)) *
+                    sin(Math.toRadians(moonGeoDeclination))) /
+                    (cos(Math.toRadians(latitude)) *
+                            cos(Math.toRadians(moonGeoDeclination)))
+
+        return abs(Math.toDegrees(asin(x)))
+    }
+    // val nf get() = abs(Math.toDegrees(asin((sin(Math.toRadians(latitude)) * sin(Math.toRadians(moonGeoDeclination))) / (cos(Math.toRadians(latitude)) * cos(Math.toRadians(moonGeoDeclination))))))
+    // parallax nisful fudlah PNF
+    val pnf get() = cos(Math.toRadians(nf)) * moonHorizontalParallax
+    // setengah busur siang bulan hakiki SBSH
+    val sbsh get() = 90 + nf
+    // setengah busur siang bulan SBS
+    val sbs get() = if (sbsh >= 90.0) {
+        90 + nf - pnf + (moonGeoSemidiameter + 0.575 + dip)
+    } else {
+        90 + nf + pnf - (moonGeoSemidiameter + 0.575 + dip)
+    }
+    // lama hilal LH
+    val hilalDurationEphe get() = ((sbs - tc) / 15) //.mod(24.0)
+    // hilal terbenam
+    val moonSetEphe get() = (maghribLocalDateNewMoon ?: 0.0) + hilalDurationEphe
+
+    // ==============================
+
 
     /**
     * moon age/umur hilal
@@ -705,7 +756,7 @@ class MoonSightingJM(
     */
     val moonAgeHMS get() = ConvertUtil.toCounterHHMMSS2(moonAge)
     
-    private val _jdMSet = TimeUtil.gregorianToJD(dateSSetInt ?: 0, monthSSetInt ?: 0, yearSSetInt ?: 0)
+    private val _jdMSet get() = TimeUtil.gregorianToJD(dateSSetInt ?: 0, monthSSetInt ?: 0, yearSSetInt ?: 0)
     /**
     * jd moon set
     */
