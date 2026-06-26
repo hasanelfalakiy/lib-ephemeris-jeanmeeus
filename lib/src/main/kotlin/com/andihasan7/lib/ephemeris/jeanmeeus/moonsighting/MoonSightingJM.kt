@@ -721,7 +721,7 @@ class MoonSightingJM(
                     (cos(Math.toRadians(latitude)) *
                             cos(Math.toRadians(moonGeoDeclination)))
 
-        return abs(Math.toDegrees(asin(x)))
+        return Math.toDegrees(asin(x))
     }
     // val nf get() = abs(Math.toDegrees(asin((sin(Math.toRadians(latitude)) * sin(Math.toRadians(moonGeoDeclination))) / (cos(Math.toRadians(latitude)) * cos(Math.toRadians(moonGeoDeclination))))))
     // parallax nisful fudlah PNF
