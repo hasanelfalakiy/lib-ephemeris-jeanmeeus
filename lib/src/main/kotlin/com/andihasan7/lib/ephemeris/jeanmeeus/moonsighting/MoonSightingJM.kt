@@ -673,7 +673,7 @@ class MoonSightingJM(
     /**
     * moon set/hilal terbenam from Astronomical Algorithm & Explanatory Supplement 
     */
-    val moonSet get() = MoonActivity.moonActivity(dateSSetInt ?: 0, monthSSetInt ?: 0, yearSSetInt ?: 0, longitude, latitude, elevation, timeZone, 2, MoonActivityType.SET)
+    val moonSet get() = MoonActivity.moonActivity(dateSSetInt ?: 0, monthSSetInt ?: 0, yearSSetInt ?: 0, longitude, latitude, elevation, timeZone, 2, MoonActivityType.SET, true)
     
     /**
     * moon set/hilal terbenam HMS from diff RA sun - RA moon

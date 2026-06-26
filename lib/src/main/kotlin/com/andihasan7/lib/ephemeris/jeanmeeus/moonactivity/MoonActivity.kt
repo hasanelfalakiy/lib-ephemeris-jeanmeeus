@@ -68,7 +68,7 @@ object MoonActivity {
        timeZone: Double,
        maxLoop: Int,
        moonActivityType: MoonActivityType,
-       isUseDip: Boolean = false
+       isUseDip: Boolean = true
    ): Double? {
         
        var jd0LT: Double
