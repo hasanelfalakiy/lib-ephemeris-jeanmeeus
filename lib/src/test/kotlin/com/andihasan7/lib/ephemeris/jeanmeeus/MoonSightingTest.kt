@@ -34,14 +34,14 @@ class MoonSightingTest {
     fun moonSightingTest() {
 		
 		val ms = MoonSightingJM(
-            monthOfHijri = 11,
+            monthOfHijri = 12,
             yearOfHijri = 1447,
-            longitude = 111.4333333334, // 98.67383333, // 111.461388888889,
-            latitude = -7.4333333334, // 3.589666667, //-7.367222222222,
-            elevation = 150.0, //  128.0,
+            longitude = 111.46, // 98.67383333, // 111.461388888889,
+            latitude = -7.36, // 3.589666667, //-7.367222222222,
+            elevation = 149.0, //  128.0,
             timeZone = 7.0,
             addDate = 0,
-            deltaTMode = 2,
+            deltaTMode = 0,
             customDeltaT = 69.184
         )
 
@@ -123,6 +123,9 @@ class MoonSightingTest {
         val moonHorizontalParallaxDMS = ms.moonHorizontalParallaxDMS
         val moonTopoAzimuthSetDMS = ms.moonTopoAzimuthSetDMS
         val predictionNeoMabims = ms.predictionIRNU
+
+        val moonSetDiffAR = ms.moonSetDiffAR
+        val moonSetDiffARHMS = ms.moonSetDiffARHMS
         
         
         println("jd astronomical algorithm: ${ms.jdNewMoonAstronomicalAlgorithm}")
@@ -180,10 +183,13 @@ class MoonSightingTest {
         println("moon topo elongation  : $moonSunTopoElongationDMS")
         println("")
         println("diff RA: $diffRASunMoon, ${ConvertUtil.toDegreeFullRound2(diffRASunMoon)}")
-        println("hilal duration: $hilalDuration, ${ms.hilalDurationOldHMS}")
-        println("hilal duration taqribi: $hilalDurationTaqrib | $hilalDurationTaqribDMS")
         println("")
-        println("moon set: $moonSet, ${ms.moonSetHMS}")
+        println("hilal duration diff ARm - ARs / 15: $hilalDuration, ${ms.hilalDurationOldHMS}")
+        println("hilal duration taqribi (hc x 4 m / 15): $hilalDurationTaqrib | $hilalDurationTaqribDMS")
+        println("")
+        println("moon set As Al (AA): $moonSet, ${ms.moonSetHMS}")
+        println("moon set diff AR: $moonSetDiffAR | $moonSetDiffARHMS")
+        println("")
         println("moon age: $moonAge, ${ms.moonAgeHMS}")
         println("")
         println("crecent width : $crecentWidth, ${ms.crecentWidthTopoDMS}")
@@ -201,8 +207,8 @@ class MoonSightingTest {
         println("moon geo distance km: $moonGeoDistanceKM")
         println("nurul hilal: $nurulHilal")
         println("mrg: $mrg, $mrgString")
-        println("tHilal: ${ms.tHilal}")
-        println("moonSunElo: ${ms.moonSunElo}")
+        println("tHilal: ${ms.tHilal} | ${ConvertUtil.toDegreeFullRound2(ms.tHilal)}")
+        println("moonSunElo: ${ms.moonSunElo} | ${ConvertUtil.toDegreeFullRound2(ms.moonSunElo)}")
         println("")
 	}
 	

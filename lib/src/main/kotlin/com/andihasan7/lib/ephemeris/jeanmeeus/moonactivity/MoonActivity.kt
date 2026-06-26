@@ -54,7 +54,9 @@ object MoonActivity {
    * @param timeZone of observer
    * @param maxLoop maximal loop/iterations
    * @param moonActivityType RISE, SET, or TRANSIT reference to MoonActivityType
-   * @param isUseDip
+   * @param isUseDip default true
+    * @param deltaTMode 0 = Polynomial, 1 = Abaikan, 2 = Custom
+    * @param customDeltaT
    *
    * @return ttrs reference to MoonActivityType
    */
@@ -68,7 +70,9 @@ object MoonActivity {
        timeZone: Double,
        maxLoop: Int,
        moonActivityType: MoonActivityType,
-       isUseDip: Boolean = true
+       isUseDip: Boolean = true,
+       deltaTMode: Int = 0, // 0 = Polynomial, 1 = Abaikan, 2 = Custom
+       customDeltaT: Double = 69.184
    ): Double? {
         
        var jd0LT: Double
@@ -100,7 +104,12 @@ object MoonActivity {
        jd0UT = TimeUtil.gregorianToJD(date, month, year, timeZone, timeZone) + -1
         
        for (di in 1..3) {
-           jde0UT = jd0UT + DeltaT.deltaT(jd0UT) / 86400.0
+           jde0UT = when (deltaTMode) {
+               0 -> jd0UT + DeltaT.deltaT(jd0UT) / 86400.0
+               1 -> jd0UT + 0.0 / 86400.0
+               2 -> jd0UT + customDeltaT / 86400.0
+               else -> jd0UT + DeltaT.deltaT(jd0UT) / 86400.0
+           }
            alphaM00d = MoonPosition.moonAppaGeocentricRightAscension(jde0UT)
            alphaMm1d = MoonPosition.moonAppaGeocentricRightAscension((jde0UT - 1))
            alphaMp1d = MoonPosition.moonAppaGeocentricRightAscension((jde0UT + 1))

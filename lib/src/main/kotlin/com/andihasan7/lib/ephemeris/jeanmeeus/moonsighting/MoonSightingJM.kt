@@ -94,14 +94,14 @@ class MoonSightingJM(
     val jdGeoNewMoon get() = MoonPhaseJM.moonGeoConjunction(monthOfHijri, yearOfHijri, 0.0, ConjunctionReturn.JDCONJUNCTION)
 
     /**
-     * jd when maghrib with tabular interpolation without deltaT
+     * jd when maghrib with tabular interpolation with custom deltaT mode
      */
-    val jdGhurubSyams get() = SunPosition.jdMaghrib(jdGeoNewMoon, longitude, latitude, elevation, timeZone)
+    val jdGhurubSyams get() = SunPosition.jdMaghrib(jdGeoNewMoon, longitude, latitude, elevation, timeZone, deltaTMode, customDeltaT)
 
     /**
      * jd when maghrib + addDate
      */
-    val jdGhurubSyamsPlus get() = SunPosition.jdMaghrib(jdGeoNewMoon + addDate, longitude, latitude, elevation, timeZone)
+    val jdGhurubSyamsPlus get() = SunPosition.jdMaghrib(jdGeoNewMoon + addDate, longitude, latitude, elevation, timeZone, deltaTMode, customDeltaT)
 
     /**
      * deltaT without addDate
@@ -673,13 +673,24 @@ class MoonSightingJM(
     /**
     * moon set/hilal terbenam from Astronomical Algorithm & Explanatory Supplement 
     */
-    val moonSet get() = MoonActivity.moonActivity(dateSSetInt ?: 0, monthSSetInt ?: 0, yearSSetInt ?: 0, longitude, latitude, elevation, timeZone, 2, MoonActivityType.SET, true)
+    val moonSet get() = MoonActivity.moonActivity(dateSSetInt ?: 0, monthSSetInt ?: 0, yearSSetInt ?: 0, longitude, latitude, elevation, timeZone, 2, MoonActivityType.SET, true, deltaTMode, customDeltaT)
     
     /**
-    * moon set/hilal terbenam HMS from diff RA sun - RA moon
+    * moon set/hilal terbenam HMS from Astronomical Algorithm & Explanatory Supplement
     */
     val moonSetHMS get() = ConvertUtil.toTimeFullRound2(moonSet ?: 0.0)
-    
+
+    /**
+     * moon set/hilal terbenam from diff ARm - ARs / 15
+     */
+    val moonSetDiffAR get() = (maghribLocalDateNewMoon ?: 0.0) + hilalDurationOld
+
+    /**
+     * moon set/hilal terbenam from diff ARm - ARs / 15 HMS
+     */
+    val moonSetDiffARHMS get() = ConvertUtil.toTimeFullRound2(moonSetDiffAR)
+
+
     /**
     * moon age/umur hilal
     */
